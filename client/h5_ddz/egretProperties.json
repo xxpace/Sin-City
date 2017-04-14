@@ -20,6 +20,10 @@
     },
     {
       "name": "res"
+    },
+    {
+      "name":"PomeloClient",
+      "path":"other_libs/pomelo"
     }
   ]
 }

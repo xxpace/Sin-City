@@ -10,8 +10,8 @@ app.set('name', 'server');
 app.configure('production|development', 'connector', function(){
   app.set('connectorConfig',
     {
-      connector : pomelo.connectors.sioconnector,
-      // 'websocket', 'polling-xhr', 'polling-jsonp', 'polling'
+      connector : pomelo.connectors.hybridconnector,
+      // 'websocket', 'polling-xhr', 'polling-jsonp', 'polling',
       transports : ['websocket', 'polling'],
       heartbeats : true,
       closeTimeout : 60 * 1000,

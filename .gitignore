@@ -1,4 +1,8 @@
 /*
 !client/h5_ddz/src
 !client/h5_ddz/resource
+!client/h5_ddz/other_libs
 !.gitignore
+!server/game-server/app
+!server/game-server/config
+!server/game-server/app.js
