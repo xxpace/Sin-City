@@ -1,8 +1,5 @@
-/*
-!client/h5_ddz/src
-!client/h5_ddz/resource
-!client/h5_ddz/other_libs
-!.gitignore
-!server/game-server/app
-!server/game-server/config
-!server/game-server/app.js
+/server/game-server/node_modules/
+/server/web-server/node_modules/
+/server/game-server/logs/
+/client/h5_ddz/.idea/
+/client/h5_ddz/bin-debug/
