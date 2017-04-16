@@ -4,6 +4,7 @@ module.exports = function(app) {
 
 var Handler = function(app) {
   this.app = app;
+  this.idCount = 0;
 };
 
 /**
@@ -15,7 +16,22 @@ var Handler = function(app) {
  * @return {Void}
  */
 Handler.prototype.entry = function(msg, session, next) {
-  next(null, {code: 200, msg: 'game server is ok.'});
+	var self = this;
+	var uid = "user*"+self.idCount;
+	self.idCount++;
+	var sessionService = self.app.get("sessionService");
+
+	if(!!sessionService.getByUid(uid))
+	{
+		next(null,{code:500,error:true});
+		return;
+	}
+
+	session.bind(uid);
+
+	self.app.rpc.ddz.ddzRemote.add(session,uid,self.app.get('serverId'),true,function(players){
+		next(null,{"players":JSON.stringify(players)});
+	});
 };
 
 /**

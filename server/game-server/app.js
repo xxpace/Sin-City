@@ -1,4 +1,5 @@
 var pomelo = require('pomelo');
+var Instance = require('./app/ddz_domain/ddz.js');
 
 /**
  * Init app for client.
@@ -18,6 +19,10 @@ app.configure('production|development', 'connector', function(){
       heartbeatTimeout : 60 * 1000,
       heartbeatInterval : 25 * 1000
     });
+});
+
+app.configure('production|development', 'ddz', function(){
+  app.set('ddz',new Instance());
 });
 
 // start app
