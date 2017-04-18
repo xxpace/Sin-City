@@ -25,4 +25,35 @@ DdzHandler.prototype.askLord = function(msg, session, next)
     {
         room.askLord();
     }
+    next(null);
+}
+
+DdzHandler.prototype.playCard = function(msg,session,next)
+{
+    let uid = session.uid;
+    let player = this.ddz.getPlayer(uid);
+    let room = this.ddz.getRoom(player.roomid);
+    if(room.isRightPlay(uid))
+    {
+        let cards = msg.cards;
+        if(room.isCanPlay(cards))
+        {
+            player.removeCards(cards);
+            if(player.cards.length===0)
+            {
+                room.notifyResult();
+            }
+        }
+    }
+}
+
+DdzHandler.prototype.cancelPlay = function(msg,session,next)
+{
+    let uid = session.uid;
+    let player = this.ddz.getPlayer(uid);
+    let room = this.ddz.getRoom(player.roomid);
+    if(room.isRightPlay(uid))
+    {
+        room.notifyPlay();
+    }
 }

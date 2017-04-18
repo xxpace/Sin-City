@@ -4,6 +4,7 @@ var Turn = function(num)
     this.posNum = num;
     this.mark = -1;
     this.isEnd = false;
+    this.dValue = -1;
 }
 
 module.exports = Turn;
@@ -11,15 +12,17 @@ module.exports = Turn;
 Turn.prototype.next = function()
 {
     let self = this;
-    if(self.isEnd)
-    {
-        return -1;
-    }
-
     if(self.index===-1)
     {
-        this.index = Math.round(Math.random()*this.posNum);
-        this.mark = this.index;
+        if(this.dValue===-1)
+        {
+            this.index = Math.round(Math.random()*this.posNum);
+            this.mark = this.index;
+        }else
+        {
+            this.index = this.dValue;
+            this.dValue = -1;
+        }
         return self.index;
     }else
     {
@@ -32,7 +35,7 @@ Turn.prototype.next = function()
         }
         if(self.index===self.mark)
         {
-            this.isEnd = true;
+            return -1;
         }
         return self.index;
     }
@@ -41,5 +44,11 @@ Turn.prototype.next = function()
 Turn.prototype.reSet = function()
 {
     this.index = -1;
-    this.isEnd = false;
+}
+
+Turn.prototype.setIndex = function(value)
+{
+    this.dValue = value;
+    this.index = -1;
+    this.mark = -1;
 }

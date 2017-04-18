@@ -11,6 +11,7 @@ var Room = function(opts)
 	this.limit = 3;
 	this.turn = new Turn();
 	this.timeIndex = -1;
+	this.playCards = [];
 }
 
 module.exports = Room;
@@ -92,6 +93,47 @@ Room.prototype.yesLord = function()
 		}
 	}
 	messageService.pushMessageByRoom(this.id,"yesLord",{"pos":pos,"score":score});
-	// messageService.pushMessageByRoom(this.id,"onRoomMessage",{"msg":"gameing"});
+	this.turn.setIndex(pos);
 }
+
+Room.prototype.setLord = function(lordPos)
+{
+	let len = this.players.length;
+	for(let i=0;i<len;i++)
+	{
+		let player = this.players[i];
+		player.isLord = Boolean(i===lordPos);
+	}
+}
+
+Room.prototype.notifyPlay = function()
+{
+	let player = this.players[this.turn.next()];
+	if(player)
+	{
+		messageService.pushMessageByRoom(this.id,"notifyPlay",{"pos":pos});
+	}
+}
+
+Room.prototype.isRightPlay = function(uid)
+{
+	let player = this.players[this.turn.index];
+	if(player)
+	{
+		return Boolean(uid===player.uid);
+	}
+	return false;
+}
+
+Room.prototype.notifyResult = function()
+{
+
+}
+
+Room.prototype.canPlay = function(cards)
+{
+	return true;
+}
+
+
 
