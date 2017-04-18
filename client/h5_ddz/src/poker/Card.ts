@@ -23,6 +23,8 @@ enum CardStyle
     four,
     aircraft_single_2,
     aircraft_double_2,
+    bigAircraft_single,
+    bigAaircraft_double,
     doubleGhost,
     order,
     error
@@ -258,12 +260,12 @@ class CardsProxy
         {
             var oneLogicValue = result[0].logicValue;
             var twoLogicvalue = result[result.length-1].logicValue;
-            selfList = selfList.filter(function(card){return card.logicValue!=oneLogicValue&&card.logicValue!=twoLogicvalue});
+            selfList = selfList.filter(function(card){return Boolean(card.logicValue!=oneLogicValue&&card.logicValue!=twoLogicvalue)});
             var twoCards = this.findBigCard(selfList,1000,2);
             if(twoCards)
             {
                 let value = twoCards[0].logicValue;
-                selfList = selfList.filter(function(card){return card.logicValue!=value});
+                selfList = selfList.filter(function(card){return Boolean(card.logicValue!=value)});
                 let another = this.findBigCard(selfList,1000,2);
                 if(another)
                 {
@@ -287,7 +289,7 @@ class CardsProxy
         {
             var oneLogicValue = result[0].logicValue;
             var twoLogicvalue = result[result.length-1].logicValue;
-            selfList.filter(function(card){return card.logicValue!=oneLogicValue&&card.logicValue!=twoLogicvalue});
+            selfList.filter(function(card){return Boolean(card.logicValue!=oneLogicValue&&card.logicValue!=twoLogicvalue)});
             var twoCards = this.findSingleCard(selfList,2);
             if(twoCards)
             {
@@ -587,6 +589,7 @@ class StyleJudge
 {
     public getCardStyle(cards:Array<Card>)
     {
+        cards = cards.sort(this.logicValueSortFun);
         var len:number = cards.length;
         if(len==1)
         {
@@ -688,14 +691,9 @@ class StyleJudge
     {
         let sameInfo = this.getSameCardNum(cards);
         var sameCount:number = sameInfo.num;
-        var baseCard:Card = sameInfo.card;
         if(sameCount==4)
         {
-            let newCards = cards.filter(function(card){card.value!=baseCard.value});
-            if(this.isAllSameCard(newCards)==false)
-            {
-                return CardStyle.four_single_2;
-            }
+            return CardStyle.four_single_2;
         }
         else
         {
@@ -717,16 +715,24 @@ class StyleJudge
         var baseCard:Card = sameInfo.card;
         if(sameCount==3)
         {
-            let newCards = cards.filter(function(card){card.value!=baseCard.value});
+            if(baseCard.value===2)
+            {
+                return CardStyle.error;
+            }
+            let newCards = cards.filter(function(card){return Boolean(card.value!=baseCard.value)});
             let sameInfo = this.getSameCardNum(newCards);
             var twoSameCount:number = sameInfo.num;
             if(twoSameCount==3)
             {
+                if(sameInfo.card.value===2)
+                {
+                    return CardStyle.error;
+                }
                 return CardStyle.aircraft_single_2;
             }
         }else if(sameCount==4)
         {
-            let newCards = cards.filter(function(card){card.value!=baseCard.value});
+            let newCards = cards.filter(function(card){return Boolean(card.value!=baseCard.value)});
             if(this.isDoubleDoubleCard(newCards))
             {
                 return CardStyle.four_double_2;
@@ -751,13 +757,13 @@ class StyleJudge
         var sameCount:number = sameInfo.num;
         if(sameCount==3)
         {
-            let newCards = cards.filter(function(card){card.value!=baseCard.value});
+            let newCards = cards.filter(function(card){return Boolean(card.value!=baseCard.value)});
             let sameIno = this.getSameCardNum(newCards);
             let twoCard:Card = sameIno.card;
             let twoSameCount = sameIno.num;
             if(twoSameCount==3)
             {
-                let twoNewCards = cards.filter(function(card){card.value!=twoCard.value});
+                let twoNewCards = newCards.filter(function(card){return Boolean(card.value!=twoCard.value)});
                 if(this.isDoubleDoubleCard(twoNewCards))
                 {
                     return CardStyle.aircraft_double_2;
@@ -786,26 +792,30 @@ class StyleJudge
             if(sameCount==3)//有可能是大飞机
             {
                 let threeCount:number = 0;
+                let newCards = [];
                 while(sameCount==3)
                 {
+                    if(newCards.length===0)
+                    {
+                        newCards = cards.filter(function(card){return Boolean(card.value!=baseCard.value)});
+                    }else
+                    {
+                        newCards = newCards.filter(function(card){return Boolean(card.value!=baseCard.value)});
+                    }
                     threeCount++;
-                    let newCards = cards.filter(function(card){card.value!=baseCard.value});
                     let sameIno = this.getSameCardNum(newCards);
                     baseCard = sameIno.card;
                     sameCount = sameIno.num;
                 }
-                if(cards.length===threeCount)
+                if(newCards.length===threeCount)
                 {
-                    return CardStyle.aircraft_single_2;
-                }else if(cards.length===threeCount*2)
+                    return CardStyle.bigAircraft_single;
+                }else if(newCards.length===threeCount*2)
                 {
-                    if(this.isDoubleDoubleCard(cards))
+                    if(this.isDoubleDoubleCard(newCards))
                     {
-                        return CardStyle.aircraft_double_2;
+                        return CardStyle.bigAaircraft_double;
                     }
-                }else
-                {
-                    return CardStyle.error;
                 }
             }else
             {
@@ -815,10 +825,12 @@ class StyleJudge
         {
             return this.isOrderCard(cards);
         }
+        return CardStyle.error;
     }
 
     public isDoubleDoubleCard(cards:Array<Card>)
     {
+        cards = cards.sort(this.valueSortFun);
         var len:number = cards.length;
         if(len%2===1)
         {
@@ -836,6 +848,11 @@ class StyleJudge
         return true;
     }
 
+    public logicValueSortFun(one:Card,two:Card)
+    {
+        return Number(one.logicValue-two.logicValue);
+    }
+
     public isOrderDoubleDoubleCard(cards:Array<Card>)
     {
         var len:number = cards.length;
@@ -843,7 +860,7 @@ class StyleJudge
         {
             return CardStyle.error;
         }
-        var newCards = cards.sort(this.valueSortFun);
+        var newCards = cards.sort(this.logicValueSortFun);
         var baseValue:number = -1;
         while(newCards.length>0)
         {
@@ -853,16 +870,14 @@ class StyleJudge
             {
                 return CardStyle.error;
             }
-            if(baseValue===-1)
+            if(baseValue!==-1)
             {
-                baseValue = doubleCard[0].value;
-            }else
-            {
-                if(cValue!=(baseValue+1))
+                if(cValue.logicValue!=(baseValue+1))
                 {
                     return CardStyle.error;
                 }
             }
+            baseValue = doubleCard[0].logicValue;
         }
         return CardStyle.double_3x;
     }
@@ -870,22 +885,25 @@ class StyleJudge
     public isOrderCard(cards:Array<Card>)
     {
         let len:number = cards.length;
-        let newCards = cards.filter(this.filter_1or2orGhost);
+        let newCards = cards.filter(this.filter_2orGhost);
         if(len===newCards.length)
         {
-            newCards = cards.sort(this.valueSortFun);
+            newCards = cards.sort(this.logicValueSortFun);
             len = newCards.length;
-            let bValue = newCards[0].value;
+            let bValue = newCards[0].logicValue;
             for(var i=1;i<len;i++)
             {
-                if(newCards[i].value===(bValue+1))
+                if(newCards[i].logicValue===(bValue+1))
                 {
-                    bValue = newCards[i].value;
+                    bValue = newCards[i].logicValue;
                 }else
                 {
                     return CardStyle.error;
                 }
             }
+        }else
+        {
+            return CardStyle.error;
         }
         return CardStyle.order;
     }
@@ -893,6 +911,11 @@ class StyleJudge
     public filter_1or2orGhost(card:Card)
     {
         return Boolean(card.value!=1&&card.value!=2&&card.type!=CardType.ghost);
+    }
+
+    public filter_2orGhost(card:Card)
+    {
+        return Boolean(card.value!=2&&card.type!=CardType.ghost);
     }
 
     public isAllSameCard(cards:Array<Card>)
@@ -913,6 +936,7 @@ class StyleJudge
     {
         let len:number = cards.length;
         let sameCount:number = 1;
+        let resultCard;
         let baseCard;
         for(let i=0;i<len;i++)
         {
@@ -928,10 +952,10 @@ class StyleJudge
             if(sonCount>sameCount)
             {
                 sameCount = sonCount;
-
+                resultCard = baseCard;
             }
         }
-        return new SameCardInfo(sameCount,baseCard);
+        return new SameCardInfo(sameCount,resultCard);
     }
 
     public valueSortFun(one:Card,two:Card)
