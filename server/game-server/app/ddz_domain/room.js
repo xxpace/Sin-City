@@ -12,6 +12,9 @@ var Room = function(opts)
 	this.turn = new Turn();
 	this.timeIndex = -1;
 	this.playCards = [];
+	this.notifyPlayPos = -1;
+	this.notifyPlayTimeIndex = -1;
+	this.beforePlayPos = -1;
 }
 
 module.exports = Room;
@@ -108,12 +111,26 @@ Room.prototype.setLord = function(lordPos)
 
 Room.prototype.notifyPlay = function()
 {
-	let player = this.players[this.turn.next()];
+	if(this.notifyPlayTimeIndex!==-1)
+	{
+		clearTimeout(this.notifyPlayTimeIndex);
+		this.notifyPlayTimeIndex = -1;
+	}
+	let pos = this.turn.next();
+	let player = this.players[pos];
 	if(player)
 	{
-		messageService.pushMessageByRoom(this.id,"notifyPlay",{"pos":pos});
+		this.notifyPlayPos = pos;
+		messageService.pushMessageByRoom(this.id,"notifyPlay",{"pos":pos,"time":20});
+		this.notifyPlayTimeIndex = setTimeout(this.timeEndHandle,20*1000);
 	}
 }
+
+Room.prototype.timeEndHandle = function()
+{
+	this.notifyPlay();
+}
+
 
 Room.prototype.isRightPlay = function(uid)
 {
@@ -132,7 +149,25 @@ Room.prototype.notifyResult = function()
 
 Room.prototype.canPlay = function(cards)
 {
-	return true;
+	let bool = false;
+	if(this.beforePlayPos===-1)
+	{
+		bool = true;
+	}else
+	{
+		if(this.beforePlayPos===this.turn.index)
+		{
+			bool = true;
+		}else
+		{
+			bool = true;//差卡牌检测逻辑
+		}
+	}
+	if(bool)
+	{
+		this.beforePlayPos = this.turn.index;
+	}
+	return bool
 }
 
 
