@@ -20,18 +20,23 @@ Handler.prototype.entry = function(msg, session, next) {
 	var uid = "user*"+self.idCount;
 	self.idCount++;
 	var sessionService = self.app.get("sessionService");
-
 	if(!!sessionService.getByUid(uid))
 	{
 		next(null,{code:500,error:true});
 		return;
 	}
-
 	session.bind(uid);
-
+	session.on('closed', onUserLeave.bind(null, self.app));
 	self.app.rpc.ddz.ddzRemote.add(session,uid,self.app.get('serverId'),true,function(players){
 		next(null,{"players":JSON.stringify(players)});
 	});
+};
+
+var onUserLeave = function(app, session) {
+	if(!session || !session.uid) {
+		return;
+	}
+	app.rpc.ddz.ddzRemote.kick(session, session.uid, app.get('serverId'), session.get('rid'), null);
 };
 
 /**

@@ -10,7 +10,6 @@ var DdzRemote = function(app, ddz) {
 
 DdzRemote.prototype.add = function(uid,sid,flag,cb)
 {
-	let session = this.app.get("sessionService");
 	var self = this;
 	this.ddz.addPlayer(uid,function(roomid){
 
@@ -24,8 +23,28 @@ DdzRemote.prototype.add = function(uid,sid,flag,cb)
 		if( !! channel) {
 			channel.add(uid, sid);
 		}
+		let session = this.app.get("sessionService");
+		session.set('rid', roomid);
+		session.push('rid', function(err) {
+			if(err) {
+				console.error('set rid for session service failed! error is : %j', err.stack);
+			}
+		});
 		var players = self.ddz.getPlayers(roomid);
 		cb(players);
 	});
 }
+
+DdzRemote.prototype.kick = function(uid, sid, name) {
+	var channel = this.channelService.getChannel(name, false);
+	if( !! channel) {
+		channel.leave(uid, sid);
+	}
+	var username = uid.split('*')[0];
+	var param = {
+		route: 'onLeave',
+		user: username
+	};
+	channel.pushMessage(param);
+};
 

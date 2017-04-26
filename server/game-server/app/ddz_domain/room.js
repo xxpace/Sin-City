@@ -96,7 +96,14 @@ Room.prototype.yesLord = function()
 		}
 	}
 	messageService.pushMessageByRoom(this.id,"yesLord",{"pos":pos,"score":score});
+	this.handleLastPoker(pos);
 	this.turn.setIndex(pos);
+}
+
+Room.prototype.handleLastPoker = function(pos)
+{
+	let player = this.players[pos];
+	messageService.pushMessageByUid(player.uid,"onLastCards",{"cards":this.cardsPool});
 }
 
 Room.prototype.setLord = function(lordPos)
@@ -170,5 +177,9 @@ Room.prototype.canPlay = function(cards)
 	return bool
 }
 
+Room.prototype.handleOffLinePlayer = function(uid)
+{
+
+}
 
 
