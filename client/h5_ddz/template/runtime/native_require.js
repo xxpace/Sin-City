@@ -7,9 +7,14 @@ var game_file_list = [
 	"libs/modules/game/game.js",
 	"libs/modules/tween/tween.js",
 	"libs/modules/res/res.js",
+	"other_libs/pomelo/PomeloClient.js",
 	"polyfill/promise.js",
 	"bin-debug/LoadingUI.js",
 	"bin-debug/Main.js",
+	"bin-debug/poker/Card.js",
+	"bin-debug/poker/Poker.js",
+	"bin-debug/test/TestPoker.js",
+	"bin-debug/test/TestPomelo.js",
 	//----auto game_file_list end----
 ];
 
@@ -45,8 +50,8 @@ egret_native.egretStart = function () {
 		entryClassName: "Main",
 		frameRate: 30,
 		scaleMode: "showAll",
-		contentWidth: 640,
-		contentHeight: 1136,
+		contentWidth: 1920,
+		contentHeight: 1080,
 		showPaintRect: false,
 		showFPS: false,
 		fpsStyles: "x:0,y:0,size:12,textColor:0xffffff,bgAlpha:0.9",

@@ -62,6 +62,12 @@ CardsProxy.prototype.initCards = function () {
         this.cardPool.push(new Card(CardType.flower, i, logicValue));
     }
 };
+
+CardsProxy.prototype.upsetCards = function()
+{
+    this.cardPool.sort(()=>0.5-Math.random());
+};
+
 /**
  * one 大返回true
  * @param oneCards
@@ -767,3 +773,9 @@ StyleJudge.prototype.getSameCardNum = function (cards) {
 StyleJudge.prototype.valueSortFun = function (one, two) {
     return Number(one.value - two.value);
 };
+
+
+module.exports.StyleJudge = StyleJudge;
+module.exports.Card = Card;
+module.exports.CardsProxy = CardsProxy;
+

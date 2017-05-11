@@ -1,3 +1,5 @@
+var logger = require('pomelo-logger').getLogger(__filename);
+
 module.exports = function(app) {
 	return new DdzRemote(app, app.get('ddz'));
 };
@@ -11,27 +13,20 @@ var DdzRemote = function(app, ddz) {
 DdzRemote.prototype.add = function(uid,sid,flag,cb)
 {
 	var self = this;
-	this.ddz.addPlayer(uid,function(roomid){
-
+	this.ddz.addPlayer(uid,function(room,player){
+		let roomid = room.id;
 		var channel = self.channelService.getChannel(roomid, flag);
 		var param = {
 			route: 'onAdd',
 			user: uid
 		};
 		channel.pushMessage(param);
-
 		if( !! channel) {
 			channel.add(uid, sid);
 		}
-		let session = this.app.get("sessionService");
-		session.set('rid', roomid);
-		session.push('rid', function(err) {
-			if(err) {
-				console.error('set rid for session service failed! error is : %j', err.stack);
-			}
-		});
+		room.add(player);
 		var players = self.ddz.getPlayers(roomid);
-		cb(players);
+		cb(players,roomid);
 	});
 }
 

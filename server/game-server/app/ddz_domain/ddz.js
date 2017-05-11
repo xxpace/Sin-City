@@ -24,7 +24,7 @@ Instance.prototype.initRooms = function() {
 
 Instance.prototype.createRoom = function()
 {
-	let room = new Room({"roomid":this.roomIndex});
+	let room = new Room({"id":this.roomIndex});
 	this.rooms.push(room);
 	this.roomDict[this.roomIndex] = room;
 	this.roomIndex++;
@@ -52,8 +52,7 @@ Instance.prototype.addPlayer = function(uid,cb)
 		self.players.push(player);
 		self.playerDict[uid] = player;
 		let room = self.getFreeRoom();
-		room.add(player);
-		cb(room.id);
+		cb(room,player);
 	});
 }
 
