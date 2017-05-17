@@ -1,4 +1,5 @@
 var RoomStatus = require('../consts/consts').DdzRoomStatus;
+var DdzClientRoute = require('../consts/consts').DdzClientRoute;
 var messageService = require('./messageService');
 var Turn = require('./Turn');
 
@@ -45,7 +46,7 @@ Room.prototype.sendPoker = function()
 	for(let i=0;i<len;i++)
 	{
 		let player = this.players[i];
-		messageService.pushMessageByUid(player.uid,"onCards",JSON.stringof(player.cards));
+		messageService.pushMessageByUid(player.uid,DdzClientRoute.onCards,JSON.stringof(player.cards));
 	}
 	this.timeIndex = setInterval(this.askLord,10000);
 }
@@ -59,7 +60,7 @@ Room.prototype.askLord = function()
 	{
 		let player = this.players[pos];
 		this.timeIndex = setInterval(this.askLord,10000);
-		messageService.pushMessageByRoom(this.id,"onAskLord",{pos:pos,time:10000});
+		messageService.pushMessageByRoom(this.id,DdzClientRoute.onAskLord,{pos:pos,time:10000});
 	}else
 	{
 		this.yesLord();
@@ -95,15 +96,16 @@ Room.prototype.yesLord = function()
 			pos =  i;
 		}
 	}
-	messageService.pushMessageByRoom(this.id,"yesLord",{"pos":pos,"score":score});
+	messageService.pushMessageByRoom(this.id,DdzClientRoute.notifyYesLord,{"pos":pos,"score":score});
 	this.handleLastPoker(pos);
 	this.turn.setIndex(pos);
+	this.notifyPlayTimeIndex = setTimeout(this.timeEndHandle,5000);
 }
 
 Room.prototype.handleLastPoker = function(pos)
 {
 	let player = this.players[pos];
-	messageService.pushMessageByUid(player.uid,"onLastCards",{"cards":this.cardsPool});
+	messageService.pushMessageByUid(player.uid,DdzClientRoute.onLastCards,{"cards":this.cardsPool});
 }
 
 Room.prototype.setLord = function(lordPos)
@@ -118,23 +120,23 @@ Room.prototype.setLord = function(lordPos)
 
 Room.prototype.notifyPlay = function()
 {
-	if(this.notifyPlayTimeIndex!==-1)
-	{
-		clearTimeout(this.notifyPlayTimeIndex);
-		this.notifyPlayTimeIndex = -1;
-	}
 	let pos = this.turn.next();
 	let player = this.players[pos];
 	if(player)
 	{
 		this.notifyPlayPos = pos;
-		messageService.pushMessageByRoom(this.id,"notifyPlay",{"pos":pos,"time":20});
+		messageService.pushMessageByRoom(this.id,DdzClientRoute.notifyPlay,{"pos":pos,"time":20});
 		this.notifyPlayTimeIndex = setTimeout(this.timeEndHandle,20*1000);
 	}
 }
 
 Room.prototype.timeEndHandle = function()
 {
+	if(this.notifyPlayTimeIndex!==-1)
+	{
+		clearTimeout(this.notifyPlayTimeIndex);
+		this.notifyPlayTimeIndex = -1;
+	}
 	this.notifyPlay();
 }
 
@@ -181,5 +183,3 @@ Room.prototype.handleOffLinePlayer = function(uid)
 {
 
 }
-
-

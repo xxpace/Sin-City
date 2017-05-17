@@ -1,5 +1,6 @@
 
 var messageService = require('../../../ddz_domain/messageService');
+var DdzClientRoute = require('../consts/consts').DdzClientRoute;
 
 module.exports = function(app) {
   return new DdzHandler(app, app.get('ddz'));
@@ -16,7 +17,7 @@ DdzHandler.prototype.askLord = function(msg, session, next)
     let score = msg.score;
     let player = this.ddz.getPlayer(uid);
     player.setAskScore(score);
-    messageService.pushMessageByRoom(player.roomid,"onAskLord",{pos:player.position,score:player.askScore});
+    messageService.pushMessageByRoom(player.roomid,DdzClientRoute.onAskLord,{pos:player.position,score:player.askScore});
     let room = this.ddz.getRoom(player.roomid);
     if(score===3)
     {
@@ -39,7 +40,7 @@ DdzHandler.prototype.playCard = function(msg,session,next)
         if(room.canPlay(cards))
         {
             player.removeCards(cards);
-            messageService.pushMessageByRoom(player.roomid,"onPlayCards",{pos:player.position,cards:cards});
+            messageService.pushMessageByRoom(player.roomid,DdzClientRoute.onPlayCards,{pos:player.position,cards:cards});
             if(player.cards.length===0)
             {
                 room.notifyResult();
@@ -49,7 +50,7 @@ DdzHandler.prototype.playCard = function(msg,session,next)
             }
         }else
         {
-            messageService.pushMessageByUid(uid,"onPlayError",{"error":"牌型不符"});
+            messageService.pushMessageByUid(uid,DdzClientRoute.onPlayError,{"error":"牌型不符"});
         }
     }
 }
