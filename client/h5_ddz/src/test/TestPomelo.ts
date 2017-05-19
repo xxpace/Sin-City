@@ -29,16 +29,16 @@ class TestPomelo
                 pomelo.request("connector.entryHandler.entry",{"username":"xuhe"},function(data):void{
                     console.log("recv---entry--->",data);
                 });
-
-                pomelo.request("ddz.ddzHandler.entry",{},function(data){
-                    console.log(data);
-                });
             }
         });
 
 
         pomelo.on('onAdd', function(data:any):void {
             console.log("onAdd-->",data);
+        });
+
+        pomelo.on('onCards', function(data:any):void {
+            console.log("onCards-->",data);
         });
     }
 }

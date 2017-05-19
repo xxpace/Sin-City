@@ -2,6 +2,8 @@ var RoomStatus = require('../consts/consts').DdzRoomStatus;
 var DdzClientRoute = require('../consts/consts').DdzClientRoute;
 var messageService = require('./messageService');
 var Turn = require('./Turn');
+var CardsProxy = require('./card.js').CardsProxy;
+var logger = require('pomelo-logger').getLogger('pomelo');
 
 var Room = function(opts)
 {
@@ -16,6 +18,8 @@ var Room = function(opts)
 	this.notifyPlayPos = -1;
 	this.notifyPlayTimeIndex = -1;
 	this.beforePlayPos = -1;
+	this.cardsProxy = new CardsProxy();
+	this.cardsProxy.initCards();
 }
 
 module.exports = Room;
@@ -28,6 +32,7 @@ Room.prototype.add = function(player)
 		this.players.push(player);
 		player.roomid = this.id;
 		this.posIndex++;
+
 		if(this.isFull())
 		{
 			this.sendPoker();
@@ -37,18 +42,38 @@ Room.prototype.add = function(player)
 
 Room.prototype.isFull = function()
 {
-	return Boolean(this.position>=this.limit);
+	return Boolean(this.players.length===this.limit);
+}
+
+Room.prototype.handleCards = function()
+{
+	this.cardsProxy.upsetCards();
+	let cardPool = this.cardsProxy.cardPool;
+
+	let pos = 0;
+	while(cardPool.length>3)
+	{
+		let card = cardPool.pop();
+		let player = this.players[pos];
+		player.cards.push(card);
+		pos++;
+		if(pos==this.limit)
+		{
+			pos = 0;
+		}
+	}
 }
 
 Room.prototype.sendPoker = function()
 {
+	this.handleCards();
 	let len = this.players.length;
 	for(let i=0;i<len;i++)
 	{
 		let player = this.players[i];
 		messageService.pushMessageByUid(player.uid,DdzClientRoute.onCards,JSON.stringof(player.cards));
 	}
-	this.timeIndex = setInterval(this.askLord,10000);
+	// this.timeIndex = setInterval(this.askLord,10000);
 }
 
 Room.prototype.askLord = function()
