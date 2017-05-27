@@ -1,5 +1,6 @@
 var pomelo = require('pomelo');
 var Instance = require('./app/ddz_domain/ddz.js');
+var sync = require('pomelo-sync-plugin');
 
 /**
  * Init app for client.
@@ -23,6 +24,11 @@ app.configure('production|development', 'connector', function(){
 
 app.configure('production|development', 'ddz', function(){
   app.set('ddz',new Instance());
+
+  var dbclient = require('./app/dao/mysql/mysql').init(app);
+  app.set('dbclient', dbclient);
+  app.use(sync, {sync: {path:__dirname + '/app/dao/mapping', dbclient: dbclient}});
+
 });
 
 // start app
