@@ -22,6 +22,9 @@
       "name": "res"
     },
     {
+      "name": "eui"
+    },
+    {
       "name":"PomeloClient",
       "path":"other_libs/pomelo"
     }

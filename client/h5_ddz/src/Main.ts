@@ -29,11 +29,18 @@
 
 class Main extends egret.DisplayObjectContainer {
 
+    public static stage:egret.Stage;
+    public static gameWidth:number;
+    public static gameHeight:number;
+
+
     /**
      * 加载进度界面
      * Process interface loading
      */
     private loadingView: LoadingUI;
+
+    public initLoadGroup:string = "game";
 
     public constructor() {
         super();
@@ -46,8 +53,24 @@ class Main extends egret.DisplayObjectContainer {
         this.loadingView = new LoadingUI();
         this.stage.addChild(this.loadingView);
 
-        //初始化Resource资源加载库
-        //initiate Resource loading library
+        Main.stage = this.stage;
+        Main.gameWidth = this.stage.stageWidth;
+        Main.gameHeight = this.stage.stageHeight;
+
+        this.initEui();
+    }
+
+    private initEui()
+    {
+        var assetAdapter = new AssetAdapter();
+        egret.registerImplementation('eui.IAssetAdapter',assetAdapter);
+
+        var theme = new eui.Theme("resource/default.thm.json", this.stage);
+        theme.addEventListener(eui.UIEvent.COMPLETE, this.initResource, this);
+    }
+
+    private initResource()
+    {
         RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
         RES.loadConfig("resource/default.res.json", "resource/");
     }
@@ -62,7 +85,7 @@ class Main extends egret.DisplayObjectContainer {
         RES.addEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onResourceLoadError, this);
         RES.addEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onResourceProgress, this);
         RES.addEventListener(RES.ResourceEvent.ITEM_LOAD_ERROR, this.onItemLoadError, this);
-        RES.loadGroup("preload");
+        RES.loadGroup(this.initLoadGroup);
     }
 
     /**
@@ -70,7 +93,7 @@ class Main extends egret.DisplayObjectContainer {
      * Preload resource group is loaded
      */
     private onResourceLoadComplete(event: RES.ResourceEvent) {
-        if (event.groupName == "preload") {
+        if (event.groupName == this.initLoadGroup) {
             this.stage.removeChild(this.loadingView);
             RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this);
             RES.removeEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onResourceLoadError, this);
@@ -105,64 +128,25 @@ class Main extends egret.DisplayObjectContainer {
      * Loading process of preload resource group
      */
     private onResourceProgress(event: RES.ResourceEvent) {
-        if (event.groupName == "preload") {
+        if (event.groupName == this.initLoadGroup) {
             this.loadingView.setProgress(event.itemsLoaded, event.itemsTotal);
         }
     }
 
-    private textfield: egret.TextField;
 
     /**
      * 创建游戏场景
      * Create a game scene
      */
     private createGameScene() {
-        let test:TestPomelo = new TestPomelo();
-        test.test();
+        //let test:TestPomelo = new TestPomelo();
+        //test.test();
 
         //let testPoker:TestPoker = new TestPoker();
         //this.addChild(testPoker);
-    }
 
-    /**
-     * 根据name关键字创建一个Bitmap对象。name属性请参考resources/resource.json配置文件的内容。
-     * Create a Bitmap object according to name keyword.As for the property of name please refer to the configuration file of resources/resource.json.
-     */
-    private createBitmapByName(name: string) {
-        let result = new egret.Bitmap();
-        let texture: egret.Texture = RES.getRes(name);
-        result.texture = texture;
-        return result;
-    }
-
-    /**
-     * 描述文件加载成功，开始播放动画
-     * Description file loading is successful, start to play the animation
-     */
-    private startAnimation(result: string[]) {
-        let parser = new egret.HtmlTextParser();
-
-        let textflowArr = result.map(text => parser.parse(text));
-        let textfield = this.textfield;
-        let count = -1;
-        let change = () => {
-            count++;
-            if (count >= textflowArr.length) {
-                count = 0;
-            }
-            let textFlow = textflowArr[count];
-
-            // 切换描述内容
-            // Switch to described content
-            textfield.textFlow = textFlow;
-            let tw = egret.Tween.get(textfield);
-            tw.to({ "alpha": 1 }, 200);
-            tw.wait(2000);
-            tw.to({ "alpha": 0 }, 200);
-            tw.call(change, this);
-        };
-
-        change();
+        let game:GamePlayView = new GamePlayView();
+        this.addChild(game);
     }
 }
 
