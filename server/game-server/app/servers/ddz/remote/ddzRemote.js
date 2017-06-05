@@ -16,16 +16,23 @@ DdzRemote.prototype.add = function(uid,sid,flag,cb)
 	this.ddz.addPlayer(uid,function(room,player){
 		let roomid = room.id;
 		var channel = self.channelService.getChannel(roomid, flag);
-		var param = {
-			route: 'onAdd',
-			user: uid
-		};
-		channel.pushMessage(param);
 		if( !! channel) {
 			channel.add(uid, sid);
 		}
 		room.add(player);
 		var players = self.ddz.getPlayers(roomid);
+		let len = players.length;
+		for(let i=0;i<len;i++)
+		{
+			let tsid = channel.getMember(players[i].uid).sid;
+			if(players[i]==player)
+			{
+				self.channelService.pushMessageByUids('onEnterRoom', players, [{uid:uid,sid:tsid}], errHandler);
+			}else
+			{
+				self.channelService.pushMessageByUids('onJoinRoom', player, [{uid:players[i].uid,sid:tsid}], errHandler);
+			}
+		}
 		cb(players,roomid);
 	});
 }
