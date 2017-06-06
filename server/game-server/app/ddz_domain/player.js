@@ -17,5 +17,19 @@ Player.prototype.setAskScore = function(value)
 
 Player.prototype.removeCards = function(removeArr)
 {
-
+    let selfCards = this.cards;
+    let rLen = removeArr.length;
+    for(let i=0;i<selfCards.length;i++)
+    {
+        for(let j=0;j<
+            let rLen = removeArr.length;;j++)
+        {
+            if(selfCards[i].isRealSame(removeArr[j]))
+            {
+                selfCards.splice(i,1);
+                i-=1;
+                break;
+            }
+        }
+    }
 }

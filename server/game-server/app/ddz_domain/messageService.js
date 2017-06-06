@@ -20,7 +20,7 @@ exp.pushMessageByUid = function(uid,roomid,route,msg)
     var channelService = pomelo.app.get('channelService');
     channel = channelService.getChannel(roomid, false);
     logger.info(channel,uid,roomid);
-    var tsid = channel.getMember(uid)['sid'];
+    var tsid = channel.getMember(uid).sid;
     channelService.pushMessageByUids(route, msg, [{uid:uid,sid:tsid}], errHandler);
 }
 

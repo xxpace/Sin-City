@@ -38,6 +38,10 @@ Card.prototype.isSame = function (card) {
     return Boolean(this.value === card.value);
 };
 
+Card.prototype.isRealSame = function (card) {
+    return Boolean(this.value === card.value&&this.type==card.type&&this.logicValue===card.logicValue);
+};
+
 
 var SameCardInfo = function SameCardInfo($num, $card) {
     this.num = $num;

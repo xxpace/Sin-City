@@ -20,25 +20,27 @@ DdzRemote.prototype.add = function(uid,sid,flag,cb)
 			channel.add(uid, sid);
 		}
 		room.add(player);
-		var players = self.ddz.getPlayers(roomid);
+		var players = room.players;
 		let len = players.length;
 		for(let i=0;i<len;i++)
 		{
 			let tsid = channel.getMember(players[i].uid).sid;
 			if(players[i]==player)
 			{
-				self.channelService.pushMessageByUids('onEnterRoom', players, [{uid:uid,sid:tsid}], errHandler);
+				self.channelService.pushMessageByUids('onEnterRoom', players, [{uid:uid,sid:tsid}]);
 			}else
 			{
-				self.channelService.pushMessageByUids('onJoinRoom', player, [{uid:players[i].uid,sid:tsid}], errHandler);
+				self.channelService.pushMessageByUids('onJoinRoom', player, [{uid:players[i].uid,sid:tsid}]);
 			}
 		}
-		cb(players,roomid);
+		room.testSendPoker();
+		cb(roomid);
 	});
 }
 
-DdzRemote.prototype.kick = function(uid, sid, name) {
-	var channel = this.channelService.getChannel(name, false);
+DdzRemote.prototype.kick = function(uid, sid, roomid) {
+	console.log("leave---uid",uid);
+	var channel = this.channelService.getChannel(roomid, false);
 	if( !! channel) {
 		channel.leave(uid, sid);
 	}

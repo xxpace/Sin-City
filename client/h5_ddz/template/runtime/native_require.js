@@ -12,15 +12,17 @@ var game_file_list = [
 	"polyfill/promise.js",
 	"bin-debug/poker/Card.js",
 	"bin-debug/AssetAdapter.js",
+	"bin-debug/game/GamePlayMediator.js",
 	"bin-debug/game/GamePlayView.js",
 	"bin-debug/game/GamePomelo.js",
 	"bin-debug/LoadingUI.js",
 	"bin-debug/Main.js",
-	"bin-debug/game/GamePlayMediator.js",
+	"bin-debug/game/GameEvent.js",
 	"bin-debug/poker/Poker.js",
 	"bin-debug/test/TestPoker.js",
 	"bin-debug/test/TestPomelo.js",
 	"bin-debug/ThemeAdapter.js",
+	"bin-debug/utils/DisplayUtil.js",
 	"bin-debug/utils/FrameUtil.js",
 	//----auto game_file_list end----
 ];

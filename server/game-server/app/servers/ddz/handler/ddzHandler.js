@@ -1,6 +1,6 @@
 
 var messageService = require('../../../ddz_domain/messageService');
-var DdzClientRoute = require('../consts/consts').DdzClientRoute;
+var DdzClientRoute = require('../../../consts/consts').DdzClientRoute;
 
 module.exports = function(app) {
   return new DdzHandler(app, app.get('ddz'));
@@ -17,8 +17,12 @@ DdzHandler.prototype.askLord = function(msg, session, next)
     let score = msg.score;
     let player = this.ddz.getPlayer(uid);
     player.setAskScore(score);
-    messageService.pushMessageByRoom(player.roomid,DdzClientRoute.onAskLord,{pos:player.position,score:player.askScore});
+    messageService.pushMessageByRoom(player.roomid,DdzClientRoute.onAskLordOK,{pos:player.position,score:player.askScore});
     let room = this.ddz.getRoom(player.roomid);
+    if(room)
+    {
+        room.addAskScore(score);
+    }
     if(score===3)
     {
         room.endAskLord();

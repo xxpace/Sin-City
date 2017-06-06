@@ -6,7 +6,7 @@ var NND = {};
 
 NND.init = function(app)
 {
-    _pool = reuqire('./dao-pool').crateMysqlPool(app);
+    _pool = require('./dao-pool').createMysqlPool(app);
 }
 
 NND.query = function(sql,args,cb)

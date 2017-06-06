@@ -9,17 +9,19 @@ var Room = function(opts)
 {
 	this.id = opts.id;
 	this.players = [];
-	this.cardsPool = [];
 	this.posIndex = 0;
 	this.limit = 3;
-	this.turn = new Turn();
+	this.turn = new Turn(this.limit);
 	this.timeIndex = -1;
 	this.playCards = [];
 	this.notifyPlayPos = -1;
 	this.notifyPlayTimeIndex = -1;
-	this.beforePlayPos = -1;
 	this.cardsProxy = new CardsProxy();
 	this.cardsProxy.initCards();
+	this.askMaxScore = 0;
+	this.lastPlayCards = [];
+	this.
+	 = -1;
 }
 
 module.exports = Room;
@@ -32,11 +34,16 @@ Room.prototype.add = function(player)
 		this.players.push(player);
 		player.roomid = this.id;
 		this.posIndex++;
+	}
+}
 
-		if(this.isFull())
-		{
-			this.sendPoker();
-		}
+Room.prototype.testSendPoker = function()
+{
+	if(this.isFull())
+	{
+		this.sendPoker();
+
+		this.timeIndex = setInterval(this.askLord.bind(this),5000);
 	}
 }
 
@@ -71,21 +78,19 @@ Room.prototype.sendPoker = function()
 	for(let i=0;i<len;i++)
 	{
 		let player = this.players[i];
-		messageService.pushMessageByUid(player.uid,DdzClientRoute.onCards,JSON.stringof(player.cards));
+		messageService.pushMessageByUid(player.uid,player.roomid,DdzClientRoute.onCards,player.cards);
 	}
-	// this.timeIndex = setInterval(this.askLord,10000);
 }
 
 Room.prototype.askLord = function()
 {
 	this.clearTimeIndex();
-
 	let pos = this.turn.next();
 	if(pos!==-1)
 	{
 		let player = this.players[pos];
-		this.timeIndex = setInterval(this.askLord,10000);
-		messageService.pushMessageByRoom(this.id,DdzClientRoute.onAskLord,{pos:pos,time:10000});
+		this.timeIndex = setInterval(this.askLord.bind(this),10000);
+		messageService.pushMessageByRoom(this.id,DdzClientRoute.onAskLord,{pos:pos,maxScore:this.askMaxScore,time:10000});
 	}else
 	{
 		this.yesLord();
@@ -98,6 +103,14 @@ Room.prototype.clearTimeIndex = function()
 	{
   		clearInterval(this.timeIndex);
 		this.timeIndex = -1;
+	}
+}
+
+Room.prototype.addAskScore = function(score)
+{
+	if(score>this.askMaxScore)
+	{
+		this.askMaxScore = score;
 	}
 }
 
@@ -124,13 +137,13 @@ Room.prototype.yesLord = function()
 	messageService.pushMessageByRoom(this.id,DdzClientRoute.notifyYesLord,{"pos":pos,"score":score});
 	this.handleLastPoker(pos);
 	this.turn.setIndex(pos);
-	this.notifyPlayTimeIndex = setTimeout(this.timeEndHandle,5000);
+	this.notifyPlayTimeIndex = setTimeout(this.notifyPlay.bind(this),5000);
 }
 
 Room.prototype.handleLastPoker = function(pos)
 {
 	let player = this.players[pos];
-	messageService.pushMessageByUid(player.uid,DdzClientRoute.onLastCards,{"cards":this.cardsPool});
+	messageService.pushMessageByUid(player.uid,this.id,DdzClientRoute.onLastCards,{"pos":pos,"cards":this.cardsProxy.cardPool});
 }
 
 Room.prototype.setLord = function(lordPos)
@@ -150,8 +163,8 @@ Room.prototype.notifyPlay = function()
 	if(player)
 	{
 		this.notifyPlayPos = pos;
-		messageService.pushMessageByRoom(this.id,DdzClientRoute.notifyPlay,{"pos":pos,"time":20});
-		this.notifyPlayTimeIndex = setTimeout(this.timeEndHandle,20*1000);
+		messageService.pushMessageByRoom(this.id,DdzClientRoute.notifyPlay,{"pos":pos,"time":5*1000});
+		this.notifyPlayTimeIndex = setTimeout(this.timeEndHandle.bind(this),5*1000);
 	}
 }
 
@@ -183,25 +196,14 @@ Room.prototype.notifyResult = function()
 
 Room.prototype.canPlay = function(cards)
 {
-	let bool = false;
-	if(this.beforePlayPos===-1)
+	if(this.lastPlayCards.length==0)
 	{
-		bool = true;
+		return true;
 	}else
 	{
-		if(this.beforePlayPos===this.turn.index)
-		{
-			bool = true;
-		}else
-		{
-			bool = true;//差卡牌检测逻辑
-		}
+
 	}
-	if(bool)
-	{
-		this.beforePlayPos = this.turn.index;
-	}
-	return bool
+	return false;
 }
 
 Room.prototype.handleOffLinePlayer = function(uid)

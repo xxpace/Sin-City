@@ -16,7 +16,7 @@ Turn.prototype.next = function()
     {
         if(this.dValue===-1)
         {
-            this.index = Math.round(Math.random()*this.posNum);
+            this.index = Math.floor(Math.random()*this.posNum);
             this.mark = this.index;
         }else
         {

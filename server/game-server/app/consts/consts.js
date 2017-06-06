@@ -10,10 +10,10 @@ module.exports = {
   DdzClientRoute:
   {
     onAskLord:"onAskLord",
+    onAskLordOK:"onAskLordOK",
     onPlayCards:"onPlayCards",
     onPlayError:"onPlayError",
     onCards:"onCards",
-    onAskLord:"onAskLord",
     onLastCards:"onLastCards",
     notifyYesLord:"notifyYesLord",
     notifyPlay:"notifyPlay"

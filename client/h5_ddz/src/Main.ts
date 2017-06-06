@@ -145,8 +145,8 @@ class Main extends egret.DisplayObjectContainer {
         //let testPoker:TestPoker = new TestPoker();
         //this.addChild(testPoker);
 
-        let game:GamePlayView = new GamePlayView();
-        this.addChild(game);
+        let game:GamePlayMediator = new GamePlayMediator();
+        game.start();
     }
 }
 
