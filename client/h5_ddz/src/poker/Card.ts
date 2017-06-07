@@ -66,7 +66,7 @@ class SameCardInfo
 
 class CardsProxy
 {
-    private styleJudge:StyleJudge = new StyleJudge();
+    public styleJudge:StyleJudge = new StyleJudge();
     public cardPool:Array<Card>;
 
     public initCards()

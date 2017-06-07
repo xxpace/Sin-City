@@ -39,7 +39,7 @@ DdzRemote.prototype.add = function(uid,sid,flag,cb)
 }
 
 DdzRemote.prototype.kick = function(uid, sid, roomid) {
-	console.log("leave---uid",uid);
+	console.info("leave---uid",uid);
 	var channel = this.channelService.getChannel(roomid, false);
 	if( !! channel) {
 		channel.leave(uid, sid);

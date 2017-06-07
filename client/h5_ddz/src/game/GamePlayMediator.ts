@@ -11,20 +11,26 @@ class GamePlayMediator
     private _selfCards:any;
 
     private _playerArray:Array<any>;
+    private _cardNumList:Array<number>;
+    private _seatArray:Array<any>;
+
+    private _cardsProxy:CardsProxy;
 
     public start()
     {
         this._playView = new GamePlayView();
         Main.stage.addChild(this._playView);
         this._playView.addEventListener(GameEvent.CHOICE_SCORE,this.askScore,this);
+        this._playView.addEventListener(GameEvent.PRODUCT_CARD,this.productCard,this);
+
+        this._cardsProxy = new CardsProxy();
 
         this.connection();
     }
 
     public connection()
     {
-        GamePomelo.init(function()
-        {
+        GamePomelo.init(function(){
             let self = this;
             self._pomelo = GamePomelo.pomelo;
             self.addEvent();
@@ -43,6 +49,7 @@ class GamePlayMediator
         this._pomelo.on("onLastCards",this.onLastCards.bind(this));
         this._pomelo.on("onLeave",this.onLeave.bind(this));
         this._pomelo.on("notifyPlay",this.notifyPlay.bind(this));
+        this._pomelo.on("onPlayCards",this.onPlayCards.bind(this));
     }
 
     public askScore(e:GameEvent)
@@ -51,24 +58,78 @@ class GamePlayMediator
         this._playView.setAskScoreGroup(false);
     }
 
+    public productCard(e:GameEvent)
+    {
+        let cards = this._playView.getWaitCards();
+        if(this._cardsProxy.styleJudge.getCardStyle(cards)!=CardStyle.error)
+        {
+            this._pomelo.notify("ddz.ddzHandler.playCard",{'cards':cards});
+            this._playView.setPlayGroup(false);
+        }else
+        {
+            console.log("出的牌没有牌型");
+        }
+    }
+
     public onEnterRoom(data:any){
         let self = this;
         console.log("onEnterRoom-->",data);
         self._playerArray = data;
         self._selfData = data[data.length-1];
+        this.refreshSeatInfo(self._playerArray);
+    }
+
+    private refreshSeatInfo(playerList:Array<any>)
+    {
+        this._seatArray = this._seatArray || [];
+        let len = playerList.length;
+        let selfPos = this._selfData.position;
+        for(let i=0;i<len;i++)
+        {
+            let player = playerList[i];
+            let index;
+            if(player.position==selfPos)
+            {
+                index = 0;
+            }else if(player.position>selfPos)
+            {
+                index = player.position-selfPos;
+            }else
+            {
+                index = 3 - selfPos;
+            }
+            this._seatArray[index] = player;
+        }
+    }
+
+    private findSeatPos(position:number)
+    {
+        let len = this._seatArray.length;
+        for(let i=0;i<len;i++)
+        {
+            let player = this._seatArray[i];
+            if(player.position===position)
+            {
+                return i;
+            }
+        }
+        return -1;
     }
 
     public onJoinRoom(data:any)
     {
         console.log("onJoinRoom-->",data);
         this._playerArray.push(data);
+        this.refreshSeatInfo([data]);
     }
 
     public onCards(data:any)
     {
         console.log("onCards-->",data);
-        this._selfCards = data;
-        this._playView.setCards(0,this._selfCards);
+        this._selfCards = data.cards;
+        this._cardNumList = data.cardNum;
+        this._playView.setCards(this._selfCards);
+        this.refreshCardNum();
     }
 
     public onAskLord(data:any)
@@ -103,24 +164,86 @@ class GamePlayMediator
     public onLastCards(data:any)
     {
         console.log("onLastCards---->",data);
+        this._cardNumList[data.pos]+=data.cards.length;
+        this.refreshCardNum();
         if(this._selfData.position==data.pos)
         {
             this._selfCards = this._selfCards.concat(data.cards);
-            this._playView.setCards(0,this._selfCards);
+            this._playView.setCards(this._selfCards);
         }else
         {
 
         }
     }
 
+    public refreshCardNum()
+    {
+        let len = this._cardNumList.length;
+        for(let i = 0;i<len;i++)
+        {
+            let seatPos = this.findSeatPos(i);
+            this._playView.viewCardNum(seatPos,this._cardNumList[i]);
+        }
+    }
+
     public onLeave(data:any)
     {
+        data = data.msg;
         console.log("onLeave",data);
     }
 
     public notifyPlay(data:any)
     {
+        data = data.msg;
         console.log("notifyPlay",data);
+        let seatPos = this.findSeatPos(data.pos);
+        if(seatPos==0)
+        {
+            this._playView.setPlayGroup(true,false);
+        }else
+        {
+            this._playView.setPlayGroup(false);
+        }
+    }
+
+    public onPlayCards(data:any)
+    {
+        data = data.msg;
+        console.log("onPlayCards",data);
+        this._cardNumList[data.pos]-=data.cards.length;
+        this.refreshCardNum();
+
+        let seatPos = this.findSeatPos(data.pos);
+        this._playView.viewPlayCards(seatPos,data.cards);
+
+        if(seatPos===0)
+        {
+            this.removeCards(data.cards,this._selfCards);
+            this._playView.setCards(this._selfCards);
+        }
+    }
+
+    public removeCards(removeArr,source)
+    {
+        let selfCards = source;
+        let rLen = removeArr.length;
+        for(let i=0;i<selfCards.length;i++)
+        {
+            for(let j=0;j<rLen;j++)
+            {
+                if(this.equipCard(selfCards[i],removeArr[j]))
+                {
+                    selfCards.splice(i,1);
+                    i-=1;
+                    break;
+                }
+            }
+        }
+    }
+
+    public equipCard(a,b)
+    {
+        return Boolean(a.value === b.value&&a.type==b.type&&a.logicValue===b.logicValue);
     }
 
     public joinGame()

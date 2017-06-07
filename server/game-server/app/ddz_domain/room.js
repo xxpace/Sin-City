@@ -20,8 +20,6 @@ var Room = function(opts)
 	this.cardsProxy.initCards();
 	this.askMaxScore = 0;
 	this.lastPlayCards = [];
-	this.
-	 = -1;
 }
 
 module.exports = Room;
@@ -75,16 +73,22 @@ Room.prototype.sendPoker = function()
 {
 	this.handleCards();
 	let len = this.players.length;
+	let numList = [];
 	for(let i=0;i<len;i++)
 	{
 		let player = this.players[i];
-		messageService.pushMessageByUid(player.uid,player.roomid,DdzClientRoute.onCards,player.cards);
+		numList.push(player.cards.length);
+	}
+	for(let j=0;j<len;j++)
+	{
+		let player = this.players[j];
+		messageService.pushMessageByUid(player.uid,player.roomid,DdzClientRoute.onCards,{'cards':player.cards,'cardNum':numList});
 	}
 }
 
 Room.prototype.askLord = function()
 {
-	this.clearTimeIndex();
+	this.cleanTimeIndex();
 	let pos = this.turn.next();
 	if(pos!==-1)
 	{
@@ -97,7 +101,7 @@ Room.prototype.askLord = function()
 	}
 }
 
-Room.prototype.clearTimeIndex = function()
+Room.prototype.cleanTimeIndex = function()
 {
 	if(this.timeIndex!==-1)
 	{
@@ -116,7 +120,7 @@ Room.prototype.addAskScore = function(score)
 
 Room.prototype.endAskLord = function()
 {
-	this.clearTimeIndex();
+	this.cleanTimeIndex();
 	this.yesLord();
 }
 
@@ -158,24 +162,25 @@ Room.prototype.setLord = function(lordPos)
 
 Room.prototype.notifyPlay = function()
 {
+	this.cleanNotifyTime();
+
 	let pos = this.turn.next();
 	let player = this.players[pos];
 	if(player)
 	{
 		this.notifyPlayPos = pos;
-		messageService.pushMessageByRoom(this.id,DdzClientRoute.notifyPlay,{"pos":pos,"time":5*1000});
-		this.notifyPlayTimeIndex = setTimeout(this.timeEndHandle.bind(this),5*1000);
+		messageService.pushMessageByRoom(this.id,DdzClientRoute.notifyPlay,{"pos":pos,"time":20*1000});
+		this.notifyPlayTimeIndex = setTimeout(this.notifyPlay.bind(this),20*1000);
 	}
 }
 
-Room.prototype.timeEndHandle = function()
+Room.prototype.cleanNotifyTime = function()
 {
 	if(this.notifyPlayTimeIndex!==-1)
 	{
 		clearTimeout(this.notifyPlayTimeIndex);
 		this.notifyPlayTimeIndex = -1;
 	}
-	this.notifyPlay();
 }
 
 
@@ -201,7 +206,9 @@ Room.prototype.canPlay = function(cards)
 		return true;
 	}else
 	{
-
+		let oneStyle = this.cardsProxy.styleJudge(cards);
+		let twoStyle = this.cardsProxy.styleJudge(this.lastPlayCards);
+		return this.cardsProxy.compareCards(cards,oneStyle,this.lastPlayCards,twoStyle);
 	}
 	return false;
 }

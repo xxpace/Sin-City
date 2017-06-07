@@ -21,8 +21,7 @@ Player.prototype.removeCards = function(removeArr)
     let rLen = removeArr.length;
     for(let i=0;i<selfCards.length;i++)
     {
-        for(let j=0;j<
-            let rLen = removeArr.length;;j++)
+        for(let j=0;j<rLen;j++)
         {
             if(selfCards[i].isRealSame(removeArr[j]))
             {
