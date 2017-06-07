@@ -22,7 +22,7 @@ class GamePlayMediator
         Main.stage.addChild(this._playView);
         this._playView.addEventListener(GameEvent.CHOICE_SCORE,this.askScore,this);
         this._playView.addEventListener(GameEvent.PRODUCT_CARD,this.productCard,this);
-
+        this._playView.addEventListener(GameEvent.PASS,this.passHandle,this);
         this._cardsProxy = new CardsProxy();
 
         this.connection();
@@ -50,6 +50,7 @@ class GamePlayMediator
         this._pomelo.on("onLeave",this.onLeave.bind(this));
         this._pomelo.on("notifyPlay",this.notifyPlay.bind(this));
         this._pomelo.on("onPlayCards",this.onPlayCards.bind(this));
+        this._pomelo.on("onPlayError",this.onPlayError.bind(this));
     }
 
     public askScore(e:GameEvent)
@@ -71,9 +72,15 @@ class GamePlayMediator
         }
     }
 
+    public passHandle(e:GameEvent)
+    {
+        this._pomelo.notify("ddz.ddzHandler.cancelPlay",{});
+        this._playView.setPlayGroup(false);
+    }
+
+
     public onEnterRoom(data:any){
         let self = this;
-        console.log("onEnterRoom-->",data);
         self._playerArray = data;
         self._selfData = data[data.length-1];
         this.refreshSeatInfo(self._playerArray);
@@ -118,14 +125,12 @@ class GamePlayMediator
 
     public onJoinRoom(data:any)
     {
-        console.log("onJoinRoom-->",data);
         this._playerArray.push(data);
         this.refreshSeatInfo([data]);
     }
 
     public onCards(data:any)
     {
-        console.log("onCards-->",data);
         this._selfCards = data.cards;
         this._cardNumList = data.cardNum;
         this._playView.setCards(this._selfCards);
@@ -147,7 +152,6 @@ class GamePlayMediator
     public onAskLordOK(data:any)
     {
         data = data.msg;
-        console.log("onAskLordOK--->",data);
         if(this._selfData.position!=data.pos)
         {
 
@@ -157,13 +161,11 @@ class GamePlayMediator
     public notifyYesLord(data:any)
     {
         data = data.msg;
-        console.log("notifyYesLord---->",data);
         this._playView.setAskScoreGroup(false);
     }
 
     public onLastCards(data:any)
     {
-        console.log("onLastCards---->",data);
         this._cardNumList[data.pos]+=data.cards.length;
         this.refreshCardNum();
         if(this._selfData.position==data.pos)
@@ -210,17 +212,28 @@ class GamePlayMediator
     {
         data = data.msg;
         console.log("onPlayCards",data);
-        this._cardNumList[data.pos]-=data.cards.length;
-        this.refreshCardNum();
-
-        let seatPos = this.findSeatPos(data.pos);
-        this._playView.viewPlayCards(seatPos,data.cards);
-
-        if(seatPos===0)
+        if(data.cards.length>0)
         {
-            this.removeCards(data.cards,this._selfCards);
-            this._playView.setCards(this._selfCards);
+            this._cardNumList[data.pos]-=data.cards.length;
+            this.refreshCardNum();
+
+            let seatPos = this.findSeatPos(data.pos);
+            this._playView.viewPlayCards(seatPos,data.cards);
+
+            if(seatPos===0)
+            {
+                this.removeCards(data.cards,this._selfCards);
+                this._playView.setCards(this._selfCards);
+            }
+        }else//不出 的处理
+        {
+
         }
+    }
+
+    public onPlayError(data:any)
+    {
+        console.log("onPlayError",data);
     }
 
     public removeCards(removeArr,source)

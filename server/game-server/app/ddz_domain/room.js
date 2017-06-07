@@ -14,12 +14,12 @@ var Room = function(opts)
 	this.turn = new Turn(this.limit);
 	this.timeIndex = -1;
 	this.playCards = [];
-	this.notifyPlayPos = -1;
 	this.notifyPlayTimeIndex = -1;
 	this.cardsProxy = new CardsProxy();
 	this.cardsProxy.initCards();
 	this.askMaxScore = 0;
 	this.lastPlayCards = [];
+	this.lastPlayPos = -1;
 }
 
 module.exports = Room;
@@ -168,7 +168,10 @@ Room.prototype.notifyPlay = function()
 	let player = this.players[pos];
 	if(player)
 	{
-		this.notifyPlayPos = pos;
+		if(pos==this.lastPlayPos)
+		{
+			this.lastPlayCards.length = 0;
+		}
 		messageService.pushMessageByRoom(this.id,DdzClientRoute.notifyPlay,{"pos":pos,"time":20*1000});
 		this.notifyPlayTimeIndex = setTimeout(this.notifyPlay.bind(this),20*1000);
 	}
@@ -197,6 +200,12 @@ Room.prototype.isRightPlay = function(uid)
 Room.prototype.notifyResult = function()
 {
 
+}
+
+Room.prototype.markLastCards = function(pos,cards)
+{
+	this.lastPlayPos = pos;
+	this.lastPlayCards = cards;
 }
 
 Room.prototype.canPlay = function(cards)

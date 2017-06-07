@@ -7,6 +7,8 @@ class GameEvent extends egret.Event
 
     public static PRODUCT_CARD:string = "product_card";
 
+    public static PASS:string = "pass";
+
     public data:any;
     public constructor(type,data:any=null)
     {

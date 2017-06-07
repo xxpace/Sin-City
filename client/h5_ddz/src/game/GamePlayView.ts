@@ -50,6 +50,7 @@ class GamePlayView extends eui.Component
         this.btnScore_3.addEventListener(egret.TouchEvent.TOUCH_TAP,this.choiceScore,this);
 
         this.btnProduct.addEventListener(egret.TouchEvent.TOUCH_TAP,this.productHandle,this);
+        this.btnPass.addEventListener(egret.TouchEvent.TOUCH_TAP,this.passHandle,this);
 
         this.scoreBtnArr = [this.btnScore_0,this.btnScore_1,this.btnScore_2,this.btnScore_3];
 
@@ -82,6 +83,11 @@ class GamePlayView extends eui.Component
     public productHandle(e:egret.TouchEvent)
     {
         this.dispatchEvent(new GameEvent(GameEvent.PRODUCT_CARD));
+    }
+
+    public passHandle(e:egret.TouchEvent)
+    {
+        this.dispatchEvent(new GameEvent(GameEvent.PASS));
     }
 
     public setCards(cards:Array<any>)

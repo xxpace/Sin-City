@@ -6,6 +6,7 @@ var Player = function(opts)
     this.cards = [];
     this.askScore = 0;
     this.isLord = false;
+    this.removeList = [];
 }
 
 module.exports = Player;
@@ -17,6 +18,7 @@ Player.prototype.setAskScore = function(value)
 
 Player.prototype.removeCards = function(removeArr)
 {
+    let rList = [];
     let selfCards = this.cards;
     let rLen = removeArr.length;
     for(let i=0;i<selfCards.length;i++)
@@ -25,10 +27,12 @@ Player.prototype.removeCards = function(removeArr)
         {
             if(selfCards[i].isRealSame(removeArr[j]))
             {
-                selfCards.splice(i,1);
+                rList.push(selfCards.splice(i,1)[0]);
                 i-=1;
                 break;
             }
         }
     }
+    this.removeList = this.removeCards.concat(rList);
+    return rList;
 }

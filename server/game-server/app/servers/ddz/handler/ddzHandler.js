@@ -43,7 +43,8 @@ DdzHandler.prototype.playCard = function(msg,session,next)
         let cards = msg.cards;
         if(room.canPlay(cards))
         {
-            player.removeCards(cards);
+            let rList = player.removeCards(cards);
+            room.markLastCards(player.position,rList);
             messageService.pushMessageByRoom(player.roomid,DdzClientRoute.onPlayCards,{pos:player.position,cards:cards});
             if(player.cards.length===0)
             {
@@ -66,6 +67,7 @@ DdzHandler.prototype.cancelPlay = function(msg,session,next)
     let room = this.ddz.getRoom(player.roomid);
     if(room.isRightPlay(uid))
     {
+        messageService.pushMessageByRoom(player.roomid,DdzClientRoute.onPlayCards,{pos:player.position,cards:[]});
         room.notifyPlay();
     }
 }
