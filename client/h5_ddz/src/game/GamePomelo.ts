@@ -8,12 +8,10 @@ class GamePomelo
 
     public static pomelo:Pomelo;
 
-
     static init(callback:Function,thisObj:Object)
     {
         GamePomelo.pomelo = new Pomelo();
         var pomelo: Pomelo = GamePomelo.pomelo;
-
         pomelo.on('io-error', function(e:any):void {
 
         });
@@ -29,6 +27,9 @@ class GamePomelo
             if (response.code === 200) {
                 console.log("game connection success");
                 callback.apply(thisObj);
+            }else
+            {
+                console.log("game connection fail");
             }
         });
     }

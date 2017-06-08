@@ -19,11 +19,31 @@ class GamePlayView extends eui.Component
     public cardView_1:eui.Group;
     public cardView_2:eui.Group;
 
+    public avatarImg_0:eui.Image;
+    public avatarImg_1:eui.Image;
+    public avatarImg_2:eui.Image;
+
+    public speakImg_0:eui.Image;
+    public speakImg_1:eui.Image;
+    public speakImg_2:eui.Image;
+
+    public cardNum_0:eui.BitmapLabel;
+    public cardNum_1:eui.BitmapLabel;
+    public cardNum_2:eui.BitmapLabel;
+
+    public clockHome_0:eui.Group;
+    public clockHome_1:eui.Group;
+    public clockHome_2:eui.Group;
+
     public btnPass:eui.Button;
     public btnPrompt:eui.Button;
     public btnProduct:eui.Button;
 
+    public abcScore = ['no_call','one','two','three'];
 
+    public clockView:ClockView;
+
+    public speakTimeObj:Object;
 
     private _cardProxy:CardsProxy;
     private _pokerList:Array<Poker>;
@@ -41,8 +61,7 @@ class GamePlayView extends eui.Component
         this._cardProxy = new CardsProxy();
         this._cardProxy.initCards();
 
-        this.askGroup.visible = false;
-        this.playGroup.visible = false;
+        this.reSetView();
 
         this.btnScore_0.addEventListener(egret.TouchEvent.TOUCH_TAP,this.choiceScore,this);
         this.btnScore_1.addEventListener(egret.TouchEvent.TOUCH_TAP,this.choiceScore,this);
@@ -61,6 +80,16 @@ class GamePlayView extends eui.Component
         this.addChild(this.cardGroup_0);
 
         this.cardGroup_0.addEventListener(egret.TouchEvent.TOUCH_TAP,this.touchHandle,this);
+    }
+
+    public reSetView()
+    {
+        this.askGroup.visible = false;
+        this.playGroup.visible = false;
+
+        let self = this;
+        self.speakImg_0.source = self.speakImg_1.source = self.speakImg_2.source = "";
+        self.avatarImg_0.source = self.avatarImg_1.source = self.avatarImg_2.source = "lord_lz_playerinfo_icon_farmer_face_to_left_png";
     }
 
     public touchHandle(e:egret.TouchEvent)
@@ -141,9 +170,13 @@ class GamePlayView extends eui.Component
     public viewPlayCards(pos:number,cards:Array<any>)
     {
         let viewGroup:eui.Group = this["cardView_"+pos];
-        cards.sort(function(a,b){return a.logicValue-b.logicValue});
         DisplayUtil.removeAll(viewGroup);
-        let cardWidth:number = cards.length*Poker.pokerSpace+(Poker.pokerWidth-Poker.pokerSpace);
+        if(cards.length<=0)
+        {
+            return;
+        }
+        cards.sort(function(a,b){return a.logicValue-b.logicValue});
+        let cardWidth:number = cards.length*Poker.pokerSmallSpace+(Poker.pokerSmallWidth-Poker.pokerSmallSpace);
         let beginX = 0;
         if(pos==0)
         {
@@ -154,14 +187,14 @@ class GamePlayView extends eui.Component
         }
         for(let i = 0;i<cards.length;i++)
         {
-            let card:Poker = new Poker(cards[i]);
+            let card:Poker = new Poker(cards[i],"_small");
             if(pos==0)
             {
-                card.x = beginX+i*Poker.pokerSpace;
+                card.x = beginX+i*Poker.pokerSmallSpace;
             }else
             {
-                card.x = beginX+(i%10)*Poker.pokerSpace;
-                card.x = beginX+(i/10)*Poker.pokerSpace;
+                card.x = beginX+(i%10)*Poker.pokerSmallSpace;
+                card.x = beginX+(i/10)*Poker.pokerSmallSpace;
             }
             viewGroup.addChild(card);
         }
@@ -169,7 +202,52 @@ class GamePlayView extends eui.Component
 
     public viewCardNum(pos:number,num:number)
     {
+        let numImg = this['cardNum_'+pos];
+        numImg.text = ""+num;
+    }
 
+    public setLoard(pos:number)
+    {
+        let avatarImg = this['avatarImg_'+pos];
+        avatarImg.source = "lord_lz_playerinfo_icon_lord_face_to_right_png";
+    }
+
+    public askScoreSpeak(pos:number,score:number)
+    {
+        let speakName = 'speakImg_'+pos;
+        let speakImg = this[speakName];
+        let lr:string = pos==1?'right':'left';
+        if(score==0)
+        {
+            speakImg.source = "lord_speak_"+this.abcScore[score]+"_"+lr+"_png";
+        }else
+        {
+            speakImg.source = "lord_speak_"+this.abcScore[score]+"_cent_"+lr+"_png";
+        }
+        this.hideSpeak(speakName,speakImg);
+    }
+
+    public setClock(pos:number,time:number)
+    {
+        let home = this['clockHome_'+pos];
+
+        this.clockView = this.clockView || new ClockView();
+        home.addChild(this.clockView);
+        this.clockView.setTime(time);
+    }
+
+    public hideSpeak(name:string,img:eui.Image)
+    {
+        this.speakTimeObj = this.speakTimeObj || {};
+        if(this.speakTimeObj.hasOwnProperty(name))
+        {
+            egret.clearTimeout(this.speakTimeObj[name]);
+            delete this.speakTimeObj[name];
+        }
+        this.speakTimeObj[name] = egret.setTimeout(function(name:string,target:eui.Image):void{
+            target.source = "";
+            delete this.speakTimeObj[name];
+        },this,2000,name,img);
     }
 
 

@@ -1,13 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e:Skin class="gamePlayView" width="1280" height="720" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
-	<e:Image id="bg" width="1280" height="720" x="0" y="0" anchorOffsetX="0" anchorOffsetY="0" source="hllord_play_bg_png" locked="true" visible="false"/>
-	<e:Image source="lord_lz_playerinfo_icon_lord_face_to_right_png" x="28" y="392.5" visible="false"/>
-	<e:Image source="lord_lz_playerinfo_icon_farmer_face_to_right_png" x="36" y="42" visible="false"/>
-	<e:Image source="lord_lz_playerinfo_icon_farmer_face_to_right_png" x="1078" y="42" visible="false"/>
-	<e:Group id="cardView_2" width="200" height="200" x="209" y="81" visible="false"/>
-	<e:Group id="cardView_1" width="200" height="200" x="836" y="81" visible="false"/>
-	<e:Group width="954" height="200" y="311" id="cardView_0" anchorOffsetX="0" horizontalCenter="0" visible="false"/>
-	<e:Group id="playGroup" x="392" y="343" visible="false">
+	<e:Image id="bg" width="1280" height="720" x="0" y="0" anchorOffsetX="0" anchorOffsetY="0" source="hllord_play_bg_png" locked="true"/>
+	<e:Group x="28" y="352.5" locked="true">
+		<e:Image id="avatarImg_0" source="lord_lz_playerinfo_icon_lord_face_to_right_png" x="0" y="40"/>
+		<e:BitmapLabel id="cardNum_0" width="80" height="40" x="46" y="0" text="12" anchorOffsetX="0" anchorOffsetY="0" font="cards_num_fnt"/>
+		<e:Image id="speakImg_0" source="lord_speak_one_cent_left_png" x="140" y="0"/>
+	</e:Group>
+	<e:Group x="961" y="42" locked="true">
+		<e:Image id="avatarImg_1" source="lord_lz_playerinfo_icon_farmer_face_to_right_png" x="117" y="0"/>
+		<e:Image id="speakImg_1" source="lord_speak_one_cent_right_png" x="-22" y="-3"/>
+		<e:BitmapLabel id="cardNum_1" width="80" height="40" x="172" y="240" text="12" anchorOffsetX="0" anchorOffsetY="0" font="cards_num_fnt"/>
+	</e:Group>
+	<e:Group x="36" y="42" locked="true">
+		<e:Image id="avatarImg_2" source="lord_lz_playerinfo_icon_farmer_face_to_right_png" x="0" y="0"/>
+		<e:Image id="speakImg_2" source="lord_speak_one_cent_left_png" x="154" y="-20"/>
+		<e:BitmapLabel id="cardNum_2" width="80" height="40" x="58" y="242" text="12" anchorOffsetX="0" anchorOffsetY="0" font="cards_num_fnt"/>
+	</e:Group>
+	<e:Group id="cardView_2" width="200" height="200" x="209" y="81" locked="true"/>
+	<e:Group id="cardView_1" width="200" height="200" x="836" y="81" locked="true">
+	</e:Group>
+	<e:Group width="954" height="200" y="311" id="cardView_0" anchorOffsetX="0" horizontalCenter="0" locked="true"/>
+	<e:Group id="playGroup" x="392" y="343" locked="true" visible="false">
 		<e:Button id="btnPass" label="" x="0" y="0">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
@@ -33,7 +46,7 @@
 		</e:skinName>
 		</e:Button>
 	</e:Group>
-	<e:Group id="askGroup" y="360" horizontalCenter="0" visible="false">
+	<e:Group id="askGroup" y="360" horizontalCenter="0" locked="true" visible="false">
 		<e:Button id="btnScore_0" label="" x="0" y="0">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
@@ -67,5 +80,7 @@
 		</e:skinName>
 		</e:Button>
 	</e:Group>
-	<e:BitmapLabel width="80" height="40" x="214.5" y="460" text="12" anchorOffsetX="0" anchorOffsetY="0" font="cards_num_fnt"/>
+	<e:Group id="clockHome_0" width="94" height="80" x="593" y="360"/>
+	<e:Group width="94" height="80" x="907" y="146" id="clockHome_1"/>
+	<e:Group width="94" height="80" x="225" y="146" id="clockHome_2"/>
 </e:Skin>
