@@ -138,16 +138,18 @@ Room.prototype.yesLord = function()
 			pos =  i;
 		}
 	}
+	this.setLord(pos);
 	messageService.pushMessageByRoom(this.id,DdzClientRoute.notifyYesLord,{"pos":pos,"score":score});
 	this.handleLastPoker(pos);
 	this.turn.setIndex(pos);
-	this.notifyPlayTimeIndex = setTimeout(this.notifyPlay.bind(this),5000);
+	this.notifyPlay();
 }
 
 Room.prototype.handleLastPoker = function(pos)
 {
-	let player = this.players[pos];
-	messageService.pushMessageByUid(player.uid,this.id,DdzClientRoute.onLastCards,{"pos":pos,"cards":this.cardsProxy.cardPool});
+	// let player = this.players[pos];
+	messageService.pushMessageByRoom(this.id,DdzClientRoute.onLastCards,{"pos":pos,"cards":this.cardsProxy.cardPool});
+	// messageService.pushMessageByUid(player.uid,this.id,DdzClientRoute.onLastCards,{"pos":pos,"cards":this.cardsProxy.cardPool});
 }
 
 Room.prototype.setLord = function(lordPos)
@@ -197,9 +199,17 @@ Room.prototype.isRightPlay = function(uid)
 	return false;
 }
 
-Room.prototype.notifyResult = function()
+Room.prototype.notifyResult = function(winPos)
 {
-
+	this.cleanNotifyTime();
+	let winArr = [];
+	let isLord = this.players[winPos].isLord;
+	this.players.forEach(function(player){
+		if(player.isLord==isLord){
+			winArr.push(player.position);
+		}
+	});
+	messageService.pushMessageByRoom(this.id,DdzClientRoute.notifyGameEnd,{"winList":winArr});
 }
 
 Room.prototype.markLastCards = function(pos,cards)
@@ -215,9 +225,11 @@ Room.prototype.canPlay = function(cards)
 		return true;
 	}else
 	{
-		let oneStyle = this.cardsProxy.styleJudge(cards);
-		let twoStyle = this.cardsProxy.styleJudge(this.lastPlayCards);
-		return this.cardsProxy.compareCards(cards,oneStyle,this.lastPlayCards,twoStyle);
+		let oneStyle = this.cardsProxy.styleJudge.getCardStyle(cards);
+		let twoStyle = this.cardsProxy.styleJudge.getCardStyle(this.lastPlayCards);
+		let result = this.cardsProxy.compareCards(cards,oneStyle,this.lastPlayCards,twoStyle);
+		console.warn('compare result---->'+oneStyle+"----"+JSON.stringify(cards)+twoStyle+"----"+JSON.stringify(this.lastPlayCards)+"--------"+result);
+		return result;
 	}
 	return false;
 }

@@ -18,7 +18,6 @@ Player.prototype.setAskScore = function(value)
 
 Player.prototype.removeCards = function(removeArr)
 {
-    let rList = [];
     let selfCards = this.cards;
     let rLen = removeArr.length;
     for(let i=0;i<selfCards.length;i++)
@@ -27,12 +26,11 @@ Player.prototype.removeCards = function(removeArr)
         {
             if(selfCards[i].isRealSame(removeArr[j]))
             {
-                rList.push(selfCards.splice(i,1)[0]);
+                selfCards.splice(i,1);
                 i-=1;
                 break;
             }
         }
     }
-    this.removeList = this.removeCards.concat(rList);
-    return rList;
+    // this.removeList = this.removeList.concat(rList);
 }

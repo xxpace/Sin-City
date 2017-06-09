@@ -17,6 +17,7 @@ class GamePlayMediator
     private _cardsProxy:CardsProxy;
 
     private _lastPlayPos:number = -1;
+    private _lastPlayCards:Array<any>;
 
     public start()
     {
@@ -53,6 +54,7 @@ class GamePlayMediator
         this._pomelo.on("notifyPlay",this.notifyPlay.bind(this));
         this._pomelo.on("onPlayCards",this.onPlayCards.bind(this));
         this._pomelo.on("onPlayError",this.onPlayError.bind(this));
+        this._pomelo.on("notifyGameEnd",this.notifyGameEnd.bind(this));
     }
 
     public askScore(e:GameEvent)
@@ -64,8 +66,15 @@ class GamePlayMediator
     public productCard(e:GameEvent)
     {
         let cards = this._playView.getWaitCards();
-        if(this._cardsProxy.styleJudge.getCardStyle(cards)!=CardStyle.error)
+        let cardsStyle = this._cardsProxy.styleJudge.getCardStyle(cards);
+        if(cardsStyle!=CardStyle.error)
         {
+            if(this._lastPlayCards&&this._lastPlayCards.length>0)
+            {
+                let lastStyle = this._cardsProxy.styleJudge.getCardStyle(this._lastPlayCards);
+                let result = this._cardsProxy.compareCards(cards,cardsStyle,this._lastPlayCards,lastStyle);
+                console.log(result);
+            }
             this._pomelo.notify("ddz.ddzHandler.playCard",{'cards':cards});
             this._playView.setPlayGroup(false);
         }else
@@ -105,7 +114,7 @@ class GamePlayMediator
                 index = player.position-selfPos;
             }else
             {
-                index = 3 - selfPos;
+                index = 3 - selfPos+player.position;
             }
             this._seatArray[index] = player;
         }
@@ -169,6 +178,7 @@ class GamePlayMediator
 
     public onLastCards(data:any)
     {
+        data = data.msg;
         this._cardNumList[data.pos]+=data.cards.length;
         this.refreshCardNum();
         if(this._selfData.position==data.pos)
@@ -199,7 +209,12 @@ class GamePlayMediator
         data = data.msg;
         let seatPos = this.findSeatPos(data.pos);
         this._playView.setClock(seatPos,data.time);
+        this._playView.viewPlayCards(seatPos,[]);
 
+        if(this._lastPlayPos==this._selfData.position)
+        {
+            this._lastPlayCards.length = 0;
+        }
         if(seatPos==0)
         {
             this._playView.setPlayGroup(true,false);
@@ -209,51 +224,40 @@ class GamePlayMediator
         }
     }
 
-    public cleanDeskCards(pos:number)
-    {
-        if(this._lastPlayPos==-1)
-        {
-            this._lastPlayPos = pos;
-        }else
-        {
-            if(this._lastPlayPos==pos)
-            {
-                this._playView.viewPlayCards(0,[]);
-                this._playView.viewPlayCards(1,[]);
-                this._playView.viewPlayCards(2,[]);
-            }else
-            {
-                this._lastPlayPos = pos;
-            }
-        }
-    }
-
     public onPlayCards(data:any)
     {
         data = data.msg;
-        this.cleanDeskCards(data.pos);
+        let seatPos = this.findSeatPos(data.pos);
         if(data.cards.length>0)
         {
+            this._lastPlayCards = data.cards;
+            this._lastPlayPos = data.pos;
             this._cardNumList[data.pos]-=data.cards.length;
             this.refreshCardNum();
 
-            let seatPos = this.findSeatPos(data.pos);
             this._playView.viewPlayCards(seatPos,data.cards);
-
             if(seatPos===0)
             {
                 this.removeCards(data.cards,this._selfCards);
                 this._playView.setCards(this._selfCards);
             }
-        }else//不出 的处理
+        }else
         {
-
+            this._playView.notPlayTips(seatPos);
         }
     }
 
     public onPlayError(data:any)
     {
         console.log("onPlayError",data);
+    }
+
+    public notifyGameEnd(data)
+    {
+        data = data.msg;
+        console.log("notifyGameEnd",data);
+        let isWin:boolean = Boolean(data.winList.indexOf(this._selfData.position)!=-1);
+        this._playView.setResult(isWin);
     }
 
     public removeCards(removeArr,source)

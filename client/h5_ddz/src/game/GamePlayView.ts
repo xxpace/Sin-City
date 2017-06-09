@@ -89,7 +89,7 @@ class GamePlayView extends eui.Component
 
         let self = this;
         self.speakImg_0.source = self.speakImg_1.source = self.speakImg_2.source = "";
-        self.avatarImg_0.source = self.avatarImg_1.source = self.avatarImg_2.source = "lord_lz_playerinfo_icon_farmer_face_to_left_png";
+        self.avatarImg_0.source = self.avatarImg_1.source = self.avatarImg_2.source = "lord_lz_playerinfo_icon_farmer_face_to_right_png";
     }
 
     public touchHandle(e:egret.TouchEvent)
@@ -176,25 +176,25 @@ class GamePlayView extends eui.Component
             return;
         }
         cards.sort(function(a,b){return a.logicValue-b.logicValue});
-        let cardWidth:number = cards.length*Poker.pokerSmallSpace+(Poker.pokerSmallWidth-Poker.pokerSmallSpace);
+        let cardWidth:number = cards.length*Poker.pokerSpace+(Poker.pokerWidth-Poker.pokerSpace);
         let beginX = 0;
         if(pos==0)
         {
             beginX = (viewGroup.width-cardWidth)/2;
         }else if(pos==1)
         {
-            beginX = cardWidth-viewGroup.width;
+            beginX = viewGroup.width - cardWidth;
         }
         for(let i = 0;i<cards.length;i++)
         {
-            let card:Poker = new Poker(cards[i],"_small");
+            let card:Poker = new Poker(cards[i]);
             if(pos==0)
             {
-                card.x = beginX+i*Poker.pokerSmallSpace;
+                card.x = beginX+i*Poker.pokerSpace;
             }else
             {
-                card.x = beginX+(i%10)*Poker.pokerSmallSpace;
-                card.x = beginX+(i/10)*Poker.pokerSmallSpace;
+                card.x = beginX+(i%9)*Poker.pokerSpace;
+                card.y = Math.floor(i/9)*Poker.pokerSpace;
             }
             viewGroup.addChild(card);
         }
@@ -227,10 +227,19 @@ class GamePlayView extends eui.Component
         this.hideSpeak(speakName,speakImg);
     }
 
+    public notPlayTips(pos:number)
+    {
+        let speakName = 'speakImg_'+pos;
+        let speakImg = this[speakName];
+        let lr:string = pos==1?'right':'left';
+        speakImg.source = "lord_speak_pass_"+lr+"_png";
+
+        this.hideSpeak(speakName,speakImg);
+    }
+
     public setClock(pos:number,time:number)
     {
         let home = this['clockHome_'+pos];
-
         this.clockView = this.clockView || new ClockView();
         home.addChild(this.clockView);
         this.clockView.setTime(time);
@@ -250,5 +259,15 @@ class GamePlayView extends eui.Component
         },this,2000,name,img);
     }
 
-
+    public setResult(winBool:boolean)
+    {
+        this.clockView.stop();
+        if(winBool)
+        {
+            console.log("赢了")
+        }else
+        {
+            console.log("输了");
+        }
+    }
 }

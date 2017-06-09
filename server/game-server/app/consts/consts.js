@@ -16,6 +16,7 @@ module.exports = {
     onCards:"onCards",
     onLastCards:"onLastCards",
     notifyYesLord:"notifyYesLord",
-    notifyPlay:"notifyPlay"
+    notifyPlay:"notifyPlay",
+    notifyGameEnd:"notifyGameEnd"
   }
 }

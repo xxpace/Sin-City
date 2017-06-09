@@ -43,21 +43,22 @@ DdzHandler.prototype.playCard = function(msg,session,next)
         let cards = msg.cards;
         if(room.canPlay(cards))
         {
-            let rList = player.removeCards(cards);
-            room.markLastCards(player.position,rList);
+            player.removeCards(cards);
+            room.markLastCards(player.position,cards);
             messageService.pushMessageByRoom(player.roomid,DdzClientRoute.onPlayCards,{pos:player.position,cards:cards});
             if(player.cards.length===0)
             {
-                room.notifyResult();
+                room.notifyResult(player.position);
             }else
             {
                 room.notifyPlay();
             }
         }else
         {
-            messageService.pushMessageByUid(uid,DdzClientRoute.onPlayError,{"error":"牌型不符"});
+            messageService.pushMessageByUid(uid,player.roomid,DdzClientRoute.onPlayError,{"error":"牌型不符"});
         }
     }
+    next(null);
 }
 
 DdzHandler.prototype.cancelPlay = function(msg,session,next)
@@ -70,4 +71,5 @@ DdzHandler.prototype.cancelPlay = function(msg,session,next)
         messageService.pushMessageByRoom(player.roomid,DdzClientRoute.onPlayCards,{pos:player.position,cards:[]});
         room.notifyPlay();
     }
+    next(null);
 }

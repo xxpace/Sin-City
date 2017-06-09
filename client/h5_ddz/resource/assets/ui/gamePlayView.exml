@@ -11,7 +11,7 @@
 		<e:Image id="speakImg_1" source="lord_speak_one_cent_right_png" x="-22" y="-3"/>
 		<e:BitmapLabel id="cardNum_1" width="80" height="40" x="172" y="240" text="12" anchorOffsetX="0" anchorOffsetY="0" font="cards_num_fnt"/>
 	</e:Group>
-	<e:Group x="36" y="42" locked="true">
+	<e:Group x="36" y="42">
 		<e:Image id="avatarImg_2" source="lord_lz_playerinfo_icon_farmer_face_to_right_png" x="0" y="0"/>
 		<e:Image id="speakImg_2" source="lord_speak_one_cent_left_png" x="154" y="-20"/>
 		<e:BitmapLabel id="cardNum_2" width="80" height="40" x="58" y="242" text="12" anchorOffsetX="0" anchorOffsetY="0" font="cards_num_fnt"/>
@@ -80,7 +80,7 @@
 		</e:skinName>
 		</e:Button>
 	</e:Group>
-	<e:Group id="clockHome_0" width="94" height="80" x="593" y="360"/>
+	<e:Group id="clockHome_0" width="94" height="80" x="200" y="414"/>
 	<e:Group width="94" height="80" x="907" y="146" id="clockHome_1"/>
 	<e:Group width="94" height="80" x="225" y="146" id="clockHome_2"/>
 </e:Skin>

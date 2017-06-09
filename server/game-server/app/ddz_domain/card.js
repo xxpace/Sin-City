@@ -31,11 +31,11 @@ var Card = function Card($type, $value, $logicValue) {
     this.value = $value;
     this.logicValue = $logicValue;
 }
-Card.prototype.isSame = function (card) {
-    if (card.type == CardType.ghost && this.type == CardType.ghost) {
+Card.isSame = function (a,b) {
+    if (a.type == CardType.ghost && b.type == CardType.ghost) {
         return true;
     }
-    return Boolean(this.value === card.value);
+    return Boolean(a.value === b.value);
 };
 
 Card.prototype.isRealSame = function (card) {
@@ -748,7 +748,7 @@ StyleJudge.prototype.isAllSameCard = function (cards) {
     var first = cards[0];
     var len = cards.length;
     for (var i = 1; i < len; i++) {
-        if (first.isSame(cards[i]) === false) {
+        if (Card.isSame(first,cards[i]) === false) {
             return false;
         }
     }
@@ -763,7 +763,7 @@ StyleJudge.prototype.getSameCardNum = function (cards) {
         var sonCount = 1;
         baseCard = cards[i];
         for (var j = i + 1; j < len; j++) {
-            if (baseCard.isSame(cards[j])) {
+            if (Card.isSame(baseCard,cards[j])) {
                 sonCount++;
             }
         }

@@ -43,13 +43,13 @@ class Card
         this.logicValue = $logicValue;
     }
 
-    public isSame(card:Card)
+    public static isSame(a:Card,b:Card)
     {
-        if(card.type==CardType.ghost&&this.type==CardType.ghost)
+        if(a.type==CardType.ghost&&b.type==CardType.ghost)
         {
             return true;
         }
-        return Boolean(this.value===card.value);
+        return Boolean(a.value===b.value);
     }
 }
 
@@ -924,7 +924,7 @@ class StyleJudge
         var len:number = cards.length;
         for(var i=1;i<len;i++)
         {
-            if(first.isSame(cards[i])===false)
+            if(Card.isSame(first,cards[i])===false)
             {
                 return false;
             }
@@ -944,7 +944,7 @@ class StyleJudge
             baseCard = cards[i];
             for(let j=i+1;j<len;j++)
             {
-                if(baseCard.isSame(cards[j]))
+                if(Card.isSame(baseCard,cards[j]))
                 {
                     sonCount++;
                 }

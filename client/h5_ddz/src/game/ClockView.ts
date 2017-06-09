@@ -24,6 +24,7 @@ class ClockView extends eui.Component
         {
             return;
         }
+        time = Math.round(time/1000);
         if(this._timer==null)
         {
             this._timer = new egret.Timer(1000,time);
@@ -51,10 +52,20 @@ class ClockView extends eui.Component
     {
         this.bgImg.source = num<6?"lord_clock_red_bg_png":"lord_clock_bg_png";
         this.numLabel.font = num<6?"clock_num_red_font_fnt":"clock_num_green_font_fnt";
+        this.numLabel.text = ""+num;
     }
 
     public timeEnd(e:egret.TimerEvent)
     {
+        this.visible = false;
+    }
+
+    public stop()
+    {
+        if(this._timer.running)
+        {
+            this._timer.stop();
+        }
         this.visible = false;
     }
 }

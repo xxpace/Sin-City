@@ -18,13 +18,14 @@ class Poker extends egret.Sprite
     private _card:Card;
     private _skin:string;
 
-    public constructor(card:Card,skin:string = "")
+    public constructor(card:any,skin:string = "")
     {
         super();
         this.touchChildren = false;
         this.touchEnabled = true;
         this._skin = skin;
-        this._card = card;
+        this._card = new Card(card.type,card.value,card.logicValue);
+
         this.setSkin();
     }
 
