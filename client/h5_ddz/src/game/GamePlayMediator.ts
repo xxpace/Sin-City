@@ -17,16 +17,20 @@ class GamePlayMediator
     private _cardsProxy:CardsProxy;
 
     private _lastPlayPos:number = -1;
-    private _lastPlayCards:Array<any>;
+    private _lastPlayCards:Array<any> = [];
 
     public start()
     {
         this._playView = new GamePlayView();
         Main.stage.addChild(this._playView);
 
+        StageLog.log("init....");
+
         this._playView.addEventListener(GameEvent.CHOICE_SCORE,this.askScore,this);
         this._playView.addEventListener(GameEvent.PRODUCT_CARD,this.productCard,this);
         this._playView.addEventListener(GameEvent.PASS,this.passHandle,this);
+        this._playView.addEventListener(GameEvent.FORCE_PASS,this.forcePassHandle,this);
+
         this._cardsProxy = new CardsProxy();
         this.connection();
     }
@@ -73,10 +77,17 @@ class GamePlayMediator
             {
                 let lastStyle = this._cardsProxy.styleJudge.getCardStyle(this._lastPlayCards);
                 let result = this._cardsProxy.compareCards(cards,cardsStyle,this._lastPlayCards,lastStyle);
-                console.log(result);
+                if(result)
+                {
+                    this._pomelo.notify("ddz.ddzHandler.playCard",{'cards':cards});
+                    this._playView.setPlayGroup(false);
+                }
+                console.log("compare-result---->",result);
+            }else
+            {
+                this._pomelo.notify("ddz.ddzHandler.playCard",{'cards':cards});
+                this._playView.setPlayGroup(false);
             }
-            this._pomelo.notify("ddz.ddzHandler.playCard",{'cards':cards});
-            this._playView.setPlayGroup(false);
         }else
         {
             console.log("出的牌没有牌型");
@@ -87,6 +98,13 @@ class GamePlayMediator
     {
         this._pomelo.notify("ddz.ddzHandler.cancelPlay",{});
         this._playView.setPlayGroup(false);
+    }
+
+    public forcePassHandle(e:GameEvent)
+    {
+        this._playView.clockView.stop();
+        this.passHandle(null);
+        this._playView.notHoldBtn.visible = false;
     }
 
 
@@ -166,6 +184,7 @@ class GamePlayMediator
         data = data.msg;
         let seatPos = this.findSeatPos(data.pos);
         this._playView.askScoreSpeak(seatPos,data.score);
+        GameSound.playEffect("lord_v_callscore_"+data.score+"_mp3");
     }
 
     public notifyYesLord(data:any)
@@ -208,20 +227,49 @@ class GamePlayMediator
     {
         data = data.msg;
         let seatPos = this.findSeatPos(data.pos);
-        this._playView.setClock(seatPos,data.time);
         this._playView.viewPlayCards(seatPos,[]);
 
         if(this._lastPlayPos==this._selfData.position)
         {
             this._lastPlayCards.length = 0;
         }
+
         if(seatPos==0)
         {
-            this._playView.setPlayGroup(true,false);
+            let canHold = true;
+            if(this._lastPlayCards.length>0)
+            {
+                let result = this._cardsProxy.findConformCards(this._selfCards,this._lastPlayCards);
+                if(result&&result.length>0)
+                {
+                    canHold = true;
+                }else
+                {
+                    canHold = false;
+                }
+                //console.log("result--->",result,this._lastPlayCards);
+            }
+            let playTime = canHold?data.time:data.time/2;
+            if(canHold)
+            {
+                this._playView.setClock(seatPos,playTime);
+                this._playView.setPlayGroup(true,false);
+            }else
+            {
+                this._playView.setClock(seatPos,playTime,this.notHoldTimeEnd,this);
+                this._playView.notHoldBtn.visible = true;
+            }
+
         }else
         {
             this._playView.setPlayGroup(false);
+            this._playView.setClock(seatPos,data.time);
         }
+    }
+
+    public notHoldTimeEnd()
+    {
+        this.forcePassHandle(null);
     }
 
     public onPlayCards(data:any)
@@ -230,6 +278,14 @@ class GamePlayMediator
         let seatPos = this.findSeatPos(data.pos);
         if(data.cards.length>0)
         {
+            //if(this._lastPlayCards.length>0)
+            //{
+            //    let mNum:number = this.getRandomVal(3);
+            //    GameSound.playEffect("lord_v_discard_"+mNum+"_mp3");
+            //}else
+            //{
+                this.playSoundByCards(data.cards,seatPos);
+            //}
             this._lastPlayCards = data.cards;
             this._lastPlayPos = data.pos;
             this._cardNumList[data.pos]-=data.cards.length;
@@ -244,7 +300,52 @@ class GamePlayMediator
         }else
         {
             this._playView.notPlayTips(seatPos);
+            let mNum:number = this.getRandomVal(3);
+            GameSound.playEffect("lord_v_pass_"+mNum+"_mp3");
         }
+    }
+
+    private playSoundByCards(cards,pos:number)
+    {
+        let style:number = this._cardsProxy.styleJudge.getCardStyle(cards);
+        console.log('cards --style',style);
+        if(style==CardStyle.single||style==CardStyle.double||style==CardStyle.three)
+        {
+            let url = "lord_v_"+cards.length+"card_"+Poker.getSoundMark(cards[0].value)+"_mp3";
+            GameSound.playEffect(url);
+        }else if(style==CardStyle.three_single)
+        {
+            GameSound.playEffect("lord_v_3with1_mp3");
+        }else if(style==CardStyle.three_double)
+        {
+            GameSound.playEffect("lord_v_3with2_mp3");
+        }else if(style==CardStyle.double_3x)
+        {
+            GameSound.playEffect("lord_v_chainpairs_mp3");
+        }else if(style==CardStyle.four_single_2||style ==CardStyle.four_double_2)
+        {
+            GameSound.playEffect("lord_v_4with2_mp3");
+        }else if(style==CardStyle.four)
+        {
+            let url = pos==0?"lord_v_bomb_2_mp3":"lord_v_bomb_1_mp3";
+            GameSound.playEffect(url);
+        }else if(style==CardStyle.aircraft_single_2||style==CardStyle.aircraft_double_2||style==CardStyle.bigAircraft_single||style==CardStyle.bigAaircraft_double)
+        {
+            let url = pos==0?"lord_v_plane_1_mp3":"lord_v_plane_2_mp3";
+            GameSound.playEffect(url);
+        }else if(style==CardStyle.order)
+        {
+            GameSound.playEffect("lord_v_straight_mp3");
+        }else if(style==CardStyle.doubleGhost)
+        {
+            GameSound.playEffect("lord_v_rocket_mp3");
+        }
+
+    }
+
+    private getRandomVal(num)
+    {
+        return 1+Math.floor(Math.random()*num);
     }
 
     public onPlayError(data:any)
@@ -258,6 +359,13 @@ class GamePlayMediator
         console.log("notifyGameEnd",data);
         let isWin:boolean = Boolean(data.winList.indexOf(this._selfData.position)!=-1);
         this._playView.setResult(isWin);
+        if(isWin)
+        {
+            GameSound.playEffect("lord_s_spring_win_mp3");
+        }else
+        {
+            GameSound.playEffect("lord_s_spring_fail_mp3");
+        }
     }
 
     public removeCards(removeArr,source)

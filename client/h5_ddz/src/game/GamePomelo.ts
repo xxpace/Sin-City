@@ -3,7 +3,8 @@
  */
 class GamePomelo
 {
-    public static host:string = '127.0.0.1';
+    //public static host:string = '127.0.0.1';
+    public static host:string = '192.168.2.140';
     public static port:string = '3010';
 
     public static pomelo:Pomelo;
@@ -13,7 +14,7 @@ class GamePomelo
         GamePomelo.pomelo = new Pomelo();
         var pomelo: Pomelo = GamePomelo.pomelo;
         pomelo.on('io-error', function(e:any):void {
-
+            StageLog.log("io-error");
         });
 
         pomelo.on('close', function(e:any):void {
@@ -24,6 +25,7 @@ class GamePomelo
             host: GamePomelo.host,
             port: GamePomelo.port
         }, function(response:any):void {
+            StageLog.log(JSON.stringify(response));
             if (response.code === 200) {
                 console.log("game connection success");
                 callback.apply(thisObj);

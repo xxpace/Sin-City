@@ -9,6 +9,8 @@ class GameEvent extends egret.Event
 
     public static PASS:string = "pass";
 
+    public static FORCE_PASS:string = "froce_pass";//要不起
+
     public data:any;
     public constructor(type,data:any=null)
     {

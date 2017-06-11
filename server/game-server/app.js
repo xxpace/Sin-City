@@ -13,7 +13,7 @@ app.configure('production|development', 'connector', function(){
   app.set('connectorConfig',
     {
       connector : pomelo.connectors.hybridconnector,
-      // 'websocket', 'polling-xhr', 'polling-jsonp', 'polling',
+      // 'websocket', 'polling-xhr', 'polling-jsonp', 'polling',hybridconnector
       transports : ['websocket', 'polling'],
       heartbeats : true,
       closeTimeout : 60 * 1000,

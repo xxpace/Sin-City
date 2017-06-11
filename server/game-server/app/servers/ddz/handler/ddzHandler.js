@@ -51,6 +51,7 @@ DdzHandler.prototype.playCard = function(msg,session,next)
                 room.notifyResult(player.position);
             }else
             {
+                room.autoPlay = false;
                 room.notifyPlay();
             }
         }else

@@ -5,6 +5,6 @@ var userDao = module.exports;
 
 userDao.getPlayer = function(uid,cb)
 {
-	cb(new Player({"uid":uid}));
+	cb(new Player({"uid":uid}));//eL6N.Ckho<dw
 }
 

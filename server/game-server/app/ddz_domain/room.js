@@ -20,6 +20,7 @@ var Room = function(opts)
 	this.askMaxScore = 0;
 	this.lastPlayCards = [];
 	this.lastPlayPos = -1;
+	this.autoPlay = false;
 }
 
 module.exports = Room;
@@ -147,9 +148,7 @@ Room.prototype.yesLord = function()
 
 Room.prototype.handleLastPoker = function(pos)
 {
-	// let player = this.players[pos];
 	messageService.pushMessageByRoom(this.id,DdzClientRoute.onLastCards,{"pos":pos,"cards":this.cardsProxy.cardPool});
-	// messageService.pushMessageByUid(player.uid,this.id,DdzClientRoute.onLastCards,{"pos":pos,"cards":this.cardsProxy.cardPool});
 }
 
 Room.prototype.setLord = function(lordPos)
@@ -165,7 +164,12 @@ Room.prototype.setLord = function(lordPos)
 Room.prototype.notifyPlay = function()
 {
 	this.cleanNotifyTime();
-
+	if(this.autoPlay)
+	{
+		this.autoPlay = false;
+		this.handleMustPlay(this.turn.index);
+		return;
+	}
 	let pos = this.turn.next();
 	let player = this.players[pos];
 	if(player)
@@ -174,9 +178,30 @@ Room.prototype.notifyPlay = function()
 		{
 			this.lastPlayCards.length = 0;
 		}
+		if(this.lastPlayCards.length==0)
+		{
+			this.autoPlay = true;
+		}
 		messageService.pushMessageByRoom(this.id,DdzClientRoute.notifyPlay,{"pos":pos,"time":20*1000});
 		this.notifyPlayTimeIndex = setTimeout(this.notifyPlay.bind(this),20*1000);
 	}
+}
+
+Room.prototype.handleMustPlay = function(pos)
+{
+	let player = this.players[pos];
+	let card = player.getSmallCard();
+	let playCards = [card];
+	this.markLastCards(pos,playCards);
+	player.removeCards(playCards);
+	messageService.pushMessageByRoom(player.roomid,DdzClientRoute.onPlayCards,{pos:player.position,cards:playCards});
+    if(player.cards.length===0)
+    {
+        room.notifyResult(player.position);
+    }else
+    {
+    	this.notifyPlay();
+    }
 }
 
 Room.prototype.cleanNotifyTime = function()

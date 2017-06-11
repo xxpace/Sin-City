@@ -6,7 +6,6 @@ var Player = function(opts)
     this.cards = [];
     this.askScore = 0;
     this.isLord = false;
-    this.removeList = [];
 }
 
 module.exports = Player;
@@ -14,6 +13,12 @@ module.exports = Player;
 Player.prototype.setAskScore = function(value)
 {
     this.askScore = value;
+}
+
+Player.prototype.getSmallCard = function()
+{
+    let card = this.cards.pop();
+    return card;
 }
 
 Player.prototype.removeCards = function(removeArr)
@@ -32,5 +37,4 @@ Player.prototype.removeCards = function(removeArr)
             }
         }
     }
-    // this.removeList = this.removeList.concat(rList);
 }

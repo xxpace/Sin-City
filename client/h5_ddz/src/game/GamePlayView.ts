@@ -13,6 +13,8 @@ class GamePlayView extends eui.Component
     public btnScore_3:eui.Button;
     public scoreBtnArr:Array<eui.Button>;
 
+    public notHoldBtn:eui.Button;
+
     public playGroup:eui.Group;
 
     public cardView_0:eui.Group;
@@ -70,6 +72,7 @@ class GamePlayView extends eui.Component
 
         this.btnProduct.addEventListener(egret.TouchEvent.TOUCH_TAP,this.productHandle,this);
         this.btnPass.addEventListener(egret.TouchEvent.TOUCH_TAP,this.passHandle,this);
+        this.notHoldBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.forcePass,this);//要不起
 
         this.scoreBtnArr = [this.btnScore_0,this.btnScore_1,this.btnScore_2,this.btnScore_3];
 
@@ -86,6 +89,7 @@ class GamePlayView extends eui.Component
     {
         this.askGroup.visible = false;
         this.playGroup.visible = false;
+        this.notHoldBtn.visible = false;
 
         let self = this;
         self.speakImg_0.source = self.speakImg_1.source = self.speakImg_2.source = "";
@@ -102,6 +106,12 @@ class GamePlayView extends eui.Component
 
         this.btnProduct.enabled = Boolean(this.getWaitCards().length>0);
     }
+
+    public forcePass(e:egret.TouchEvent)
+    {
+        this.dispatchEvent(new GameEvent(GameEvent.FORCE_PASS));
+    }
+
 
     public choiceScore(e:egret.TouchEvent)
     {
@@ -237,12 +247,12 @@ class GamePlayView extends eui.Component
         this.hideSpeak(speakName,speakImg);
     }
 
-    public setClock(pos:number,time:number)
+    public setClock(pos:number,time:number,endFun=null,endFunObj=null)
     {
         let home = this['clockHome_'+pos];
         this.clockView = this.clockView || new ClockView();
         home.addChild(this.clockView);
-        this.clockView.setTime(time);
+        this.clockView.setTime(time,endFun,endFunObj);
     }
 
     public hideSpeak(name:string,img:eui.Image)

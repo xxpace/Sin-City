@@ -13,21 +13,21 @@ enum CardType
 enum CardStyle
 {
     single = 1,
-    double,
-    three,
-    three_single,
-    three_double,
-    double_3x,
-    four_single_2,
-    four_double_2,
-    four,
-    aircraft_single_2,
-    aircraft_double_2,
-    bigAircraft_single,
-    bigAaircraft_double,
-    doubleGhost,
-    order,
-    error
+    double = 2,
+    three = 3,
+    three_single = 4,
+    three_double = 5,
+    double_3x = 6,
+    four_single_2 = 7,
+    four_double_2 = 8,
+    four = 9,
+    aircraft_single_2 = 10,
+    aircraft_double_2 = 11,
+    bigAircraft_single = 12,
+    bigAaircraft_double = 13,
+    doubleGhost = 14,
+    order = 15,
+    error = 16
 }
 
 class Card
@@ -139,11 +139,11 @@ class CardsProxy
         }
     }
 
-    public findConformCards(cards:Array<Card>)
+    public findConformCards(sourceList,cards:Array<Card>)
     {
         var cardNum:number = cards.length;
         var targetStyle = this.styleJudge.getCardStyle(cards);
-        let selfList = [];
+        let selfList = sourceList;
         let result;
         if(targetStyle==CardStyle.single)
         {
@@ -514,8 +514,8 @@ class CardsProxy
             var singleResult = this.findBigCard(list,1000,1);
             if(singleResult&&singleResult.length>0)
             {
-                singleResult = singleResult.shift();
-                result = result.concat(singleResult);
+                //singleResult = singleResult.shift();
+                result = result.concat(singleResult[0]);
             }
         }
         return result;
@@ -545,27 +545,25 @@ class CardsProxy
     {
         var bigList:Array<Card> = cards.filter(function(card:Card){return Boolean(card.logicValue<logicValue)});
         var len:number = bigList.length;
-        var obj = {};
+        //var obj = {};
         while(len--)
         {
             let targetCard = bigList[len];
-            let findArr = bigList.filter(function(card:Card){return Boolean(card.logicValue==targetCard.value)});
+            let findArr = bigList.filter(function(card:Card){return Boolean(card.logicValue==targetCard.logicValue)});
             let num = findArr.length;
-            if(num==cardNum)
+            if(num>=cardNum)
             {
-                return findArr;
-            }else if(num>cardNum)
-            {
-                if(obj.hasOwnProperty(num.toString())===false)
-                {
-                    obj[num] = findArr.slice(0,cardNum);
-                }
+                //if(obj.hasOwnProperty(num.toString())===false)
+                //{
+                //    obj[num] = findArr.slice(0,cardNum);
+                //}
+                return findArr.slice(0,cardNum);
             }
         }
-        for(var key in obj)
-        {
-            return obj[key];
-        }
+        //for(var key in obj)
+        //{
+        //    return obj[key];
+        //}
         return  null;
     }
 
@@ -855,6 +853,7 @@ class StyleJudge
 
     public isOrderDoubleDoubleCard(cards:Array<Card>)
     {
+        cards = cards.concat();
         var len:number = cards.length;
         if(len%2===1)
         {

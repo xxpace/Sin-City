@@ -417,8 +417,8 @@ CardsProxy.prototype.findCard_three_single = function (selfList, cards) {
         var list = selfList.filter(function (card) { return Boolean(card.value != threeCard.value); });
         var singleResult = this.findBigCard(list, 1000, 1);
         if (singleResult && singleResult.length > 0) {
-            singleResult = singleResult.shift();
-            result = result.concat(singleResult);
+            // singleResult = singleResult.shift();
+            result = result.concat(singleResult[0]);
         }
     }
     return result;
@@ -443,30 +443,26 @@ CardsProxy.prototype.findBigCard = function (cards, logicValue, cardNum) {
     if (cardNum === void 0) { cardNum = 1; }
     var bigList = cards.filter(function (card) { return Boolean(card.logicValue < logicValue); });
     var len = bigList.length;
-    var obj = {};
     var _loop_1 = function () {
         var targetCard = bigList[len];
-        var findArr = bigList.filter(function (card) { return Boolean(card.logicValue == targetCard.value); });
+        var findArr = bigList.filter(function (card) { return Boolean(card.logicValue == targetCard.logicValue); });
         var num = findArr.length;
-        if (num == cardNum) {
-            return { value: findArr };
-        }
-        else if (num > cardNum) {
-            if (obj.hasOwnProperty(num.toString()) === false) {
-                obj[num] = findArr.slice(0, cardNum);
-            }
+        if (num >= cardNum) {
+            return { value: findArr.slice(0, cardNum) };
         }
     };
+    //var obj = {};
     while (len--) {
         var state_1 = _loop_1();
         if (typeof state_1 === "object")
             return state_1.value;
     }
-    for (var key in obj) {
-        return obj[key];
-    }
+    //for(var key in obj)
+    //{
+    //    return obj[key];
+    //}
     return null;
-};
+    };
 CardsProxy.prototype.getCardNum = function (cards, card) {
     var num = 0;
     var len = cards.length;
@@ -696,6 +692,7 @@ StyleJudge.prototype.logicValueSortFun = function (one, two) {
     return Number(one.logicValue - two.logicValue);
 };
 StyleJudge.prototype.isOrderDoubleDoubleCard = function (cards) {
+    cards = cards.concat();
     var len = cards.length;
     if (len % 2 === 1) {
         return CardStyle.error;

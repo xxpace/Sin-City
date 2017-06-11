@@ -8,6 +8,9 @@ class ClockView extends eui.Component
 
     public _timer:egret.Timer;
 
+    private _endFun:Function;
+    private _endFunObj:Object;
+
     public constructor() {
         super();
         this.addEventListener(eui.UIEvent.CREATION_COMPLETE, this.createCompleteEvent, this);
@@ -18,11 +21,16 @@ class ClockView extends eui.Component
         this.removeEventListener(eui.UIEvent.CREATION_COMPLETE, this.createCompleteEvent, this);
     }
 
-    public setTime(time:number)
+    public setTime(time:number,endFun=null,endObj=null)
     {
         if(time<0)
         {
             return;
+        }
+        if(endFun)
+        {
+            this._endFun = endFun;
+            this._endFunObj = endObj;
         }
         time = Math.round(time/1000);
         if(this._timer==null)
@@ -57,6 +65,12 @@ class ClockView extends eui.Component
 
     public timeEnd(e:egret.TimerEvent)
     {
+        if(this._endFun)
+        {
+            this._endFun.apply(this._endFunObj);
+            this._endFun = null;
+            this._endFunObj = null;
+        }
         this.visible = false;
     }
 
