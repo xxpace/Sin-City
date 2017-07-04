@@ -5,6 +5,10 @@ var Turn = require('./Turn');
 var CardsProxy = require('./card.js').CardsProxy;
 var logger = require('pomelo-logger').getLogger('pomelo');
 
+var STATUS_CREATE = "status_create"
+var STATUS_BEGIN = "status_begin";
+var STATUS_END = "status_end";
+
 var Room = function(opts)
 {
 	this.id = opts.id;
@@ -21,6 +25,7 @@ var Room = function(opts)
 	this.lastPlayCards = [];
 	this.lastPlayPos = -1;
 	this.autoPlay = false;
+	this.status = STATUS_CREATE;
 }
 
 module.exports = Room;
@@ -36,12 +41,33 @@ Room.prototype.add = function(player)
 	}
 }
 
+Room.prototype.remove = function(uid)
+{
+	let p = this.findPlayer(uid);
+	let index = this.players.indexOf(p);
+	this.players.splice(index,1);
+
+	//通知其它玩家 然后
+}
+
+Room.prototype.findPlayer = function(uid)
+{
+	let len = this.players.length;
+	for(let i=0;i<len;i++)
+	{
+		if(this.players[i].uid==uid)
+		{
+			return this.players[i];
+		}
+	}
+}
+
 Room.prototype.testSendPoker = function()
 {
 	if(this.isFull())
 	{
 		this.sendPoker();
-
+		this.status = STATUS_BEGIN;
 		this.timeIndex = setInterval(this.askLord.bind(this),5000);
 	}
 }
@@ -235,6 +261,18 @@ Room.prototype.notifyResult = function(winPos)
 		}
 	});
 	messageService.pushMessageByRoom(this.id,DdzClientRoute.notifyGameEnd,{"winList":winArr});
+	this.reSetPlayer();
+	this.status = STATUS_END;
+}
+
+Room.prototype.reSetPlayer = function()
+{
+	let cards = [];
+	this.players.forEach(function(player){
+		cards = cards.concat(player.getAllCards());
+		player.reSet();
+	});
+	this.cardsProxy.recoverCards(cards);
 }
 
 Room.prototype.markLastCards = function(pos,cards)
@@ -262,4 +300,22 @@ Room.prototype.canPlay = function(cards)
 Room.prototype.handleOffLinePlayer = function(uid)
 {
 
+}
+
+Room.prototype.isAllReady = function()
+{
+	let len = this.players.length;
+	for(let i=0;i<len;i++)
+	{
+		if(this.players[i].isReady==false)
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
+Room.prototype.reSetPlayerReadyState = function(bool)
+{
+	this.players.forEach((player)=>player.isReady=bool);
 }

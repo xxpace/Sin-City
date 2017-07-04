@@ -67,6 +67,15 @@ CardsProxy.prototype.initCards = function () {
     }
 };
 
+CardsProxy.prototype.recoverCards = function(cards)
+{
+    if(cards.length!=54||this.cardPool.length!=0)
+    {
+        console.error("recover cards num error");
+    }
+    this.cardPool = this.cardPool.concat(cards);
+}
+
 CardsProxy.prototype.upsetCards = function()
 {
     this.cardPool.sort(()=>0.5-Math.random());

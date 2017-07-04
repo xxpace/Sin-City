@@ -11,7 +11,9 @@ var DdzHandler = function(app, ddz) {
   this.ddz = ddz;
 };
 
-DdzHandler.prototype.askLord = function(msg, session, next)
+var pro = DdzHandler.prototype;
+
+pro.askLord = function(msg, session, next)
 {
     let uid = session.uid;
     let score = msg.score;
@@ -33,7 +35,7 @@ DdzHandler.prototype.askLord = function(msg, session, next)
     next(null);
 }
 
-DdzHandler.prototype.playCard = function(msg,session,next)
+pro.playCard = function(msg,session,next)
 {
     let uid = session.uid;
     let player = this.ddz.getPlayer(uid);
@@ -62,7 +64,7 @@ DdzHandler.prototype.playCard = function(msg,session,next)
     next(null);
 }
 
-DdzHandler.prototype.cancelPlay = function(msg,session,next)
+pro.cancelPlay = function(msg,session,next)
 {
     let uid = session.uid;
     let player = this.ddz.getPlayer(uid);
@@ -71,6 +73,36 @@ DdzHandler.prototype.cancelPlay = function(msg,session,next)
     {
         messageService.pushMessageByRoom(player.roomid,DdzClientRoute.onPlayCards,{pos:player.position,cards:[]});
         room.notifyPlay();
+    }
+    next(null);
+}
+
+
+pro.ready = function(msg,session,next)
+{
+    let uid = session.uid;
+    let player = this.ddz.getPlayer(uid);
+    let room = this.ddz.getRoom(player.roomid);
+    if(room)
+    {
+        player.isReady = true;
+        if(room.isAllReady())
+        {
+            room.reSetPlayerReadyState(false);
+            room.testSendPoker();
+        }
+    }
+    next(null);
+}
+
+pro.leaveRoom =  function(msg,session,next)
+{
+    let uid = session.uid;
+    let player = this.ddz.getPlayer(uid);
+    let room = this.ddz.getRoom(player.roomid);
+    if(room)
+    {
+        room.remove(uid);
     }
     next(null);
 }

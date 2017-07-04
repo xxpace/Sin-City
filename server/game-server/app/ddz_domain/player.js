@@ -6,6 +6,8 @@ var Player = function(opts)
     this.cards = [];
     this.askScore = 0;
     this.isLord = false;
+    this.isPlayCards = [];
+    this.isReady = false;
 }
 
 module.exports = Player;
@@ -18,6 +20,7 @@ Player.prototype.setAskScore = function(value)
 Player.prototype.getSmallCard = function()
 {
     let card = this.cards.pop();
+    this.isPlayCards.push(card);
     return card;
 }
 
@@ -31,10 +34,23 @@ Player.prototype.removeCards = function(removeArr)
         {
             if(selfCards[i].isRealSame(removeArr[j]))
             {
+                this.isPlayCards.push(selfCards[i]);
                 selfCards.splice(i,1);
                 i-=1;
                 break;
             }
         }
     }
+}
+
+Player.prototype.getAllCards = function()
+{
+    return this.cards.concat(this.isPlayCards);
+}
+
+Player.prototype.reSet = function()
+{
+    this.cards.length = 0;
+    this.isPlayCards.length = 0;
+    this.askScore = 0;
 }

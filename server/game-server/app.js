@@ -22,7 +22,7 @@ app.configure('production|development', 'connector', function(){
     });
 });
 
-app.configure('production|development', 'ddz', function(){
+app.configure('production|development', 'ddz|auth', function(){
   app.set('ddz',new Instance());
 
   var dbclient = require('./app/dao/mysql/mysql').init(app);
