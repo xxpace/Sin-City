@@ -22,9 +22,11 @@ app.configure('production|development', 'connector', function(){
     });
 });
 
-app.configure('production|development', 'ddz|auth', function(){
+app.configure('production|development', 'ddz', function(){
   app.set('ddz',new Instance());
+});
 
+app.configure('production|development', 'ddz|auth', function(){
   var dbclient = require('./app/dao/mysql/mysql').init(app);
   app.set('dbclient', dbclient);
   app.use(sync, {sync: {path:__dirname + '/app/dao/mapping', dbclient: dbclient}});

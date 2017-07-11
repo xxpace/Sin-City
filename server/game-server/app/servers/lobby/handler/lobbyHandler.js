@@ -16,3 +16,11 @@ lobby.enter = function(msg,session,next)
 {
 
 }
+
+lobby.getCustomizeRoomInfo = function(msg,session,next)
+{
+    let type = msg.type;
+    this.app.rpc.ddz.ddzRemote.getCustomizeRoom(function(res){
+        next(res);
+    });
+}
