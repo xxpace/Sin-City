@@ -8,7 +8,7 @@ userDao.getPlayer = function(uid,cb)
 	cb(new Player({"uid":uid}));//eL6N.Ckho<dw
 }
 
-userDao.getUserByName(username,cb)
+userDao.getUserByName = function(username,cb)
 {
     let sql = 'select * from user where username = ?';
     let args = [username];
@@ -17,7 +17,7 @@ userDao.getUserByName(username,cb)
     });
 }
 
-userDao.createUser(username,password,cb)
+userDao.createUser = function(username,password,cb)
 {
     let sql = 'insert into user (username,password) values (?,?)';
     let args = [username,password];
@@ -26,7 +26,7 @@ userDao.createUser(username,password,cb)
     });
 }
 
-userDao.getUserById(uid,cb)
+userDao.getUserById = function(uid,cb)
 {
     let sql = 'select * from user where id = ?';
     let args = [uid];

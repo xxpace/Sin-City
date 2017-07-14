@@ -9,7 +9,7 @@ module.exports.create = function(uid,timestamp,pwd)
     return enc;
 }
 
-moduele.exports.parse = function(toker,pwd)
+module.exports.parse = function(toker,pwd)
 {
     var decipher = crypto.createDecipher('aes256',pwd);
     var dec;

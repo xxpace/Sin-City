@@ -2,12 +2,13 @@
 
 module.exports = function(app)
 {
-    return new LobbyHandler(app);
+    return new LobbyHandler(app,app.get('lobby'));
 }
 
-var LobbyHandler = function(app)
+var LobbyHandler = function(app,lobby)
 {
     this.app = app;
+    this.lobby = lobby;
 }
 
 var lobby = LobbyHandler.prototype;

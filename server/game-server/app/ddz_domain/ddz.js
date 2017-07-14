@@ -4,6 +4,7 @@ var userDao = require('../dao/userDao');
 var Instance = function (opts)
 {
 	this.roomIndex = 0;
+	this.playerCount = 0;
 	this.playerDict = {};
 	this.roomDict = {};
 }
@@ -46,6 +47,7 @@ Instance.prototype.addPlayer = function(uid,cb)
 	var self = this;
 	userDao.getPlayer(uid,function(player){
 		self.playerDict[uid] = player;
+		self.playerCount++;
 		let room = self.getFreeRoom();
 		cb(room,player);
 	});

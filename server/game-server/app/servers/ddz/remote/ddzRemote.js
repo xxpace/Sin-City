@@ -52,6 +52,10 @@ DdzRemote.prototype.kick = function(uid, sid, roomid) {
 	channel.pushMessage(param);
 };
 
+DdzRemote.prototype.getServerInfo = function(cb)
+{
+	cb({'roomNum':this.ddz.roomIndex,'playerNum':this.ddz.playerCount});
+}
 
 DdzRemote.prototype.getCustomizeRoom = function(cb)
 {

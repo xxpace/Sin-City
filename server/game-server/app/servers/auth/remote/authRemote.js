@@ -1,10 +1,10 @@
-var Token  = require('../../../../shared/token');
-var userDao = require('../../dao/userDao');
+var Token  = require('../../../../../shared/token');
+var userDao = require('../../../dao/userDao');
 
 var DEFAULT_SECRET = 'pomelo_session_secret';
 var DEFAULT_EXPIRE = 6 * 60 * 60 * 1000;
 
-moduel.exportes = function(app)
+module.exports = function(app)
 {
     return new Remote(app);
 }
