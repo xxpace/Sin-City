@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="card_li_2" width="82" height="118" xmlns:e="http://ns.egret.com/eui">
+	<e:Image source="dui_back_png" x="0" y="0"/>
+</e:Skin>

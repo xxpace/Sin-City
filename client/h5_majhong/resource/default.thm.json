@@ -1,0 +1,13 @@
+{
+  "autoGenerateExmlsList": true,
+  "exmls": [
+    "src/majhong/ui/card_li_0.exml",
+    "src/majhong/ui/card_li_1.exml",
+    "src/majhong/ui/card_li_2.exml",
+    "src/majhong/ui/card_li_3.exml",
+    "src/majhong/ui/card_tang_0.exml",
+    "src/majhong/ui/card_tang_1.exml",
+    "src/majhong/ui/card_tang_3.exml",
+    "src/majhong/ui/majhong_play_view.exml"
+  ]
+}

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="card_tang_1" width="111" height="92" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image source="ce_back_front_png" x="0" y="0"/>
+	<e:Image id="img" x="5.91" y="61.86" rotation="270" anchorOffsetY="0" height="101.05" anchorOffsetX="0" width="66.87" source="card_0_2_png"/>
+</e:Skin>
