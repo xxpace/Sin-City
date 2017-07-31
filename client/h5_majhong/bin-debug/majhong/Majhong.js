@@ -231,7 +231,7 @@ var MajhongManager = (function () {
         var testList_0 = majhongList.concat();
         var info_0 = new MajhongInfo();
         this.parseMajhongInfo_0(testList_0, info_0);
-        this.parseMajhongInfo_1(testList_0, info_0);
+        this.parseMajhongInfo_1(testList_0, info_0, true);
         if (testList_0.length == 0) {
             if (info_0.duiCount == 1) {
                 console.log("hule--->test_0");
@@ -239,11 +239,20 @@ var MajhongManager = (function () {
         }
         var testList_1 = majhongList.concat();
         var info_1 = new MajhongInfo();
-        this.parseMajhongInfo_1(testList_1, info_1);
+        this.parseMajhongInfo_1(testList_1, info_1, true);
         this.parseMajhongInfo_0(testList_1, info_1);
         if (testList_1.length == 0) {
             if (info_1.duiCount == 1) {
                 console.log("hule--->test_1");
+            }
+        }
+        var testList_2 = majhongList.concat();
+        var info_2 = new MajhongInfo();
+        this.parseMajhongInfo_1(testList_2, info_2, false);
+        this.parseMajhongInfo_0(testList_2, info_2);
+        if (testList_2.length == 0) {
+            if (info_2.duiCount == 1) {
+                console.log("hule--->test_2");
             }
         }
     };
@@ -258,14 +267,20 @@ var MajhongManager = (function () {
             info.duiCount++;
         }
     };
-    MajhongManager.prototype.parseMajhongInfo_1 = function (majhongList, info) {
-        while (this.testFu(majhongList, MajhongType.WAN)) {
+    /**
+     *
+     * @param majhongList
+     * @param info
+     * @param isPasitive true 顺序查找 false 倒序查找
+     */
+    MajhongManager.prototype.parseMajhongInfo_1 = function (majhongList, info, isPasitive) {
+        while (this.testFu(majhongList, MajhongType.WAN, isPasitive)) {
             info.fuCount++;
         }
-        while (this.testFu(majhongList, MajhongType.TIAO)) {
+        while (this.testFu(majhongList, MajhongType.TIAO, isPasitive)) {
             info.fuCount++;
         }
-        while (this.testFu(majhongList, MajhongType.TONG)) {
+        while (this.testFu(majhongList, MajhongType.TONG, isPasitive)) {
             info.fuCount++;
         }
     };
@@ -290,12 +305,12 @@ var MajhongManager = (function () {
         var obj = this.getMajhongCountObj(majhongList);
         return this.removeMajhong(majhongList, obj, 2);
     };
-    MajhongManager.prototype.testFu = function (majhongList, type) {
+    MajhongManager.prototype.testFu = function (majhongList, type, isPositive) {
         var _this = this;
         var cardList = majhongList.filter(function (item) { return item.type == type; });
         if (cardList.length > 2) {
             var orderList = this.getMajhongOrderObj(cardList);
-            var rightList = this.getRightOrderValue(orderList);
+            var rightList = isPositive ? this.getPositiveOrderValue(orderList) : this.getReverseOrderValue(orderList);
             if (rightList) {
                 rightList.forEach(function (item) { return _this.removeOneCard(majhongList, type, item); });
                 return true;
@@ -312,7 +327,7 @@ var MajhongManager = (function () {
             }
         }
     };
-    MajhongManager.prototype.getRightOrderValue = function (orderList) {
+    MajhongManager.prototype.getPositiveOrderValue = function (orderList) {
         var count = 0;
         var bIndex = 0;
         orderList.some(function (value, index) {
@@ -320,14 +335,34 @@ var MajhongManager = (function () {
             if (index > 0) {
                 var temp = orderList[index] - orderList[index - 1];
                 if (temp != 1) {
-                    count = 0;
+                    count = 1;
                     bIndex = index;
                 }
                 return Boolean(count >= 3);
             }
         });
         if (count >= 3) {
-            return orderList.slice(bIndex, 3);
+            return orderList.slice(bIndex, bIndex + 3);
+        }
+    };
+    MajhongManager.prototype.getReverseOrderValue = function (orderList) {
+        var tempList = orderList.concat();
+        tempList.reverse();
+        var count = 0;
+        var bIndex = 0;
+        tempList.some(function (value, index) {
+            count++;
+            if (index > 0) {
+                var temp = tempList[index] - tempList[index - 1];
+                if (temp != -1) {
+                    count = 1;
+                    bIndex = index;
+                }
+                return Boolean(count >= 3);
+            }
+        });
+        if (count >= 3) {
+            return tempList.slice(bIndex, bIndex + 3);
         }
     };
     MajhongManager.prototype.removeMajhong = function (sourceList, countObj, sameNum) {

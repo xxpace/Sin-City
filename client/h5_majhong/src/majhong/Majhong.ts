@@ -282,7 +282,7 @@ class MajhongManager
         let testList_0 = majhongList.concat();
         let info_0 = new MajhongInfo();
         this.parseMajhongInfo_0(testList_0,info_0);
-        this.parseMajhongInfo_1(testList_0,info_0);
+        this.parseMajhongInfo_1(testList_0,info_0,true);
 
         if(testList_0.length==0)
         {
@@ -294,7 +294,7 @@ class MajhongManager
 
         let testList_1 = majhongList.concat();
         let info_1 = new MajhongInfo();
-        this.parseMajhongInfo_1(testList_1,info_1);
+        this.parseMajhongInfo_1(testList_1,info_1,true);
         this.parseMajhongInfo_0(testList_1,info_1);
 
         if(testList_1.length==0)
@@ -302,6 +302,20 @@ class MajhongManager
             if(info_1.duiCount==1)
             {
                 console.log("hule--->test_1");
+            }
+        }
+
+
+        let testList_2 = majhongList.concat();
+        let info_2 = new MajhongInfo();
+        this.parseMajhongInfo_1(testList_2,info_2,false);
+        this.parseMajhongInfo_0(testList_2,info_2);
+
+        if(testList_2.length==0)
+        {
+            if(info_2.duiCount==1)
+            {
+                console.log("hule--->test_2");
             }
         }
     }
@@ -322,17 +336,23 @@ class MajhongManager
         }
     }
 
-    public parseMajhongInfo_1(majhongList:Array<Majhong>,info:MajhongInfo)
+    /**
+     *
+     * @param majhongList
+     * @param info
+     * @param isPasitive true 顺序查找 false 倒序查找
+     */
+    public parseMajhongInfo_1(majhongList:Array<Majhong>,info:MajhongInfo,isPasitive:boolean)
     {
-        while(this.testFu(majhongList,MajhongType.WAN))
+        while(this.testFu(majhongList,MajhongType.WAN,isPasitive))
         {
             info.fuCount++;
         }
-        while(this.testFu(majhongList,MajhongType.TIAO))
+        while(this.testFu(majhongList,MajhongType.TIAO,isPasitive))
         {
             info.fuCount++;
         }
-        while(this.testFu(majhongList,MajhongType.TONG))
+        while(this.testFu(majhongList,MajhongType.TONG,isPasitive))
         {
             info.fuCount++;
         }
@@ -368,13 +388,13 @@ class MajhongManager
         return this.removeMajhong(majhongList,obj,2);
     }
 
-    public testFu(majhongList:Array<Majhong>,type)
+    public testFu(majhongList:Array<Majhong>,type,isPositive:boolean)
     {
         let cardList = majhongList.filter((item)=>item.type==type);
         if(cardList.length>2)
         {
             let orderList = this.getMajhongOrderObj(cardList);
-            let rightList = this.getRightOrderValue(orderList);
+            let rightList = isPositive?this.getPositiveOrderValue(orderList):this.getReverseOrderValue(orderList);
             if(rightList)
             {
                 rightList.forEach((item)=>this.removeOneCard(majhongList,type,item));
@@ -397,18 +417,43 @@ class MajhongManager
         }
     }
 
-    public getRightOrderValue(orderList)
+    public getPositiveOrderValue(orderList)
     {
         let count = 0;
         let bIndex = 0;
         orderList.some((value,index)=>{
             count++;
+            if(index>0)
+            {
+                let temp = orderList[index]-orderList[index-1];
+                if(temp!=1)
+                {
+                    count = 1;
+                    bIndex = index;
+                }
+                return Boolean(count>=3);
+            }
+        });
+        if(count>=3)
+        {
+            return orderList.slice(bIndex,bIndex+3);
+        }
+    }
+
+    public getReverseOrderValue(orderList)
+    {
+        let tempList = orderList.concat();
+        tempList.reverse();
+        let count = 0;
+        let bIndex = 0;
+        tempList.some((value,index)=>{
+            count++;
            if(index>0)
            {
-               let temp = orderList[index]-orderList[index-1];
-               if(temp!=1)
+               let temp = tempList[index]-tempList[index-1];
+               if(temp!=-1)
                {
-                   count = 0;
+                   count = 1;
                    bIndex = index;
                }
                return Boolean(count>=3);
@@ -416,7 +461,7 @@ class MajhongManager
         });
         if(count>=3)
         {
-            return orderList.slice(bIndex,3);
+            return tempList.slice(bIndex,bIndex+3);
         }
     }
 
