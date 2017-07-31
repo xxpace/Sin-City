@@ -274,13 +274,9 @@ var MajhongManager = (function () {
      * @param isPasitive true 顺序查找 false 倒序查找
      */
     MajhongManager.prototype.parseMajhongInfo_1 = function (majhongList, info, isPasitive) {
-        while (this.testFu(majhongList, MajhongType.WAN, isPasitive)) {
-            info.fuCount++;
-        }
-        while (this.testFu(majhongList, MajhongType.TIAO, isPasitive)) {
-            info.fuCount++;
-        }
-        while (this.testFu(majhongList, MajhongType.TONG, isPasitive)) {
+        while (this.testFu(majhongList, MajhongType.WAN, isPasitive) ||
+            this.testFu(majhongList, MajhongType.TIAO, isPasitive) ||
+            this.testFu(majhongList, MajhongType.TONG, isPasitive)) {
             info.fuCount++;
         }
     };
@@ -388,26 +384,19 @@ var MajhongManager = (function () {
         for (var i = 0; i < len; i++) {
             var majhong = majhongList[i];
             var tempKey = majhong.key();
-            if (obj.hasOwnProperty(tempKey)) {
-                obj[tempKey].push(majhong);
-            }
-            else {
-                obj[tempKey] = [];
-                obj[tempKey].push(majhong);
-            }
+            obj[tempKey] = obj[tempKey] || [];
+            obj[tempKey].push(majhong);
         }
         return obj;
     };
     MajhongManager.prototype.getMajhongOrderObj = function (majhongList) {
         var arr = [];
-        var len = majhongList.length;
-        for (var i = 0; i < len; i++) {
-            var majhong = majhongList[i];
+        majhongList.forEach(function (majhong) {
             var tempKey = majhong.value;
             if (arr.indexOf(tempKey) == -1) {
                 arr.push(tempKey);
             }
-        }
+        });
         return arr;
     };
     Object.defineProperty(MajhongManager, "Instance", {

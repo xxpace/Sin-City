@@ -344,15 +344,9 @@ class MajhongManager
      */
     public parseMajhongInfo_1(majhongList:Array<Majhong>,info:MajhongInfo,isPasitive:boolean)
     {
-        while(this.testFu(majhongList,MajhongType.WAN,isPasitive))
-        {
-            info.fuCount++;
-        }
-        while(this.testFu(majhongList,MajhongType.TIAO,isPasitive))
-        {
-            info.fuCount++;
-        }
-        while(this.testFu(majhongList,MajhongType.TONG,isPasitive))
+        while(this.testFu(majhongList,MajhongType.WAN,isPasitive)||
+        this.testFu(majhongList,MajhongType.TIAO,isPasitive)||
+        this.testFu(majhongList,MajhongType.TONG,isPasitive))
         {
             info.fuCount++;
         }
@@ -498,14 +492,8 @@ class MajhongManager
         {
             let majhong = majhongList[i];
             let tempKey = majhong.key();
-            if(obj.hasOwnProperty(tempKey))
-            {
-                obj[tempKey].push(majhong);
-            }else
-            {
-                obj[tempKey] = [];
-                obj[tempKey].push(majhong);
-            }
+            obj[tempKey] = obj[tempKey]||[];
+            obj[tempKey].push(majhong);
         }
         return obj;
     }
@@ -513,16 +501,13 @@ class MajhongManager
     public getMajhongOrderObj(majhongList)
     {
         let arr = [];
-        let len = majhongList.length;
-        for(let i = 0;i<len;i++)
-        {
-            let majhong = majhongList[i];
+        majhongList.forEach((majhong)=>{
             let tempKey = majhong.value;
             if(arr.indexOf(tempKey)==-1)
             {
                 arr.push(tempKey);
             }
-        }
+        });
         return arr;
     }
 
