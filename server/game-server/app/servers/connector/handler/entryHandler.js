@@ -19,12 +19,6 @@ Handler.prototype.entry = function(msg, session, next) {
 	var self = this;
 	var uid = "user*"+self.idCount;
 	self.idCount++;
-	var sessionService = self.app.get("sessionService");
-	if(!!sessionService.getByUid(uid))
-	{
-		next(null,{code:500,error:true});
-		return;
-	}
 	session.bind(uid);
 	session.on('closed', onUserLeave.bind(null, self.app));
 	self.app.rpc.ddz.ddzRemote.add(session,uid,self.app.get('serverId'),true,function(roomid){
