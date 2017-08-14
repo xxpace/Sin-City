@@ -64,6 +64,7 @@ Room.prototype.findPlayer = function(uid)
 
 Room.prototype.testSendPoker = function()
 {
+	console.info("---->",this.players.length,this.isFull());
 	if(this.isFull())
 	{
 		this.sendPoker();

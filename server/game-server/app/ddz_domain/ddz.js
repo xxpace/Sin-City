@@ -7,6 +7,7 @@ var Instance = function (opts)
 	this.playerCount = 0;
 	this.playerDict = {};
 	this.roomDict = {};
+	this.rooms = [];
 }
 
 module.exports = Instance;
@@ -25,6 +26,7 @@ Instance.prototype.createRoom = function()
 	let room = new Room({"id":this.roomIndex});
 	this.roomDict[this.roomIndex] = room;
 	this.roomIndex++;
+	this.rooms.push(room);
 	return room;
 }
 

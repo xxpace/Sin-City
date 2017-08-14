@@ -3,8 +3,8 @@
  */
 class GamePomelo
 {
-    //public static host:string = '127.0.0.1';
-    public static host:string = '192.168.2.140';
+    public static host:string = '127.0.0.1';
+    //public static host:string = '192.168.2.140';
     public static port:string = '3010';
 
     public static pomelo:Pomelo;
