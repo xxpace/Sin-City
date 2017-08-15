@@ -1,1433 +1,1724 @@
 {
-	"groups":[{
-			"keys":"hllord_play_bg_png,lord_card_spade_q_png,lord_card_club_1_png,lord_card_club_2_png,lord_card_club_3_png,lord_card_club_4_png,lord_card_club_5_png,lord_card_club_6_png,lord_card_club_7_png,lord_card_club_8_png,lord_card_club_9_png,lord_card_club_10_png,lord_card_club_j_png,lord_card_club_k_png,lord_card_club_q_png,lord_card_diamond_1_png,lord_card_diamond_2_png,lord_card_diamond_3_png,lord_card_diamond_4_png,lord_card_diamond_5_png,lord_card_diamond_6_png,lord_card_diamond_7_png,lord_card_diamond_8_png,lord_card_diamond_9_png,lord_card_diamond_10_png,lord_card_diamond_j_png,lord_card_diamond_k_png,lord_card_diamond_q_png,lord_card_heart_1_png,lord_card_heart_2_png,lord_card_heart_3_png,lord_card_heart_4_png,lord_card_heart_5_png,lord_card_heart_6_png,lord_card_heart_7_png,lord_card_heart_8_png,lord_card_heart_9_png,lord_card_heart_10_png,lord_card_heart_j_png,lord_card_heart_k_png,lord_card_heart_q_png,lord_card_joker_big_big_png,lord_card_joker_small_big_png,lord_card_spade_1_png,lord_card_spade_2_png,lord_card_spade_3_png,lord_card_spade_4_png,lord_card_spade_5_png,lord_card_spade_6_png,lord_card_spade_7_png,lord_card_spade_8_png,lord_card_spade_9_png,lord_card_spade_10_png,lord_card_spade_j_png,lord_card_spade_k_png,lord_btn_callscore_3_n_png,lord_btn_callscore_0_d_png,lord_btn_callscore_0_disable_png,lord_btn_callscore_0_n_png,lord_btn_callscore_1_d_png,lord_btn_callscore_1_disable_png,lord_btn_callscore_1_n_png,lord_btn_callscore_2_d_png,lord_btn_callscore_2_disable_png,lord_btn_callscore_2_n_png,lord_btn_callscore_3_d_png,lord_lz_playerinfo_icon_lord_face_to_right_png,lord_lz_playerinfo_icon_farmer_face_to_right_png,lord_btn_prompt_n_png,lord_btn_nobig_d_png,lord_btn_nobig_n_png,lord_btn_pass_d_png,lord_btn_pass_disable_png,lord_btn_pass_n_png,lord_btn_product_d_png,lord_btn_product_disable_png,lord_btn_product_n_png,lord_btn_prompt_d_png,lord_btn_prompt_disable_png,lord_speak_two_cent_right_png,lord_speak_no_call_left_png,lord_speak_no_call_right_png,lord_speak_one_cent_left_png,lord_speak_one_cent_right_png,lord_speak_pass_left_png,lord_speak_pass_right_png,lord_speak_three_cent_left_png,lord_speak_three_cent_right_png,lord_speak_two_cent_left_png,cards_num_fnt,lord_clock_red_bg_png,lord_clock_bg_png,clock_num_green_font_fnt,clock_num_red_font_fnt,lord_card_heart_2_small_png,lord_card_heart_2_small_new_png,lord_card_heart_3_small_png,lord_card_heart_3_small_new_png,lord_card_heart_4_small_png,lord_card_heart_4_small_new_png,lord_card_heart_5_small_png,lord_card_heart_5_small_new_png,lord_card_heart_6_small_png,lord_card_heart_6_small_new_png,lord_card_heart_7_small_png,lord_card_heart_7_small_new_png,lord_card_heart_8_small_png,lord_card_heart_8_small_new_png,lord_card_heart_9_small_png,lord_card_heart_9_small_new_png,lord_card_heart_10_small_png,lord_card_heart_10_small_new_png,lord_card_heart_j_small_png,lord_card_heart_j_small_new_png,lord_card_heart_k_small_png,lord_card_heart_k_small_new_png,lord_card_heart_q_small_png,lord_card_heart_q_small_new_png,lord_card_joker_big_small_png,lord_card_joker_big_small_new_png,lord_card_joker_small_small_png,lord_card_joker_small_small_new_png,lord_card_selected_png,lord_card_spade_1_small_png,lord_card_spade_1_small_new_png,lord_card_spade_2_small_png,lord_card_spade_2_small_new_png,lord_card_spade_3_small_png,lord_card_spade_3_small_new_png,lord_card_spade_4_small_png,lord_card_spade_4_small_new_png,lord_card_spade_5_small_png,lord_card_spade_5_small_new_png,lord_card_spade_6_small_png,lord_card_spade_6_small_new_png,lord_card_spade_7_small_png,lord_card_spade_7_small_new_png,lord_card_spade_8_small_png,lord_card_spade_8_small_new_png,lord_card_spade_9_small_png,lord_card_spade_9_small_new_png,lord_card_spade_10_small_png,lord_card_spade_10_small_new_png,lord_card_spade_j_small_png,lord_card_spade_j_small_new_png,lord_card_spade_k_small_png,lord_card_spade_k_small_new_png,lord_card_spade_q_small_png,lord_card_spade_q_small_new_png,lord_force_call_flag_png,pklord_card_backface_give_big_png,pklord_card_lord_flag_png,lord_anim_card_turn_big_png,lord_bottom_card_backface_png,lord_card_backface_big_png,lord_card_backface_small_png,lord_card_club_1_small_png,lord_card_club_1_small_new_png,lord_card_club_2_small_png,lord_card_club_2_small_new_png,lord_card_club_3_small_png,lord_card_club_3_small_new_png,lord_card_club_4_small_png,lord_card_club_4_small_new_png,lord_card_club_5_small_png,lord_card_club_5_small_new_png,lord_card_club_6_small_png,lord_card_club_6_small_new_png,lord_card_club_7_small_png,lord_card_club_7_small_new_png,lord_card_club_8_small_png,lord_card_club_8_small_new_png,lord_card_club_9_small_png,lord_card_club_9_small_new_png,lord_card_club_10_small_png,lord_card_club_10_small_new_png,lord_card_club_j_small_png,lord_card_club_j_small_new_png,lord_card_club_k_small_png,lord_card_club_k_small_new_png,lord_card_club_q_small_png,lord_card_club_q_small_new_png,lord_card_diamond_1_small_png,lord_card_diamond_1_small_new_png,lord_card_diamond_2_small_png,lord_card_diamond_2_small_new_png,lord_card_diamond_3_small_png,lord_card_diamond_3_small_new_png,lord_card_diamond_4_small_png,lord_card_diamond_4_small_new_png,lord_card_diamond_5_small_png,lord_card_diamond_5_small_new_png,lord_card_diamond_6_small_png,lord_card_diamond_6_small_new_png,lord_card_diamond_7_small_png,lord_card_diamond_7_small_new_png,lord_card_diamond_8_small_png,lord_card_diamond_8_small_new_png,lord_card_diamond_9_small_png,lord_card_diamond_9_small_new_png,lord_card_diamond_10_small_png,lord_card_diamond_10_small_new_png,lord_card_diamond_j_small_png,lord_card_diamond_j_small_new_png,lord_card_diamond_k_small_png,lord_card_diamond_k_small_new_png,lord_card_diamond_q_small_png,lord_card_diamond_q_small_new_png,lord_card_heart_1_small_png,lord_card_heart_1_small_new_png,lord_first_callscore_3_mp3,lord_follow_callscore_1_mp3,lord_follow_callscore_2_mp3,lord_follow_callscore_3_mp3,lord_v_callscore_0_mp3,lord_v_callscore_1_mp3,lord_v_callscore_2_mp3,lord_v_callscore_3_mp3",
-			"name":"game"
-		}],
-	"resources":[
+	"groups": [
 		{
-			"name":"hllord_play_bg_png",
-			"type":"image",
-			"url":"assets/playview/hllord_play_bg.png"
+			"keys": "hllord_play_bg_png,lord_card_spade_q_png,lord_card_club_1_png,lord_card_club_2_png,lord_card_club_3_png,lord_card_club_4_png,lord_card_club_5_png,lord_card_club_6_png,lord_card_club_7_png,lord_card_club_8_png,lord_card_club_9_png,lord_card_club_10_png,lord_card_club_j_png,lord_card_club_k_png,lord_card_club_q_png,lord_card_diamond_1_png,lord_card_diamond_2_png,lord_card_diamond_3_png,lord_card_diamond_4_png,lord_card_diamond_5_png,lord_card_diamond_6_png,lord_card_diamond_7_png,lord_card_diamond_8_png,lord_card_diamond_9_png,lord_card_diamond_10_png,lord_card_diamond_j_png,lord_card_diamond_k_png,lord_card_diamond_q_png,lord_card_heart_1_png,lord_card_heart_2_png,lord_card_heart_3_png,lord_card_heart_4_png,lord_card_heart_5_png,lord_card_heart_6_png,lord_card_heart_7_png,lord_card_heart_8_png,lord_card_heart_9_png,lord_card_heart_10_png,lord_card_heart_j_png,lord_card_heart_k_png,lord_card_heart_q_png,lord_card_joker_big_big_png,lord_card_joker_small_big_png,lord_card_spade_1_png,lord_card_spade_2_png,lord_card_spade_3_png,lord_card_spade_4_png,lord_card_spade_5_png,lord_card_spade_6_png,lord_card_spade_7_png,lord_card_spade_8_png,lord_card_spade_9_png,lord_card_spade_10_png,lord_card_spade_j_png,lord_card_spade_k_png,lord_btn_callscore_3_n_png,lord_btn_callscore_0_d_png,lord_btn_callscore_0_disable_png,lord_btn_callscore_0_n_png,lord_btn_callscore_1_d_png,lord_btn_callscore_1_disable_png,lord_btn_callscore_1_n_png,lord_btn_callscore_2_d_png,lord_btn_callscore_2_disable_png,lord_btn_callscore_2_n_png,lord_btn_callscore_3_d_png,lord_lz_playerinfo_icon_lord_face_to_right_png,lord_lz_playerinfo_icon_farmer_face_to_right_png,lord_btn_prompt_n_png,lord_btn_nobig_d_png,lord_btn_nobig_n_png,lord_btn_pass_d_png,lord_btn_pass_disable_png,lord_btn_pass_n_png,lord_btn_product_d_png,lord_btn_product_disable_png,lord_btn_product_n_png,lord_btn_prompt_d_png,lord_btn_prompt_disable_png,lord_speak_two_cent_right_png,lord_speak_no_call_left_png,lord_speak_no_call_right_png,lord_speak_one_cent_left_png,lord_speak_one_cent_right_png,lord_speak_pass_left_png,lord_speak_pass_right_png,lord_speak_three_cent_left_png,lord_speak_three_cent_right_png,lord_speak_two_cent_left_png,cards_num_fnt,lord_clock_red_bg_png,lord_clock_bg_png,clock_num_green_font_fnt,clock_num_red_font_fnt,lord_card_heart_2_small_png,lord_card_heart_2_small_new_png,lord_card_heart_3_small_png,lord_card_heart_3_small_new_png,lord_card_heart_4_small_png,lord_card_heart_4_small_new_png,lord_card_heart_5_small_png,lord_card_heart_5_small_new_png,lord_card_heart_6_small_png,lord_card_heart_6_small_new_png,lord_card_heart_7_small_png,lord_card_heart_7_small_new_png,lord_card_heart_8_small_png,lord_card_heart_8_small_new_png,lord_card_heart_9_small_png,lord_card_heart_9_small_new_png,lord_card_heart_10_small_png,lord_card_heart_10_small_new_png,lord_card_heart_j_small_png,lord_card_heart_j_small_new_png,lord_card_heart_k_small_png,lord_card_heart_k_small_new_png,lord_card_heart_q_small_png,lord_card_heart_q_small_new_png,lord_card_joker_big_small_png,lord_card_joker_big_small_new_png,lord_card_joker_small_small_png,lord_card_joker_small_small_new_png,lord_card_selected_png,lord_card_spade_1_small_png,lord_card_spade_1_small_new_png,lord_card_spade_2_small_png,lord_card_spade_2_small_new_png,lord_card_spade_3_small_png,lord_card_spade_3_small_new_png,lord_card_spade_4_small_png,lord_card_spade_4_small_new_png,lord_card_spade_5_small_png,lord_card_spade_5_small_new_png,lord_card_spade_6_small_png,lord_card_spade_6_small_new_png,lord_card_spade_7_small_png,lord_card_spade_7_small_new_png,lord_card_spade_8_small_png,lord_card_spade_8_small_new_png,lord_card_spade_9_small_png,lord_card_spade_9_small_new_png,lord_card_spade_10_small_png,lord_card_spade_10_small_new_png,lord_card_spade_j_small_png,lord_card_spade_j_small_new_png,lord_card_spade_k_small_png,lord_card_spade_k_small_new_png,lord_card_spade_q_small_png,lord_card_spade_q_small_new_png,lord_force_call_flag_png,pklord_card_backface_give_big_png,pklord_card_lord_flag_png,lord_anim_card_turn_big_png,lord_bottom_card_backface_png,lord_card_backface_big_png,lord_card_backface_small_png,lord_card_club_1_small_png,lord_card_club_1_small_new_png,lord_card_club_2_small_png,lord_card_club_2_small_new_png,lord_card_club_3_small_png,lord_card_club_3_small_new_png,lord_card_club_4_small_png,lord_card_club_4_small_new_png,lord_card_club_5_small_png,lord_card_club_5_small_new_png,lord_card_club_6_small_png,lord_card_club_6_small_new_png,lord_card_club_7_small_png,lord_card_club_7_small_new_png,lord_card_club_8_small_png,lord_card_club_8_small_new_png,lord_card_club_9_small_png,lord_card_club_9_small_new_png,lord_card_club_10_small_png,lord_card_club_10_small_new_png,lord_card_club_j_small_png,lord_card_club_j_small_new_png,lord_card_club_k_small_png,lord_card_club_k_small_new_png,lord_card_club_q_small_png,lord_card_club_q_small_new_png,lord_card_diamond_1_small_png,lord_card_diamond_1_small_new_png,lord_card_diamond_2_small_png,lord_card_diamond_2_small_new_png,lord_card_diamond_3_small_png,lord_card_diamond_3_small_new_png,lord_card_diamond_4_small_png,lord_card_diamond_4_small_new_png,lord_card_diamond_5_small_png,lord_card_diamond_5_small_new_png,lord_card_diamond_6_small_png,lord_card_diamond_6_small_new_png,lord_card_diamond_7_small_png,lord_card_diamond_7_small_new_png,lord_card_diamond_8_small_png,lord_card_diamond_8_small_new_png,lord_card_diamond_9_small_png,lord_card_diamond_9_small_new_png,lord_card_diamond_10_small_png,lord_card_diamond_10_small_new_png,lord_card_diamond_j_small_png,lord_card_diamond_j_small_new_png,lord_card_diamond_k_small_png,lord_card_diamond_k_small_new_png,lord_card_diamond_q_small_png,lord_card_diamond_q_small_new_png,lord_card_heart_1_small_png,lord_card_heart_1_small_new_png,lord_first_callscore_3_mp3,lord_follow_callscore_1_mp3,lord_follow_callscore_2_mp3,lord_follow_callscore_3_mp3,lord_v_callscore_0_mp3,lord_v_callscore_1_mp3,lord_v_callscore_2_mp3,lord_v_callscore_3_mp3",
+			"name": "game"
 		},
 		{
-			"name":"lord_card_spade_q_png",
-			"type":"image",
-			"url":"assets/card/lord_card_spade_q.png"
+			"keys": "yuyin_png,z_bangzhu_png,z_bangzhu_h_png,Z_queding1_png,z_plus_h_png,z_shezhi_png,z_xiaoxi_png,z_xiaoxi_h_png,z_zhuangshi_png,zhuanzhuanmajiangdabiaotidi_png,bottom_png,box_png,btactivity_png,btcreateroom_png,btddh_png,btfankui_png,btfenxiang_png,btjoingame_png,btxlch_png,btxzdd_png,btzhanji_png,Button_AddGold_png,Button_HomeExit_png,Button_Set_png,chuangjianfangjian_png,CreateRoomBg_png,dingbuuibantoumingdi_png,dttuichu_png,fangka_png,fangkaxiaobeijing_png,ffanghuifangj_png,fightpalyback_png,gamerulebk_png,goumaixiaojiahao_png,hallBg_png,head_img_male_png,hongseanniu_png,hunanmajiang_png,id_png,Img_SetBg_png,Img_TipsBg_png,main_kapai_png,main_meinv_png,main_mianban_png,mingchengbantoujianbian_png,msg_bg_png,z_shezhi_h_png,msg_title_png,paomadengbeijing_png,public_frame_a_png,publick_Back_png,public_frame_head_png,PopupScene_png,UIfengexian_png,user_png,warning_png,xiaolaba_png",
+			"name": "lobby"
+		}
+	],
+	"resources": [
+		{
+			"url": "assets/playview/hllord_play_bg.png",
+			"type": "image",
+			"name": "hllord_play_bg_png"
+		},
+		{
+			"url": "assets/card/lord_card_spade_q.png",
+			"type": "image",
+			"name": "lord_card_spade_q_png"
+		},
+		{
+			"url": "assets/card/lord_card_club_1.png",
+			"type": "image",
+			"name": "lord_card_club_1_png"
+		},
+		{
+			"url": "assets/card/lord_card_club_2.png",
+			"type": "image",
+			"name": "lord_card_club_2_png"
+		},
+		{
+			"url": "assets/card/lord_card_club_3.png",
+			"type": "image",
+			"name": "lord_card_club_3_png"
+		},
+		{
+			"url": "assets/card/lord_card_club_4.png",
+			"type": "image",
+			"name": "lord_card_club_4_png"
+		},
+		{
+			"url": "assets/card/lord_card_club_5.png",
+			"type": "image",
+			"name": "lord_card_club_5_png"
+		},
+		{
+			"url": "assets/card/lord_card_club_6.png",
+			"type": "image",
+			"name": "lord_card_club_6_png"
+		},
+		{
+			"url": "assets/card/lord_card_club_7.png",
+			"type": "image",
+			"name": "lord_card_club_7_png"
+		},
+		{
+			"url": "assets/card/lord_card_club_8.png",
+			"type": "image",
+			"name": "lord_card_club_8_png"
+		},
+		{
+			"url": "assets/card/lord_card_club_9.png",
+			"type": "image",
+			"name": "lord_card_club_9_png"
+		},
+		{
+			"url": "assets/card/lord_card_club_10.png",
+			"type": "image",
+			"name": "lord_card_club_10_png"
+		},
+		{
+			"url": "assets/card/lord_card_club_j.png",
+			"type": "image",
+			"name": "lord_card_club_j_png"
+		},
+		{
+			"url": "assets/card/lord_card_club_k.png",
+			"type": "image",
+			"name": "lord_card_club_k_png"
+		},
+		{
+			"url": "assets/card/lord_card_club_q.png",
+			"type": "image",
+			"name": "lord_card_club_q_png"
+		},
+		{
+			"url": "assets/card/lord_card_diamond_1.png",
+			"type": "image",
+			"name": "lord_card_diamond_1_png"
+		},
+		{
+			"url": "assets/card/lord_card_diamond_2.png",
+			"type": "image",
+			"name": "lord_card_diamond_2_png"
+		},
+		{
+			"url": "assets/card/lord_card_diamond_3.png",
+			"type": "image",
+			"name": "lord_card_diamond_3_png"
+		},
+		{
+			"url": "assets/card/lord_card_diamond_4.png",
+			"type": "image",
+			"name": "lord_card_diamond_4_png"
+		},
+		{
+			"url": "assets/card/lord_card_diamond_5.png",
+			"type": "image",
+			"name": "lord_card_diamond_5_png"
+		},
+		{
+			"url": "assets/card/lord_card_diamond_6.png",
+			"type": "image",
+			"name": "lord_card_diamond_6_png"
+		},
+		{
+			"url": "assets/card/lord_card_diamond_7.png",
+			"type": "image",
+			"name": "lord_card_diamond_7_png"
+		},
+		{
+			"url": "assets/card/lord_card_diamond_8.png",
+			"type": "image",
+			"name": "lord_card_diamond_8_png"
+		},
+		{
+			"url": "assets/card/lord_card_diamond_9.png",
+			"type": "image",
+			"name": "lord_card_diamond_9_png"
+		},
+		{
+			"url": "assets/card/lord_card_diamond_10.png",
+			"type": "image",
+			"name": "lord_card_diamond_10_png"
+		},
+		{
+			"url": "assets/card/lord_card_diamond_j.png",
+			"type": "image",
+			"name": "lord_card_diamond_j_png"
+		},
+		{
+			"url": "assets/card/lord_card_diamond_k.png",
+			"type": "image",
+			"name": "lord_card_diamond_k_png"
+		},
+		{
+			"url": "assets/card/lord_card_diamond_q.png",
+			"type": "image",
+			"name": "lord_card_diamond_q_png"
+		},
+		{
+			"url": "assets/card/lord_card_heart_1.png",
+			"type": "image",
+			"name": "lord_card_heart_1_png"
+		},
+		{
+			"url": "assets/card/lord_card_heart_2.png",
+			"type": "image",
+			"name": "lord_card_heart_2_png"
+		},
+		{
+			"url": "assets/card/lord_card_heart_3.png",
+			"type": "image",
+			"name": "lord_card_heart_3_png"
+		},
+		{
+			"url": "assets/card/lord_card_heart_4.png",
+			"type": "image",
+			"name": "lord_card_heart_4_png"
+		},
+		{
+			"url": "assets/card/lord_card_heart_5.png",
+			"type": "image",
+			"name": "lord_card_heart_5_png"
+		},
+		{
+			"url": "assets/card/lord_card_heart_6.png",
+			"type": "image",
+			"name": "lord_card_heart_6_png"
+		},
+		{
+			"url": "assets/card/lord_card_heart_7.png",
+			"type": "image",
+			"name": "lord_card_heart_7_png"
+		},
+		{
+			"url": "assets/card/lord_card_heart_8.png",
+			"type": "image",
+			"name": "lord_card_heart_8_png"
+		},
+		{
+			"url": "assets/card/lord_card_heart_9.png",
+			"type": "image",
+			"name": "lord_card_heart_9_png"
+		},
+		{
+			"url": "assets/card/lord_card_heart_10.png",
+			"type": "image",
+			"name": "lord_card_heart_10_png"
+		},
+		{
+			"url": "assets/card/lord_card_heart_j.png",
+			"type": "image",
+			"name": "lord_card_heart_j_png"
+		},
+		{
+			"url": "assets/card/lord_card_heart_k.png",
+			"type": "image",
+			"name": "lord_card_heart_k_png"
+		},
+		{
+			"url": "assets/card/lord_card_heart_q.png",
+			"type": "image",
+			"name": "lord_card_heart_q_png"
+		},
+		{
+			"url": "assets/card/lord_card_joker_big_big.png",
+			"type": "image",
+			"name": "lord_card_joker_big_big_png"
+		},
+		{
+			"url": "assets/card/lord_card_joker_small_big.png",
+			"type": "image",
+			"name": "lord_card_joker_small_big_png"
+		},
+		{
+			"url": "assets/card/lord_card_spade_1.png",
+			"type": "image",
+			"name": "lord_card_spade_1_png"
+		},
+		{
+			"url": "assets/card/lord_card_spade_2.png",
+			"type": "image",
+			"name": "lord_card_spade_2_png"
+		},
+		{
+			"url": "assets/card/lord_card_spade_3.png",
+			"type": "image",
+			"name": "lord_card_spade_3_png"
+		},
+		{
+			"url": "assets/card/lord_card_spade_4.png",
+			"type": "image",
+			"name": "lord_card_spade_4_png"
+		},
+		{
+			"url": "assets/card/lord_card_spade_5.png",
+			"type": "image",
+			"name": "lord_card_spade_5_png"
+		},
+		{
+			"url": "assets/card/lord_card_spade_6.png",
+			"type": "image",
+			"name": "lord_card_spade_6_png"
+		},
+		{
+			"url": "assets/card/lord_card_spade_7.png",
+			"type": "image",
+			"name": "lord_card_spade_7_png"
+		},
+		{
+			"url": "assets/card/lord_card_spade_8.png",
+			"type": "image",
+			"name": "lord_card_spade_8_png"
+		},
+		{
+			"url": "assets/card/lord_card_spade_9.png",
+			"type": "image",
+			"name": "lord_card_spade_9_png"
+		},
+		{
+			"url": "assets/card/lord_card_spade_10.png",
+			"type": "image",
+			"name": "lord_card_spade_10_png"
+		},
+		{
+			"url": "assets/card/lord_card_spade_j.png",
+			"type": "image",
+			"name": "lord_card_spade_j_png"
+		},
+		{
+			"url": "assets/card/lord_card_spade_k.png",
+			"type": "image",
+			"name": "lord_card_spade_k_png"
+		},
+		{
+			"url": "assets/btn/lord_btn_callscore_3_n.png",
+			"type": "image",
+			"name": "lord_btn_callscore_3_n_png"
+		},
+		{
+			"url": "assets/btn/lord_btn_callscore_0_d.png",
+			"type": "image",
+			"name": "lord_btn_callscore_0_d_png"
+		},
+		{
+			"url": "assets/btn/lord_btn_callscore_0_disable.png",
+			"type": "image",
+			"name": "lord_btn_callscore_0_disable_png"
+		},
+		{
+			"url": "assets/btn/lord_btn_callscore_0_n.png",
+			"type": "image",
+			"name": "lord_btn_callscore_0_n_png"
 		},
 		{
-			"name":"lord_card_club_1_png",
-			"type":"image",
-			"url":"assets/card/lord_card_club_1.png"
+			"url": "assets/btn/lord_btn_callscore_1_d.png",
+			"type": "image",
+			"name": "lord_btn_callscore_1_d_png"
 		},
 		{
-			"name":"lord_card_club_2_png",
-			"type":"image",
-			"url":"assets/card/lord_card_club_2.png"
+			"url": "assets/btn/lord_btn_callscore_1_disable.png",
+			"type": "image",
+			"name": "lord_btn_callscore_1_disable_png"
 		},
 		{
-			"name":"lord_card_club_3_png",
-			"type":"image",
-			"url":"assets/card/lord_card_club_3.png"
+			"url": "assets/btn/lord_btn_callscore_1_n.png",
+			"type": "image",
+			"name": "lord_btn_callscore_1_n_png"
 		},
 		{
-			"name":"lord_card_club_4_png",
-			"type":"image",
-			"url":"assets/card/lord_card_club_4.png"
+			"url": "assets/btn/lord_btn_callscore_2_d.png",
+			"type": "image",
+			"name": "lord_btn_callscore_2_d_png"
 		},
 		{
-			"name":"lord_card_club_5_png",
-			"type":"image",
-			"url":"assets/card/lord_card_club_5.png"
+			"url": "assets/btn/lord_btn_callscore_2_disable.png",
+			"type": "image",
+			"name": "lord_btn_callscore_2_disable_png"
 		},
 		{
-			"name":"lord_card_club_6_png",
-			"type":"image",
-			"url":"assets/card/lord_card_club_6.png"
+			"url": "assets/btn/lord_btn_callscore_2_n.png",
+			"type": "image",
+			"name": "lord_btn_callscore_2_n_png"
 		},
 		{
-			"name":"lord_card_club_7_png",
-			"type":"image",
-			"url":"assets/card/lord_card_club_7.png"
+			"url": "assets/btn/lord_btn_callscore_3_d.png",
+			"type": "image",
+			"name": "lord_btn_callscore_3_d_png"
 		},
 		{
-			"name":"lord_card_club_8_png",
-			"type":"image",
-			"url":"assets/card/lord_card_club_8.png"
+			"url": "assets/playerinfo/lord_lz_playerinfo_icon_lord_face_to_right.png",
+			"type": "image",
+			"name": "lord_lz_playerinfo_icon_lord_face_to_right_png"
 		},
 		{
-			"name":"lord_card_club_9_png",
-			"type":"image",
-			"url":"assets/card/lord_card_club_9.png"
+			"url": "assets/playerinfo/lord_lz_playerinfo_icon_farmer_face_to_right.png",
+			"type": "image",
+			"name": "lord_lz_playerinfo_icon_farmer_face_to_right_png"
 		},
 		{
-			"name":"lord_card_club_10_png",
-			"type":"image",
-			"url":"assets/card/lord_card_club_10.png"
+			"url": "assets/btn/lord_btn_prompt_n.png",
+			"type": "image",
+			"name": "lord_btn_prompt_n_png"
 		},
 		{
-			"name":"lord_card_club_j_png",
-			"type":"image",
-			"url":"assets/card/lord_card_club_j.png"
+			"url": "assets/btn/lord_btn_nobig_d.png",
+			"type": "image",
+			"name": "lord_btn_nobig_d_png"
 		},
 		{
-			"name":"lord_card_club_k_png",
-			"type":"image",
-			"url":"assets/card/lord_card_club_k.png"
+			"url": "assets/btn/lord_btn_nobig_n.png",
+			"type": "image",
+			"name": "lord_btn_nobig_n_png"
 		},
 		{
-			"name":"lord_card_club_q_png",
-			"type":"image",
-			"url":"assets/card/lord_card_club_q.png"
+			"url": "assets/btn/lord_btn_pass_d.png",
+			"type": "image",
+			"name": "lord_btn_pass_d_png"
 		},
 		{
-			"name":"lord_card_diamond_1_png",
-			"type":"image",
-			"url":"assets/card/lord_card_diamond_1.png"
+			"url": "assets/btn/lord_btn_pass_disable.png",
+			"type": "image",
+			"name": "lord_btn_pass_disable_png"
 		},
 		{
-			"name":"lord_card_diamond_2_png",
-			"type":"image",
-			"url":"assets/card/lord_card_diamond_2.png"
+			"url": "assets/btn/lord_btn_pass_n.png",
+			"type": "image",
+			"name": "lord_btn_pass_n_png"
 		},
 		{
-			"name":"lord_card_diamond_3_png",
-			"type":"image",
-			"url":"assets/card/lord_card_diamond_3.png"
+			"url": "assets/btn/lord_btn_product_d.png",
+			"type": "image",
+			"name": "lord_btn_product_d_png"
 		},
 		{
-			"name":"lord_card_diamond_4_png",
-			"type":"image",
-			"url":"assets/card/lord_card_diamond_4.png"
+			"url": "assets/btn/lord_btn_product_disable.png",
+			"type": "image",
+			"name": "lord_btn_product_disable_png"
 		},
 		{
-			"name":"lord_card_diamond_5_png",
-			"type":"image",
-			"url":"assets/card/lord_card_diamond_5.png"
+			"url": "assets/btn/lord_btn_product_n.png",
+			"type": "image",
+			"name": "lord_btn_product_n_png"
 		},
 		{
-			"name":"lord_card_diamond_6_png",
-			"type":"image",
-			"url":"assets/card/lord_card_diamond_6.png"
+			"url": "assets/btn/lord_btn_prompt_d.png",
+			"type": "image",
+			"name": "lord_btn_prompt_d_png"
 		},
 		{
-			"name":"lord_card_diamond_7_png",
-			"type":"image",
-			"url":"assets/card/lord_card_diamond_7.png"
+			"url": "assets/btn/lord_btn_prompt_disable.png",
+			"type": "image",
+			"name": "lord_btn_prompt_disable_png"
 		},
 		{
-			"name":"lord_card_diamond_8_png",
-			"type":"image",
-			"url":"assets/card/lord_card_diamond_8.png"
+			"url": "assets/speak/lord_speak_two_cent_right.png",
+			"type": "image",
+			"name": "lord_speak_two_cent_right_png"
 		},
 		{
-			"name":"lord_card_diamond_9_png",
-			"type":"image",
-			"url":"assets/card/lord_card_diamond_9.png"
+			"url": "assets/speak/lord_speak_no_call_left.png",
+			"type": "image",
+			"name": "lord_speak_no_call_left_png"
 		},
 		{
-			"name":"lord_card_diamond_10_png",
-			"type":"image",
-			"url":"assets/card/lord_card_diamond_10.png"
+			"url": "assets/speak/lord_speak_no_call_right.png",
+			"type": "image",
+			"name": "lord_speak_no_call_right_png"
 		},
 		{
-			"name":"lord_card_diamond_j_png",
-			"type":"image",
-			"url":"assets/card/lord_card_diamond_j.png"
+			"url": "assets/speak/lord_speak_one_cent_left.png",
+			"type": "image",
+			"name": "lord_speak_one_cent_left_png"
 		},
 		{
-			"name":"lord_card_diamond_k_png",
-			"type":"image",
-			"url":"assets/card/lord_card_diamond_k.png"
+			"url": "assets/speak/lord_speak_one_cent_right.png",
+			"type": "image",
+			"name": "lord_speak_one_cent_right_png"
 		},
 		{
-			"name":"lord_card_diamond_q_png",
-			"type":"image",
-			"url":"assets/card/lord_card_diamond_q.png"
+			"url": "assets/speak/lord_speak_pass_left.png",
+			"type": "image",
+			"name": "lord_speak_pass_left_png"
 		},
 		{
-			"name":"lord_card_heart_1_png",
-			"type":"image",
-			"url":"assets/card/lord_card_heart_1.png"
+			"url": "assets/speak/lord_speak_pass_right.png",
+			"type": "image",
+			"name": "lord_speak_pass_right_png"
 		},
 		{
-			"name":"lord_card_heart_2_png",
-			"type":"image",
-			"url":"assets/card/lord_card_heart_2.png"
+			"url": "assets/speak/lord_speak_three_cent_left.png",
+			"type": "image",
+			"name": "lord_speak_three_cent_left_png"
 		},
 		{
-			"name":"lord_card_heart_3_png",
-			"type":"image",
-			"url":"assets/card/lord_card_heart_3.png"
+			"url": "assets/speak/lord_speak_three_cent_right.png",
+			"type": "image",
+			"name": "lord_speak_three_cent_right_png"
 		},
 		{
-			"name":"lord_card_heart_4_png",
-			"type":"image",
-			"url":"assets/card/lord_card_heart_4.png"
+			"url": "assets/speak/lord_speak_two_cent_left.png",
+			"type": "image",
+			"name": "lord_speak_two_cent_left_png"
 		},
 		{
-			"name":"lord_card_heart_5_png",
-			"type":"image",
-			"url":"assets/card/lord_card_heart_5.png"
+			"url": "assets/fonts/cards_num.fnt",
+			"type": "font",
+			"name": "cards_num_fnt"
 		},
 		{
-			"name":"lord_card_heart_6_png",
-			"type":"image",
-			"url":"assets/card/lord_card_heart_6.png"
+			"url": "assets/clock/lord_clock_red_bg.png",
+			"type": "image",
+			"name": "lord_clock_red_bg_png"
 		},
 		{
-			"name":"lord_card_heart_7_png",
-			"type":"image",
-			"url":"assets/card/lord_card_heart_7.png"
+			"url": "assets/clock/lord_clock_bg.png",
+			"type": "image",
+			"name": "lord_clock_bg_png"
 		},
 		{
-			"name":"lord_card_heart_8_png",
-			"type":"image",
-			"url":"assets/card/lord_card_heart_8.png"
+			"url": "assets/fonts/clock_num_green_font.fnt",
+			"type": "font",
+			"name": "clock_num_green_font_fnt"
 		},
 		{
-			"name":"lord_card_heart_9_png",
-			"type":"image",
-			"url":"assets/card/lord_card_heart_9.png"
+			"url": "assets/fonts/clock_num_red_font.fnt",
+			"type": "font",
+			"name": "clock_num_red_font_fnt"
 		},
 		{
-			"name":"lord_card_heart_10_png",
-			"type":"image",
-			"url":"assets/card/lord_card_heart_10.png"
+			"url": "assets/card/lord_card_heart_2_small.png",
+			"type": "image",
+			"name": "lord_card_heart_2_small_png"
 		},
 		{
-			"name":"lord_card_heart_j_png",
-			"type":"image",
-			"url":"assets/card/lord_card_heart_j.png"
+			"url": "assets/card/lord_card_heart_2_small_new.png",
+			"type": "image",
+			"name": "lord_card_heart_2_small_new_png"
 		},
 		{
-			"name":"lord_card_heart_k_png",
-			"type":"image",
-			"url":"assets/card/lord_card_heart_k.png"
+			"url": "assets/card/lord_card_heart_3_small.png",
+			"type": "image",
+			"name": "lord_card_heart_3_small_png"
 		},
 		{
-			"name":"lord_card_heart_q_png",
-			"type":"image",
-			"url":"assets/card/lord_card_heart_q.png"
+			"url": "assets/card/lord_card_heart_3_small_new.png",
+			"type": "image",
+			"name": "lord_card_heart_3_small_new_png"
 		},
 		{
-			"name":"lord_card_joker_big_big_png",
-			"type":"image",
-			"url":"assets/card/lord_card_joker_big_big.png"
+			"url": "assets/card/lord_card_heart_4_small.png",
+			"type": "image",
+			"name": "lord_card_heart_4_small_png"
 		},
 		{
-			"name":"lord_card_joker_small_big_png",
-			"type":"image",
-			"url":"assets/card/lord_card_joker_small_big.png"
+			"url": "assets/card/lord_card_heart_4_small_new.png",
+			"type": "image",
+			"name": "lord_card_heart_4_small_new_png"
 		},
 		{
-			"name":"lord_card_spade_1_png",
-			"type":"image",
-			"url":"assets/card/lord_card_spade_1.png"
+			"url": "assets/card/lord_card_heart_5_small.png",
+			"type": "image",
+			"name": "lord_card_heart_5_small_png"
 		},
 		{
-			"name":"lord_card_spade_2_png",
-			"type":"image",
-			"url":"assets/card/lord_card_spade_2.png"
+			"url": "assets/card/lord_card_heart_5_small_new.png",
+			"type": "image",
+			"name": "lord_card_heart_5_small_new_png"
 		},
 		{
-			"name":"lord_card_spade_3_png",
-			"type":"image",
-			"url":"assets/card/lord_card_spade_3.png"
+			"url": "assets/card/lord_card_heart_6_small.png",
+			"type": "image",
+			"name": "lord_card_heart_6_small_png"
 		},
 		{
-			"name":"lord_card_spade_4_png",
-			"type":"image",
-			"url":"assets/card/lord_card_spade_4.png"
+			"url": "assets/card/lord_card_heart_6_small_new.png",
+			"type": "image",
+			"name": "lord_card_heart_6_small_new_png"
 		},
 		{
-			"name":"lord_card_spade_5_png",
-			"type":"image",
-			"url":"assets/card/lord_card_spade_5.png"
+			"url": "assets/card/lord_card_heart_7_small.png",
+			"type": "image",
+			"name": "lord_card_heart_7_small_png"
 		},
 		{
-			"name":"lord_card_spade_6_png",
-			"type":"image",
-			"url":"assets/card/lord_card_spade_6.png"
+			"url": "assets/card/lord_card_heart_7_small_new.png",
+			"type": "image",
+			"name": "lord_card_heart_7_small_new_png"
 		},
 		{
-			"name":"lord_card_spade_7_png",
-			"type":"image",
-			"url":"assets/card/lord_card_spade_7.png"
+			"url": "assets/card/lord_card_heart_8_small.png",
+			"type": "image",
+			"name": "lord_card_heart_8_small_png"
 		},
 		{
-			"name":"lord_card_spade_8_png",
-			"type":"image",
-			"url":"assets/card/lord_card_spade_8.png"
+			"url": "assets/card/lord_card_heart_8_small_new.png",
+			"type": "image",
+			"name": "lord_card_heart_8_small_new_png"
 		},
 		{
-			"name":"lord_card_spade_9_png",
-			"type":"image",
-			"url":"assets/card/lord_card_spade_9.png"
+			"url": "assets/card/lord_card_heart_9_small.png",
+			"type": "image",
+			"name": "lord_card_heart_9_small_png"
 		},
 		{
-			"name":"lord_card_spade_10_png",
-			"type":"image",
-			"url":"assets/card/lord_card_spade_10.png"
+			"url": "assets/card/lord_card_heart_9_small_new.png",
+			"type": "image",
+			"name": "lord_card_heart_9_small_new_png"
 		},
 		{
-			"name":"lord_card_spade_j_png",
-			"type":"image",
-			"url":"assets/card/lord_card_spade_j.png"
+			"url": "assets/card/lord_card_heart_10_small.png",
+			"type": "image",
+			"name": "lord_card_heart_10_small_png"
 		},
 		{
-			"name":"lord_card_spade_k_png",
-			"type":"image",
-			"url":"assets/card/lord_card_spade_k.png"
+			"url": "assets/card/lord_card_heart_10_small_new.png",
+			"type": "image",
+			"name": "lord_card_heart_10_small_new_png"
 		},
 		{
-			"name":"lord_btn_callscore_3_n_png",
-			"type":"image",
-			"url":"assets/btn/lord_btn_callscore_3_n.png"
+			"url": "assets/card/lord_card_heart_j_small.png",
+			"type": "image",
+			"name": "lord_card_heart_j_small_png"
 		},
 		{
-			"name":"lord_btn_callscore_0_d_png",
-			"type":"image",
-			"url":"assets/btn/lord_btn_callscore_0_d.png"
+			"url": "assets/card/lord_card_heart_j_small_new.png",
+			"type": "image",
+			"name": "lord_card_heart_j_small_new_png"
 		},
 		{
-			"name":"lord_btn_callscore_0_disable_png",
-			"type":"image",
-			"url":"assets/btn/lord_btn_callscore_0_disable.png"
+			"url": "assets/card/lord_card_heart_k_small.png",
+			"type": "image",
+			"name": "lord_card_heart_k_small_png"
 		},
 		{
-			"name":"lord_btn_callscore_0_n_png",
-			"type":"image",
-			"url":"assets/btn/lord_btn_callscore_0_n.png"
+			"url": "assets/card/lord_card_heart_k_small_new.png",
+			"type": "image",
+			"name": "lord_card_heart_k_small_new_png"
 		},
 		{
-			"name":"lord_btn_callscore_1_d_png",
-			"type":"image",
-			"url":"assets/btn/lord_btn_callscore_1_d.png"
+			"url": "assets/card/lord_card_heart_q_small.png",
+			"type": "image",
+			"name": "lord_card_heart_q_small_png"
 		},
 		{
-			"name":"lord_btn_callscore_1_disable_png",
-			"type":"image",
-			"url":"assets/btn/lord_btn_callscore_1_disable.png"
+			"url": "assets/card/lord_card_heart_q_small_new.png",
+			"type": "image",
+			"name": "lord_card_heart_q_small_new_png"
 		},
 		{
-			"name":"lord_btn_callscore_1_n_png",
-			"type":"image",
-			"url":"assets/btn/lord_btn_callscore_1_n.png"
+			"url": "assets/card/lord_card_joker_big_small.png",
+			"type": "image",
+			"name": "lord_card_joker_big_small_png"
 		},
 		{
-			"name":"lord_btn_callscore_2_d_png",
-			"type":"image",
-			"url":"assets/btn/lord_btn_callscore_2_d.png"
+			"url": "assets/card/lord_card_joker_big_small_new.png",
+			"type": "image",
+			"name": "lord_card_joker_big_small_new_png"
 		},
 		{
-			"name":"lord_btn_callscore_2_disable_png",
-			"type":"image",
-			"url":"assets/btn/lord_btn_callscore_2_disable.png"
+			"url": "assets/card/lord_card_joker_small_small.png",
+			"type": "image",
+			"name": "lord_card_joker_small_small_png"
 		},
 		{
-			"name":"lord_btn_callscore_2_n_png",
-			"type":"image",
-			"url":"assets/btn/lord_btn_callscore_2_n.png"
+			"url": "assets/card/lord_card_joker_small_small_new.png",
+			"type": "image",
+			"name": "lord_card_joker_small_small_new_png"
 		},
 		{
-			"name":"lord_btn_callscore_3_d_png",
-			"type":"image",
-			"url":"assets/btn/lord_btn_callscore_3_d.png"
+			"url": "assets/card/lord_card_selected.png",
+			"type": "image",
+			"name": "lord_card_selected_png"
 		},
 		{
-			"name":"lord_lz_playerinfo_icon_lord_face_to_right_png",
-			"type":"image",
-			"url":"assets/playerinfo/lord_lz_playerinfo_icon_lord_face_to_right.png"
+			"url": "assets/card/lord_card_spade_1_small.png",
+			"type": "image",
+			"name": "lord_card_spade_1_small_png"
 		},
 		{
-			"name":"lord_lz_playerinfo_icon_farmer_face_to_right_png",
-			"type":"image",
-			"url":"assets/playerinfo/lord_lz_playerinfo_icon_farmer_face_to_right.png"
+			"url": "assets/card/lord_card_spade_1_small_new.png",
+			"type": "image",
+			"name": "lord_card_spade_1_small_new_png"
 		},
 		{
-			"name":"lord_btn_prompt_n_png",
-			"type":"image",
-			"url":"assets/btn/lord_btn_prompt_n.png"
+			"url": "assets/card/lord_card_spade_2_small.png",
+			"type": "image",
+			"name": "lord_card_spade_2_small_png"
 		},
 		{
-			"name":"lord_btn_nobig_d_png",
-			"type":"image",
-			"url":"assets/btn/lord_btn_nobig_d.png"
+			"url": "assets/card/lord_card_spade_2_small_new.png",
+			"type": "image",
+			"name": "lord_card_spade_2_small_new_png"
 		},
 		{
-			"name":"lord_btn_nobig_n_png",
-			"type":"image",
-			"url":"assets/btn/lord_btn_nobig_n.png"
+			"url": "assets/card/lord_card_spade_3_small.png",
+			"type": "image",
+			"name": "lord_card_spade_3_small_png"
 		},
 		{
-			"name":"lord_btn_pass_d_png",
-			"type":"image",
-			"url":"assets/btn/lord_btn_pass_d.png"
+			"url": "assets/card/lord_card_spade_3_small_new.png",
+			"type": "image",
+			"name": "lord_card_spade_3_small_new_png"
 		},
 		{
-			"name":"lord_btn_pass_disable_png",
-			"type":"image",
-			"url":"assets/btn/lord_btn_pass_disable.png"
+			"url": "assets/card/lord_card_spade_4_small.png",
+			"type": "image",
+			"name": "lord_card_spade_4_small_png"
 		},
 		{
-			"name":"lord_btn_pass_n_png",
-			"type":"image",
-			"url":"assets/btn/lord_btn_pass_n.png"
+			"url": "assets/card/lord_card_spade_4_small_new.png",
+			"type": "image",
+			"name": "lord_card_spade_4_small_new_png"
 		},
 		{
-			"name":"lord_btn_product_d_png",
-			"type":"image",
-			"url":"assets/btn/lord_btn_product_d.png"
+			"url": "assets/card/lord_card_spade_5_small.png",
+			"type": "image",
+			"name": "lord_card_spade_5_small_png"
 		},
 		{
-			"name":"lord_btn_product_disable_png",
-			"type":"image",
-			"url":"assets/btn/lord_btn_product_disable.png"
+			"url": "assets/card/lord_card_spade_5_small_new.png",
+			"type": "image",
+			"name": "lord_card_spade_5_small_new_png"
 		},
 		{
-			"name":"lord_btn_product_n_png",
-			"type":"image",
-			"url":"assets/btn/lord_btn_product_n.png"
+			"url": "assets/card/lord_card_spade_6_small.png",
+			"type": "image",
+			"name": "lord_card_spade_6_small_png"
 		},
 		{
-			"name":"lord_btn_prompt_d_png",
-			"type":"image",
-			"url":"assets/btn/lord_btn_prompt_d.png"
+			"url": "assets/card/lord_card_spade_6_small_new.png",
+			"type": "image",
+			"name": "lord_card_spade_6_small_new_png"
 		},
 		{
-			"name":"lord_btn_prompt_disable_png",
-			"type":"image",
-			"url":"assets/btn/lord_btn_prompt_disable.png"
+			"url": "assets/card/lord_card_spade_7_small.png",
+			"type": "image",
+			"name": "lord_card_spade_7_small_png"
 		},
 		{
-			"name":"lord_speak_two_cent_right_png",
-			"type":"image",
-			"url":"assets/speak/lord_speak_two_cent_right.png"
+			"url": "assets/card/lord_card_spade_7_small_new.png",
+			"type": "image",
+			"name": "lord_card_spade_7_small_new_png"
 		},
 		{
-			"name":"lord_speak_no_call_left_png",
-			"type":"image",
-			"url":"assets/speak/lord_speak_no_call_left.png"
+			"url": "assets/card/lord_card_spade_8_small.png",
+			"type": "image",
+			"name": "lord_card_spade_8_small_png"
 		},
 		{
-			"name":"lord_speak_no_call_right_png",
-			"type":"image",
-			"url":"assets/speak/lord_speak_no_call_right.png"
+			"url": "assets/card/lord_card_spade_8_small_new.png",
+			"type": "image",
+			"name": "lord_card_spade_8_small_new_png"
 		},
 		{
-			"name":"lord_speak_one_cent_left_png",
-			"type":"image",
-			"url":"assets/speak/lord_speak_one_cent_left.png"
+			"url": "assets/card/lord_card_spade_9_small.png",
+			"type": "image",
+			"name": "lord_card_spade_9_small_png"
 		},
 		{
-			"name":"lord_speak_one_cent_right_png",
-			"type":"image",
-			"url":"assets/speak/lord_speak_one_cent_right.png"
+			"url": "assets/card/lord_card_spade_9_small_new.png",
+			"type": "image",
+			"name": "lord_card_spade_9_small_new_png"
 		},
 		{
-			"name":"lord_speak_pass_left_png",
-			"type":"image",
-			"url":"assets/speak/lord_speak_pass_left.png"
+			"url": "assets/card/lord_card_spade_10_small.png",
+			"type": "image",
+			"name": "lord_card_spade_10_small_png"
 		},
 		{
-			"name":"lord_speak_pass_right_png",
-			"type":"image",
-			"url":"assets/speak/lord_speak_pass_right.png"
+			"url": "assets/card/lord_card_spade_10_small_new.png",
+			"type": "image",
+			"name": "lord_card_spade_10_small_new_png"
 		},
 		{
-			"name":"lord_speak_three_cent_left_png",
-			"type":"image",
-			"url":"assets/speak/lord_speak_three_cent_left.png"
+			"url": "assets/card/lord_card_spade_j_small.png",
+			"type": "image",
+			"name": "lord_card_spade_j_small_png"
 		},
 		{
-			"name":"lord_speak_three_cent_right_png",
-			"type":"image",
-			"url":"assets/speak/lord_speak_three_cent_right.png"
+			"url": "assets/card/lord_card_spade_j_small_new.png",
+			"type": "image",
+			"name": "lord_card_spade_j_small_new_png"
 		},
 		{
-			"name":"lord_speak_two_cent_left_png",
-			"type":"image",
-			"url":"assets/speak/lord_speak_two_cent_left.png"
+			"url": "assets/card/lord_card_spade_k_small.png",
+			"type": "image",
+			"name": "lord_card_spade_k_small_png"
 		},
 		{
-			"name":"cards_num_fnt",
-			"type":"font",
-			"url":"assets/fonts/cards_num.fnt"
+			"url": "assets/card/lord_card_spade_k_small_new.png",
+			"type": "image",
+			"name": "lord_card_spade_k_small_new_png"
 		},
 		{
-			"name":"lord_clock_red_bg_png",
-			"type":"image",
-			"url":"assets/clock/lord_clock_red_bg.png"
+			"url": "assets/card/lord_card_spade_q_small.png",
+			"type": "image",
+			"name": "lord_card_spade_q_small_png"
 		},
 		{
-			"name":"lord_clock_bg_png",
-			"type":"image",
-			"url":"assets/clock/lord_clock_bg.png"
+			"url": "assets/card/lord_card_spade_q_small_new.png",
+			"type": "image",
+			"name": "lord_card_spade_q_small_new_png"
 		},
 		{
-			"name":"clock_num_green_font_fnt",
-			"type":"font",
-			"url":"assets/fonts/clock_num_green_font.fnt"
+			"url": "assets/card/lord_force_call_flag.png",
+			"type": "image",
+			"name": "lord_force_call_flag_png"
 		},
 		{
-			"name":"clock_num_red_font_fnt",
-			"type":"font",
-			"url":"assets/fonts/clock_num_red_font.fnt"
+			"url": "assets/card/pklord_card_backface_give_big.png",
+			"type": "image",
+			"name": "pklord_card_backface_give_big_png"
 		},
 		{
-			"name":"lord_card_heart_2_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_heart_2_small.png"
+			"url": "assets/card/pklord_card_lord_flag.png",
+			"type": "image",
+			"name": "pklord_card_lord_flag_png"
 		},
 		{
-			"name":"lord_card_heart_2_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_heart_2_small_new.png"
+			"url": "assets/card/lord_anim_card_turn_big.png",
+			"type": "image",
+			"name": "lord_anim_card_turn_big_png"
 		},
 		{
-			"name":"lord_card_heart_3_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_heart_3_small.png"
+			"url": "assets/card/lord_bottom_card_backface.png",
+			"type": "image",
+			"name": "lord_bottom_card_backface_png"
 		},
 		{
-			"name":"lord_card_heart_3_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_heart_3_small_new.png"
+			"url": "assets/card/lord_card_backface_big.png",
+			"type": "image",
+			"name": "lord_card_backface_big_png"
 		},
 		{
-			"name":"lord_card_heart_4_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_heart_4_small.png"
+			"url": "assets/card/lord_card_backface_small.png",
+			"type": "image",
+			"name": "lord_card_backface_small_png"
 		},
 		{
-			"name":"lord_card_heart_4_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_heart_4_small_new.png"
+			"url": "assets/card/lord_card_club_1_small.png",
+			"type": "image",
+			"name": "lord_card_club_1_small_png"
 		},
 		{
-			"name":"lord_card_heart_5_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_heart_5_small.png"
+			"url": "assets/card/lord_card_club_1_small_new.png",
+			"type": "image",
+			"name": "lord_card_club_1_small_new_png"
 		},
 		{
-			"name":"lord_card_heart_5_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_heart_5_small_new.png"
+			"url": "assets/card/lord_card_club_2_small.png",
+			"type": "image",
+			"name": "lord_card_club_2_small_png"
 		},
 		{
-			"name":"lord_card_heart_6_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_heart_6_small.png"
+			"url": "assets/card/lord_card_club_2_small_new.png",
+			"type": "image",
+			"name": "lord_card_club_2_small_new_png"
 		},
 		{
-			"name":"lord_card_heart_6_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_heart_6_small_new.png"
+			"url": "assets/card/lord_card_club_3_small.png",
+			"type": "image",
+			"name": "lord_card_club_3_small_png"
 		},
 		{
-			"name":"lord_card_heart_7_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_heart_7_small.png"
+			"url": "assets/card/lord_card_club_3_small_new.png",
+			"type": "image",
+			"name": "lord_card_club_3_small_new_png"
 		},
 		{
-			"name":"lord_card_heart_7_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_heart_7_small_new.png"
+			"url": "assets/card/lord_card_club_4_small.png",
+			"type": "image",
+			"name": "lord_card_club_4_small_png"
 		},
 		{
-			"name":"lord_card_heart_8_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_heart_8_small.png"
+			"url": "assets/card/lord_card_club_4_small_new.png",
+			"type": "image",
+			"name": "lord_card_club_4_small_new_png"
 		},
 		{
-			"name":"lord_card_heart_8_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_heart_8_small_new.png"
+			"url": "assets/card/lord_card_club_5_small.png",
+			"type": "image",
+			"name": "lord_card_club_5_small_png"
 		},
 		{
-			"name":"lord_card_heart_9_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_heart_9_small.png"
+			"url": "assets/card/lord_card_club_5_small_new.png",
+			"type": "image",
+			"name": "lord_card_club_5_small_new_png"
 		},
 		{
-			"name":"lord_card_heart_9_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_heart_9_small_new.png"
+			"url": "assets/card/lord_card_club_6_small.png",
+			"type": "image",
+			"name": "lord_card_club_6_small_png"
 		},
 		{
-			"name":"lord_card_heart_10_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_heart_10_small.png"
+			"url": "assets/card/lord_card_club_6_small_new.png",
+			"type": "image",
+			"name": "lord_card_club_6_small_new_png"
 		},
 		{
-			"name":"lord_card_heart_10_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_heart_10_small_new.png"
+			"url": "assets/card/lord_card_club_7_small.png",
+			"type": "image",
+			"name": "lord_card_club_7_small_png"
 		},
 		{
-			"name":"lord_card_heart_j_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_heart_j_small.png"
+			"url": "assets/card/lord_card_club_7_small_new.png",
+			"type": "image",
+			"name": "lord_card_club_7_small_new_png"
 		},
 		{
-			"name":"lord_card_heart_j_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_heart_j_small_new.png"
+			"url": "assets/card/lord_card_club_8_small.png",
+			"type": "image",
+			"name": "lord_card_club_8_small_png"
 		},
 		{
-			"name":"lord_card_heart_k_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_heart_k_small.png"
+			"url": "assets/card/lord_card_club_8_small_new.png",
+			"type": "image",
+			"name": "lord_card_club_8_small_new_png"
 		},
 		{
-			"name":"lord_card_heart_k_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_heart_k_small_new.png"
+			"url": "assets/card/lord_card_club_9_small.png",
+			"type": "image",
+			"name": "lord_card_club_9_small_png"
 		},
 		{
-			"name":"lord_card_heart_q_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_heart_q_small.png"
+			"url": "assets/card/lord_card_club_9_small_new.png",
+			"type": "image",
+			"name": "lord_card_club_9_small_new_png"
 		},
 		{
-			"name":"lord_card_heart_q_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_heart_q_small_new.png"
+			"url": "assets/card/lord_card_club_10_small.png",
+			"type": "image",
+			"name": "lord_card_club_10_small_png"
 		},
 		{
-			"name":"lord_card_joker_big_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_joker_big_small.png"
+			"url": "assets/card/lord_card_club_10_small_new.png",
+			"type": "image",
+			"name": "lord_card_club_10_small_new_png"
 		},
 		{
-			"name":"lord_card_joker_big_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_joker_big_small_new.png"
+			"url": "assets/card/lord_card_club_j_small.png",
+			"type": "image",
+			"name": "lord_card_club_j_small_png"
 		},
 		{
-			"name":"lord_card_joker_small_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_joker_small_small.png"
+			"url": "assets/card/lord_card_club_j_small_new.png",
+			"type": "image",
+			"name": "lord_card_club_j_small_new_png"
 		},
 		{
-			"name":"lord_card_joker_small_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_joker_small_small_new.png"
+			"url": "assets/card/lord_card_club_k_small.png",
+			"type": "image",
+			"name": "lord_card_club_k_small_png"
 		},
 		{
-			"name":"lord_card_selected_png",
-			"type":"image",
-			"url":"assets/card/lord_card_selected.png"
+			"url": "assets/card/lord_card_club_k_small_new.png",
+			"type": "image",
+			"name": "lord_card_club_k_small_new_png"
 		},
 		{
-			"name":"lord_card_spade_1_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_spade_1_small.png"
+			"url": "assets/card/lord_card_club_q_small.png",
+			"type": "image",
+			"name": "lord_card_club_q_small_png"
 		},
 		{
-			"name":"lord_card_spade_1_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_spade_1_small_new.png"
+			"url": "assets/card/lord_card_club_q_small_new.png",
+			"type": "image",
+			"name": "lord_card_club_q_small_new_png"
 		},
 		{
-			"name":"lord_card_spade_2_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_spade_2_small.png"
+			"url": "assets/card/lord_card_diamond_1_small.png",
+			"type": "image",
+			"name": "lord_card_diamond_1_small_png"
 		},
 		{
-			"name":"lord_card_spade_2_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_spade_2_small_new.png"
+			"url": "assets/card/lord_card_diamond_1_small_new.png",
+			"type": "image",
+			"name": "lord_card_diamond_1_small_new_png"
 		},
 		{
-			"name":"lord_card_spade_3_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_spade_3_small.png"
+			"url": "assets/card/lord_card_diamond_2_small.png",
+			"type": "image",
+			"name": "lord_card_diamond_2_small_png"
 		},
 		{
-			"name":"lord_card_spade_3_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_spade_3_small_new.png"
+			"url": "assets/card/lord_card_diamond_2_small_new.png",
+			"type": "image",
+			"name": "lord_card_diamond_2_small_new_png"
 		},
 		{
-			"name":"lord_card_spade_4_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_spade_4_small.png"
+			"url": "assets/card/lord_card_diamond_3_small.png",
+			"type": "image",
+			"name": "lord_card_diamond_3_small_png"
 		},
 		{
-			"name":"lord_card_spade_4_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_spade_4_small_new.png"
+			"url": "assets/card/lord_card_diamond_3_small_new.png",
+			"type": "image",
+			"name": "lord_card_diamond_3_small_new_png"
 		},
 		{
-			"name":"lord_card_spade_5_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_spade_5_small.png"
+			"url": "assets/card/lord_card_diamond_4_small.png",
+			"type": "image",
+			"name": "lord_card_diamond_4_small_png"
 		},
 		{
-			"name":"lord_card_spade_5_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_spade_5_small_new.png"
+			"url": "assets/card/lord_card_diamond_4_small_new.png",
+			"type": "image",
+			"name": "lord_card_diamond_4_small_new_png"
 		},
 		{
-			"name":"lord_card_spade_6_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_spade_6_small.png"
+			"url": "assets/card/lord_card_diamond_5_small.png",
+			"type": "image",
+			"name": "lord_card_diamond_5_small_png"
 		},
 		{
-			"name":"lord_card_spade_6_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_spade_6_small_new.png"
+			"url": "assets/card/lord_card_diamond_5_small_new.png",
+			"type": "image",
+			"name": "lord_card_diamond_5_small_new_png"
 		},
 		{
-			"name":"lord_card_spade_7_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_spade_7_small.png"
+			"url": "assets/card/lord_card_diamond_6_small.png",
+			"type": "image",
+			"name": "lord_card_diamond_6_small_png"
 		},
 		{
-			"name":"lord_card_spade_7_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_spade_7_small_new.png"
+			"url": "assets/card/lord_card_diamond_6_small_new.png",
+			"type": "image",
+			"name": "lord_card_diamond_6_small_new_png"
 		},
 		{
-			"name":"lord_card_spade_8_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_spade_8_small.png"
+			"url": "assets/card/lord_card_diamond_7_small.png",
+			"type": "image",
+			"name": "lord_card_diamond_7_small_png"
 		},
 		{
-			"name":"lord_card_spade_8_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_spade_8_small_new.png"
+			"url": "assets/card/lord_card_diamond_7_small_new.png",
+			"type": "image",
+			"name": "lord_card_diamond_7_small_new_png"
 		},
 		{
-			"name":"lord_card_spade_9_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_spade_9_small.png"
+			"url": "assets/card/lord_card_diamond_8_small.png",
+			"type": "image",
+			"name": "lord_card_diamond_8_small_png"
 		},
 		{
-			"name":"lord_card_spade_9_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_spade_9_small_new.png"
+			"url": "assets/card/lord_card_diamond_8_small_new.png",
+			"type": "image",
+			"name": "lord_card_diamond_8_small_new_png"
 		},
 		{
-			"name":"lord_card_spade_10_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_spade_10_small.png"
+			"url": "assets/card/lord_card_diamond_9_small.png",
+			"type": "image",
+			"name": "lord_card_diamond_9_small_png"
 		},
 		{
-			"name":"lord_card_spade_10_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_spade_10_small_new.png"
+			"url": "assets/card/lord_card_diamond_9_small_new.png",
+			"type": "image",
+			"name": "lord_card_diamond_9_small_new_png"
 		},
 		{
-			"name":"lord_card_spade_j_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_spade_j_small.png"
+			"url": "assets/card/lord_card_diamond_10_small.png",
+			"type": "image",
+			"name": "lord_card_diamond_10_small_png"
 		},
 		{
-			"name":"lord_card_spade_j_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_spade_j_small_new.png"
+			"url": "assets/card/lord_card_diamond_10_small_new.png",
+			"type": "image",
+			"name": "lord_card_diamond_10_small_new_png"
 		},
 		{
-			"name":"lord_card_spade_k_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_spade_k_small.png"
+			"url": "assets/card/lord_card_diamond_j_small.png",
+			"type": "image",
+			"name": "lord_card_diamond_j_small_png"
 		},
 		{
-			"name":"lord_card_spade_k_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_spade_k_small_new.png"
+			"url": "assets/card/lord_card_diamond_j_small_new.png",
+			"type": "image",
+			"name": "lord_card_diamond_j_small_new_png"
 		},
 		{
-			"name":"lord_card_spade_q_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_spade_q_small.png"
+			"url": "assets/card/lord_card_diamond_k_small.png",
+			"type": "image",
+			"name": "lord_card_diamond_k_small_png"
 		},
 		{
-			"name":"lord_card_spade_q_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_spade_q_small_new.png"
+			"url": "assets/card/lord_card_diamond_k_small_new.png",
+			"type": "image",
+			"name": "lord_card_diamond_k_small_new_png"
 		},
 		{
-			"name":"lord_force_call_flag_png",
-			"type":"image",
-			"url":"assets/card/lord_force_call_flag.png"
+			"url": "assets/card/lord_card_diamond_q_small.png",
+			"type": "image",
+			"name": "lord_card_diamond_q_small_png"
 		},
 		{
-			"name":"pklord_card_backface_give_big_png",
-			"type":"image",
-			"url":"assets/card/pklord_card_backface_give_big.png"
+			"url": "assets/card/lord_card_diamond_q_small_new.png",
+			"type": "image",
+			"name": "lord_card_diamond_q_small_new_png"
 		},
 		{
-			"name":"pklord_card_lord_flag_png",
-			"type":"image",
-			"url":"assets/card/pklord_card_lord_flag.png"
+			"url": "assets/card/lord_card_heart_1_small.png",
+			"type": "image",
+			"name": "lord_card_heart_1_small_png"
 		},
 		{
-			"name":"lord_anim_card_turn_big_png",
-			"type":"image",
-			"url":"assets/card/lord_anim_card_turn_big.png"
+			"url": "assets/card/lord_card_heart_1_small_new.png",
+			"type": "image",
+			"name": "lord_card_heart_1_small_new_png"
 		},
 		{
-			"name":"lord_bottom_card_backface_png",
-			"type":"image",
-			"url":"assets/card/lord_bottom_card_backface.png"
+			"url": "assets/sound/lordunion/lord_first_callscore_3.mp3",
+			"type": "sound",
+			"name": "lord_first_callscore_3_mp3"
 		},
 		{
-			"name":"lord_card_backface_big_png",
-			"type":"image",
-			"url":"assets/card/lord_card_backface_big.png"
+			"url": "assets/sound/lordunion/lord_follow_callscore_1.mp3",
+			"type": "sound",
+			"name": "lord_follow_callscore_1_mp3"
 		},
 		{
-			"name":"lord_card_backface_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_backface_small.png"
+			"url": "assets/sound/lordunion/lord_follow_callscore_2.mp3",
+			"type": "sound",
+			"name": "lord_follow_callscore_2_mp3"
 		},
 		{
-			"name":"lord_card_club_1_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_club_1_small.png"
+			"url": "assets/sound/lordunion/lord_follow_callscore_3.mp3",
+			"type": "sound",
+			"name": "lord_follow_callscore_3_mp3"
 		},
 		{
-			"name":"lord_card_club_1_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_club_1_small_new.png"
+			"url": "assets/sound/lordunion/lord_v_callscore_0.mp3",
+			"type": "sound",
+			"name": "lord_v_callscore_0_mp3"
 		},
 		{
-			"name":"lord_card_club_2_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_club_2_small.png"
+			"url": "assets/sound/lordunion/lord_v_callscore_1.mp3",
+			"type": "sound",
+			"name": "lord_v_callscore_1_mp3"
 		},
 		{
-			"name":"lord_card_club_2_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_club_2_small_new.png"
+			"url": "assets/sound/lordunion/lord_v_callscore_2.mp3",
+			"type": "sound",
+			"name": "lord_v_callscore_2_mp3"
 		},
 		{
-			"name":"lord_card_club_3_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_club_3_small.png"
+			"url": "assets/sound/lordunion/lord_v_callscore_3.mp3",
+			"type": "sound",
+			"name": "lord_v_callscore_3_mp3"
 		},
 		{
-			"name":"lord_card_club_3_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_club_3_small_new.png"
+			"url": "assets/sound/lordunion/lord_v_1card_2.mp3",
+			"type": "sound",
+			"name": "lord_v_1card_2_mp3"
 		},
 		{
-			"name":"lord_card_club_4_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_club_4_small.png"
+			"url": "assets/sound/lordunion/lord_v_1card_3.mp3",
+			"type": "sound",
+			"name": "lord_v_1card_3_mp3"
 		},
 		{
-			"name":"lord_card_club_4_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_club_4_small_new.png"
+			"url": "assets/sound/lordunion/lord_v_1card_4.mp3",
+			"type": "sound",
+			"name": "lord_v_1card_4_mp3"
 		},
 		{
-			"name":"lord_card_club_5_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_club_5_small.png"
+			"url": "assets/sound/lordunion/lord_v_1card_5.mp3",
+			"type": "sound",
+			"name": "lord_v_1card_5_mp3"
 		},
 		{
-			"name":"lord_card_club_5_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_club_5_small_new.png"
+			"url": "assets/sound/lordunion/lord_v_1card_6.mp3",
+			"type": "sound",
+			"name": "lord_v_1card_6_mp3"
 		},
 		{
-			"name":"lord_card_club_6_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_club_6_small.png"
+			"url": "assets/sound/lordunion/lord_v_1card_7.mp3",
+			"type": "sound",
+			"name": "lord_v_1card_7_mp3"
 		},
 		{
-			"name":"lord_card_club_6_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_club_6_small_new.png"
+			"url": "assets/sound/lordunion/lord_v_1card_8.mp3",
+			"type": "sound",
+			"name": "lord_v_1card_8_mp3"
 		},
 		{
-			"name":"lord_card_club_7_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_club_7_small.png"
+			"url": "assets/sound/lordunion/lord_v_1card_9.mp3",
+			"type": "sound",
+			"name": "lord_v_1card_9_mp3"
 		},
 		{
-			"name":"lord_card_club_7_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_club_7_small_new.png"
+			"url": "assets/sound/lordunion/lord_v_1card_10.mp3",
+			"type": "sound",
+			"name": "lord_v_1card_10_mp3"
 		},
 		{
-			"name":"lord_card_club_8_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_club_8_small.png"
+			"url": "assets/sound/lordunion/lord_v_1card_a.mp3",
+			"type": "sound",
+			"name": "lord_v_1card_a_mp3"
 		},
 		{
-			"name":"lord_card_club_8_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_club_8_small_new.png"
+			"url": "assets/sound/lordunion/lord_v_1card_big_joker.mp3",
+			"type": "sound",
+			"name": "lord_v_1card_-1_mp3"
 		},
 		{
-			"name":"lord_card_club_9_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_club_9_small.png"
+			"url": "assets/sound/lordunion/lord_v_1card_j.mp3",
+			"type": "sound",
+			"name": "lord_v_1card_j_mp3"
 		},
 		{
-			"name":"lord_card_club_9_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_club_9_small_new.png"
+			"url": "assets/sound/lordunion/lord_v_1card_k.mp3",
+			"type": "sound",
+			"name": "lord_v_1card_k_mp3"
 		},
 		{
-			"name":"lord_card_club_10_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_club_10_small.png"
+			"url": "assets/sound/lordunion/lord_v_1card_q.mp3",
+			"type": "sound",
+			"name": "lord_v_1card_q_mp3"
 		},
 		{
-			"name":"lord_card_club_10_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_club_10_small_new.png"
+			"url": "assets/sound/lordunion/lord_v_1card_small_joker.mp3",
+			"type": "sound",
+			"name": "lord_v_1card_0_mp3"
 		},
 		{
-			"name":"lord_card_club_j_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_club_j_small.png"
+			"url": "assets/sound/lordunion/lord_v_2card_2.mp3",
+			"type": "sound",
+			"name": "lord_v_2card_2_mp3"
 		},
 		{
-			"name":"lord_card_club_j_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_club_j_small_new.png"
+			"url": "assets/sound/lordunion/lord_v_2card_3.mp3",
+			"type": "sound",
+			"name": "lord_v_2card_3_mp3"
 		},
 		{
-			"name":"lord_card_club_k_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_club_k_small.png"
+			"url": "assets/sound/lordunion/lord_v_2card_4.mp3",
+			"type": "sound",
+			"name": "lord_v_2card_4_mp3"
 		},
 		{
-			"name":"lord_card_club_k_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_club_k_small_new.png"
+			"url": "assets/sound/lordunion/lord_v_2card_5.mp3",
+			"type": "sound",
+			"name": "lord_v_2card_5_mp3"
 		},
 		{
-			"name":"lord_card_club_q_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_club_q_small.png"
+			"url": "assets/sound/lordunion/lord_v_2card_6.mp3",
+			"type": "sound",
+			"name": "lord_v_2card_6_mp3"
 		},
 		{
-			"name":"lord_card_club_q_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_club_q_small_new.png"
+			"url": "assets/sound/lordunion/lord_v_2card_7.mp3",
+			"type": "sound",
+			"name": "lord_v_2card_7_mp3"
 		},
 		{
-			"name":"lord_card_diamond_1_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_diamond_1_small.png"
+			"url": "assets/sound/lordunion/lord_v_2card_8.mp3",
+			"type": "sound",
+			"name": "lord_v_2card_8_mp3"
 		},
 		{
-			"name":"lord_card_diamond_1_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_diamond_1_small_new.png"
+			"url": "assets/sound/lordunion/lord_v_2card_9.mp3",
+			"type": "sound",
+			"name": "lord_v_2card_9_mp3"
 		},
 		{
-			"name":"lord_card_diamond_2_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_diamond_2_small.png"
+			"url": "assets/sound/lordunion/lord_v_2card_10.mp3",
+			"type": "sound",
+			"name": "lord_v_2card_10_mp3"
 		},
 		{
-			"name":"lord_card_diamond_2_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_diamond_2_small_new.png"
+			"url": "assets/sound/lordunion/lord_v_2card_a.mp3",
+			"type": "sound",
+			"name": "lord_v_2card_a_mp3"
 		},
 		{
-			"name":"lord_card_diamond_3_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_diamond_3_small.png"
+			"url": "assets/sound/lordunion/lord_v_2card_couple.mp3",
+			"type": "sound",
+			"name": "lord_v_2card_couple_mp3"
 		},
 		{
-			"name":"lord_card_diamond_3_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_diamond_3_small_new.png"
+			"url": "assets/sound/lordunion/lord_v_2card_j.mp3",
+			"type": "sound",
+			"name": "lord_v_2card_j_mp3"
 		},
 		{
-			"name":"lord_card_diamond_4_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_diamond_4_small.png"
+			"url": "assets/sound/lordunion/lord_v_2card_k.mp3",
+			"type": "sound",
+			"name": "lord_v_2card_k_mp3"
 		},
 		{
-			"name":"lord_card_diamond_4_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_diamond_4_small_new.png"
+			"url": "assets/sound/lordunion/lord_v_2card_pairs.mp3",
+			"type": "sound",
+			"name": "lord_v_2card_pairs_mp3"
 		},
 		{
-			"name":"lord_card_diamond_5_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_diamond_5_small.png"
+			"url": "assets/sound/lordunion/lord_v_2card_q.mp3",
+			"type": "sound",
+			"name": "lord_v_2card_q_mp3"
 		},
 		{
-			"name":"lord_card_diamond_5_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_diamond_5_small_new.png"
+			"url": "assets/sound/lordunion/lord_v_3card_2.mp3",
+			"type": "sound",
+			"name": "lord_v_3card_2_mp3"
 		},
 		{
-			"name":"lord_card_diamond_6_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_diamond_6_small.png"
+			"url": "assets/sound/lordunion/lord_v_3card_3.mp3",
+			"type": "sound",
+			"name": "lord_v_3card_3_mp3"
 		},
 		{
-			"name":"lord_card_diamond_6_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_diamond_6_small_new.png"
+			"url": "assets/sound/lordunion/lord_v_3card_4.mp3",
+			"type": "sound",
+			"name": "lord_v_3card_4_mp3"
 		},
 		{
-			"name":"lord_card_diamond_7_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_diamond_7_small.png"
+			"url": "assets/sound/lordunion/lord_v_3card_5.mp3",
+			"type": "sound",
+			"name": "lord_v_3card_5_mp3"
 		},
 		{
-			"name":"lord_card_diamond_7_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_diamond_7_small_new.png"
+			"url": "assets/sound/lordunion/lord_v_3card_6.mp3",
+			"type": "sound",
+			"name": "lord_v_3card_6_mp3"
 		},
 		{
-			"name":"lord_card_diamond_8_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_diamond_8_small.png"
+			"url": "assets/sound/lordunion/lord_v_3card_7.mp3",
+			"type": "sound",
+			"name": "lord_v_3card_7_mp3"
 		},
 		{
-			"name":"lord_card_diamond_8_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_diamond_8_small_new.png"
+			"url": "assets/sound/lordunion/lord_v_3card_8.mp3",
+			"type": "sound",
+			"name": "lord_v_3card_8_mp3"
 		},
 		{
-			"name":"lord_card_diamond_9_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_diamond_9_small.png"
+			"url": "assets/sound/lordunion/lord_v_3card_9.mp3",
+			"type": "sound",
+			"name": "lord_v_3card_9_mp3"
 		},
 		{
-			"name":"lord_card_diamond_9_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_diamond_9_small_new.png"
+			"url": "assets/sound/lordunion/lord_v_3card_10.mp3",
+			"type": "sound",
+			"name": "lord_v_3card_10_mp3"
 		},
 		{
-			"name":"lord_card_diamond_10_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_diamond_10_small.png"
+			"url": "assets/sound/lordunion/lord_v_3card_a.mp3",
+			"type": "sound",
+			"name": "lord_v_3card_a_mp3"
 		},
 		{
-			"name":"lord_card_diamond_10_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_diamond_10_small_new.png"
+			"url": "assets/sound/lordunion/lord_v_3card_j.mp3",
+			"type": "sound",
+			"name": "lord_v_3card_j_mp3"
 		},
 		{
-			"name":"lord_card_diamond_j_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_diamond_j_small.png"
+			"url": "assets/sound/lordunion/lord_v_3card_k.mp3",
+			"type": "sound",
+			"name": "lord_v_3card_k_mp3"
 		},
 		{
-			"name":"lord_card_diamond_j_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_diamond_j_small_new.png"
+			"url": "assets/sound/lordunion/lord_v_3card_q.mp3",
+			"type": "sound",
+			"name": "lord_v_3card_q_mp3"
 		},
 		{
-			"name":"lord_card_diamond_k_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_diamond_k_small.png"
+			"url": "assets/sound/lordunion/lord_v_3with1.mp3",
+			"type": "sound",
+			"name": "lord_v_3with1_mp3"
 		},
 		{
-			"name":"lord_card_diamond_k_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_diamond_k_small_new.png"
+			"url": "assets/sound/lordunion/lord_v_3with2.mp3",
+			"type": "sound",
+			"name": "lord_v_3with2_mp3"
 		},
 		{
-			"name":"lord_card_diamond_q_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_diamond_q_small.png"
+			"url": "assets/sound/lordunion/lord_v_4with2.mp3",
+			"type": "sound",
+			"name": "lord_v_4with2_mp3"
 		},
 		{
-			"name":"lord_card_diamond_q_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_diamond_q_small_new.png"
+			"url": "assets/sound/lordunion/lord_v_bomb_1.mp3",
+			"type": "sound",
+			"name": "lord_v_bomb_1_mp3"
 		},
 		{
-			"name":"lord_card_heart_1_small_png",
-			"type":"image",
-			"url":"assets/card/lord_card_heart_1_small.png"
+			"url": "assets/sound/lordunion/lord_v_bomb_2.mp3",
+			"type": "sound",
+			"name": "lord_v_bomb_2_mp3"
 		},
 		{
-			"name":"lord_card_heart_1_small_new_png",
-			"type":"image",
-			"url":"assets/card/lord_card_heart_1_small_new.png"
+			"url": "assets/sound/lordunion/lord_v_chainpairs.mp3",
+			"type": "sound",
+			"name": "lord_v_chainpairs_mp3"
 		},
 		{
-			"name":"lord_first_callscore_3_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_first_callscore_3.mp3"
+			"url": "assets/sound/lordunion/lord_v_discard_1.mp3",
+			"type": "sound",
+			"name": "lord_v_discard_1_mp3"
 		},
 		{
-			"name":"lord_follow_callscore_1_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_follow_callscore_1.mp3"
+			"url": "assets/sound/lordunion/lord_v_discard_2.mp3",
+			"type": "sound",
+			"name": "lord_v_discard_2_mp3"
 		},
 		{
-			"name":"lord_follow_callscore_2_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_follow_callscore_2.mp3"
+			"url": "assets/sound/lordunion/lord_v_discard_3.mp3",
+			"type": "sound",
+			"name": "lord_v_discard_3_mp3"
 		},
 		{
-			"name":"lord_follow_callscore_3_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_follow_callscore_3.mp3"
+			"url": "assets/sound/lordunion/lord_v_pass_1.mp3",
+			"type": "sound",
+			"name": "lord_v_pass_1_mp3"
 		},
 		{
-			"name":"lord_v_callscore_0_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_callscore_0.mp3"
+			"url": "assets/sound/lordunion/lord_v_pass_2.mp3",
+			"type": "sound",
+			"name": "lord_v_pass_2_mp3"
 		},
 		{
-			"name":"lord_v_callscore_1_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_callscore_1.mp3"
+			"url": "assets/sound/lordunion/lord_v_pass_3.mp3",
+			"type": "sound",
+			"name": "lord_v_pass_3_mp3"
 		},
 		{
-			"name":"lord_v_callscore_2_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_callscore_2.mp3"
+			"url": "assets/sound/lordunion/lord_v_plane_1.mp3",
+			"type": "sound",
+			"name": "lord_v_plane_1_mp3"
 		},
 		{
-			"name":"lord_v_callscore_3_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_callscore_3.mp3"
+			"url": "assets/sound/lordunion/lord_v_plane_2.mp3",
+			"type": "sound",
+			"name": "lord_v_plane_2_mp3"
 		},
 		{
-			"name":"lord_v_1card_2_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_1card_2.mp3"
+			"url": "assets/sound/lordunion/lord_v_remain_last_1.mp3",
+			"type": "sound",
+			"name": "lord_v_remain_last_1_mp3"
 		},
 		{
-			"name":"lord_v_1card_3_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_1card_3.mp3"
+			"url": "assets/sound/lordunion/lord_v_remain_last_2.mp3",
+			"type": "sound",
+			"name": "lord_v_remain_last_2_mp3"
 		},
 		{
-			"name":"lord_v_1card_4_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_1card_4.mp3"
+			"url": "assets/sound/lordunion/lord_v_remain_voice_1.mp3",
+			"type": "sound",
+			"name": "lord_v_remain_voice_1_mp3"
 		},
 		{
-			"name":"lord_v_1card_5_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_1card_5.mp3"
+			"url": "assets/sound/lordunion/lord_v_remain_voice_2.mp3",
+			"type": "sound",
+			"name": "lord_v_remain_voice_2_mp3"
 		},
 		{
-			"name":"lord_v_1card_6_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_1card_6.mp3"
+			"url": "assets/sound/lordunion/lord_v_remain1.mp3",
+			"type": "sound",
+			"name": "lord_v_remain1_mp3"
 		},
 		{
-			"name":"lord_v_1card_7_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_1card_7.mp3"
+			"url": "assets/sound/lordunion/lord_v_remain2.mp3",
+			"type": "sound",
+			"name": "lord_v_remain2_mp3"
 		},
 		{
-			"name":"lord_v_1card_8_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_1card_8.mp3"
+			"url": "assets/sound/lordunion/lord_v_rocket.mp3",
+			"type": "sound",
+			"name": "lord_v_rocket_mp3"
 		},
 		{
-			"name":"lord_v_1card_9_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_1card_9.mp3"
+			"url": "assets/sound/lordunion/lord_v_straight.mp3",
+			"type": "sound",
+			"name": "lord_v_straight_mp3"
 		},
 		{
-			"name":"lord_v_1card_10_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_1card_10.mp3"
+			"url": "assets/sound/lordunion/lord_s_spring_fail.mp3",
+			"type": "sound",
+			"name": "lord_s_spring_fail_mp3"
 		},
 		{
-			"name":"lord_v_1card_a_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_1card_a.mp3"
+			"url": "assets/sound/lordunion/lord_s_spring_win.mp3",
+			"type": "sound",
+			"name": "lord_s_spring_win_mp3"
 		},
 		{
-			"name":"lord_v_1card_-1_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_1card_big_joker.mp3"
+			"url": "assets/ScenceHome/yuyin.png",
+			"type": "image",
+			"name": "yuyin_png"
 		},
 		{
-			"name":"lord_v_1card_j_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_1card_j.mp3"
+			"url": "assets/ScenceHome/z_bangzhu.png",
+			"type": "image",
+			"name": "z_bangzhu_png"
 		},
 		{
-			"name":"lord_v_1card_k_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_1card_k.mp3"
+			"url": "assets/ScenceHome/z_bangzhu_h.png",
+			"type": "image",
+			"name": "z_bangzhu_h_png"
 		},
 		{
-			"name":"lord_v_1card_q_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_1card_q.mp3"
+			"url": "assets/ScenceHome/Z_queding1.png",
+			"type": "image",
+			"name": "Z_queding1_png"
 		},
 		{
-			"name":"lord_v_1card_0_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_1card_small_joker.mp3"
+			"url": "assets/ScenceHome/z_plus_h.png",
+			"type": "image",
+			"name": "z_plus_h_png"
 		},
 		{
-			"name":"lord_v_2card_2_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_2card_2.mp3"
+			"url": "assets/ScenceHome/z_shezhi.png",
+			"type": "image",
+			"name": "z_shezhi_png"
 		},
 		{
-			"name":"lord_v_2card_3_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_2card_3.mp3"
+			"url": "assets/ScenceHome/z_xiaoxi.png",
+			"type": "image",
+			"name": "z_xiaoxi_png"
 		},
 		{
-			"name":"lord_v_2card_4_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_2card_4.mp3"
+			"url": "assets/ScenceHome/z_xiaoxi_h.png",
+			"type": "image",
+			"name": "z_xiaoxi_h_png"
 		},
 		{
-			"name":"lord_v_2card_5_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_2card_5.mp3"
+			"url": "assets/ScenceHome/z_zhuangshi.png",
+			"type": "image",
+			"name": "z_zhuangshi_png"
 		},
 		{
-			"name":"lord_v_2card_6_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_2card_6.mp3"
+			"url": "assets/ScenceHome/zhuanzhuanmajiangdabiaotidi.png",
+			"type": "image",
+			"name": "zhuanzhuanmajiangdabiaotidi_png"
 		},
 		{
-			"name":"lord_v_2card_7_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_2card_7.mp3"
+			"url": "assets/ScenceHome/bottom.png",
+			"type": "image",
+			"name": "bottom_png"
 		},
 		{
-			"name":"lord_v_2card_8_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_2card_8.mp3"
+			"url": "assets/ScenceHome/box.png",
+			"type": "image",
+			"name": "box_png"
 		},
 		{
-			"name":"lord_v_2card_9_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_2card_9.mp3"
+			"url": "assets/ScenceHome/btactivity.png",
+			"type": "image",
+			"name": "btactivity_png"
 		},
 		{
-			"name":"lord_v_2card_10_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_2card_10.mp3"
+			"url": "assets/ScenceHome/btcreateroom.png",
+			"type": "image",
+			"name": "btcreateroom_png"
 		},
 		{
-			"name":"lord_v_2card_a_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_2card_a.mp3"
+			"url": "assets/ScenceHome/btddh.png",
+			"type": "image",
+			"name": "btddh_png"
 		},
 		{
-			"name":"lord_v_2card_couple_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_2card_couple.mp3"
+			"url": "assets/ScenceHome/btfankui.png",
+			"type": "image",
+			"name": "btfankui_png"
 		},
 		{
-			"name":"lord_v_2card_j_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_2card_j.mp3"
+			"url": "assets/ScenceHome/btfenxiang.png",
+			"type": "image",
+			"name": "btfenxiang_png"
 		},
 		{
-			"name":"lord_v_2card_k_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_2card_k.mp3"
+			"url": "assets/ScenceHome/btjoingame.png",
+			"type": "image",
+			"name": "btjoingame_png"
 		},
 		{
-			"name":"lord_v_2card_pairs_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_2card_pairs.mp3"
+			"url": "assets/ScenceHome/btxlch.png",
+			"type": "image",
+			"name": "btxlch_png"
 		},
 		{
-			"name":"lord_v_2card_q_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_2card_q.mp3"
+			"url": "assets/ScenceHome/btxzdd.png",
+			"type": "image",
+			"name": "btxzdd_png"
 		},
 		{
-			"name":"lord_v_3card_2_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_3card_2.mp3"
+			"url": "assets/ScenceHome/btzhanji.png",
+			"type": "image",
+			"name": "btzhanji_png"
 		},
 		{
-			"name":"lord_v_3card_3_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_3card_3.mp3"
+			"url": "assets/ScenceHome/Button_AddGold.png",
+			"type": "image",
+			"name": "Button_AddGold_png"
 		},
 		{
-			"name":"lord_v_3card_4_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_3card_4.mp3"
+			"url": "assets/ScenceHome/Button_HomeExit.png",
+			"type": "image",
+			"name": "Button_HomeExit_png"
 		},
 		{
-			"name":"lord_v_3card_5_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_3card_5.mp3"
+			"url": "assets/ScenceHome/Button_Set.png",
+			"type": "image",
+			"name": "Button_Set_png"
 		},
 		{
-			"name":"lord_v_3card_6_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_3card_6.mp3"
+			"url": "assets/ScenceHome/chuangjianfangjian.png",
+			"type": "image",
+			"name": "chuangjianfangjian_png"
 		},
 		{
-			"name":"lord_v_3card_7_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_3card_7.mp3"
+			"url": "assets/ScenceHome/CreateRoomBg.png",
+			"type": "image",
+			"name": "CreateRoomBg_png"
 		},
 		{
-			"name":"lord_v_3card_8_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_3card_8.mp3"
+			"url": "assets/ScenceHome/dingbuuibantoumingdi.png",
+			"type": "image",
+			"name": "dingbuuibantoumingdi_png"
 		},
 		{
-			"name":"lord_v_3card_9_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_3card_9.mp3"
+			"url": "assets/ScenceHome/dttuichu.png",
+			"type": "image",
+			"name": "dttuichu_png"
 		},
 		{
-			"name":"lord_v_3card_10_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_3card_10.mp3"
+			"url": "assets/ScenceHome/fangka.png",
+			"type": "image",
+			"name": "fangka_png"
 		},
 		{
-			"name":"lord_v_3card_a_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_3card_a.mp3"
+			"url": "assets/ScenceHome/fangkaxiaobeijing.png",
+			"type": "image",
+			"name": "fangkaxiaobeijing_png"
 		},
 		{
-			"name":"lord_v_3card_j_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_3card_j.mp3"
+			"url": "assets/ScenceHome/ffanghuifangj.png",
+			"type": "image",
+			"name": "ffanghuifangj_png"
 		},
 		{
-			"name":"lord_v_3card_k_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_3card_k.mp3"
+			"url": "assets/ScenceHome/fightpalyback.png",
+			"type": "image",
+			"name": "fightpalyback_png"
 		},
 		{
-			"name":"lord_v_3card_q_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_3card_q.mp3"
+			"url": "assets/ScenceHome/gamerulebk.png",
+			"type": "image",
+			"name": "gamerulebk_png"
 		},
 		{
-			"name":"lord_v_3with1_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_3with1.mp3"
+			"url": "assets/ScenceHome/goumaixiaojiahao.png",
+			"type": "image",
+			"name": "goumaixiaojiahao_png"
 		},
 		{
-			"name":"lord_v_3with2_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_3with2.mp3"
+			"url": "assets/ScenceHome/hallBg.png",
+			"type": "image",
+			"name": "hallBg_png"
 		},
 		{
-			"name":"lord_v_4with2_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_4with2.mp3"
+			"url": "assets/ScenceHome/head_img_male.png",
+			"type": "image",
+			"name": "head_img_male_png"
 		},
 		{
-			"name":"lord_v_bomb_1_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_bomb_1.mp3"
+			"url": "assets/ScenceHome/hongseanniu.png",
+			"type": "image",
+			"name": "hongseanniu_png"
 		},
 		{
-			"name":"lord_v_bomb_2_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_bomb_2.mp3"
+			"url": "assets/ScenceHome/hunanmajiang.png",
+			"type": "image",
+			"name": "hunanmajiang_png"
 		},
 		{
-			"name":"lord_v_chainpairs_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_chainpairs.mp3"
+			"url": "assets/ScenceHome/id.png",
+			"type": "image",
+			"name": "id_png"
 		},
 		{
-			"name":"lord_v_discard_1_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_discard_1.mp3"
+			"url": "assets/ScenceHome/Img_SetBg.png",
+			"type": "image",
+			"name": "Img_SetBg_png"
 		},
 		{
-			"name":"lord_v_discard_2_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_discard_2.mp3"
+			"url": "assets/ScenceHome/Img_TipsBg.png",
+			"type": "image",
+			"name": "Img_TipsBg_png"
 		},
 		{
-			"name":"lord_v_discard_3_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_discard_3.mp3"
+			"url": "assets/ScenceHome/main_kapai.png",
+			"type": "image",
+			"name": "main_kapai_png"
 		},
 		{
-			"name":"lord_v_pass_1_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_pass_1.mp3"
+			"url": "assets/ScenceHome/main_meinv.png",
+			"type": "image",
+			"name": "main_meinv_png"
 		},
 		{
-			"name":"lord_v_pass_2_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_pass_2.mp3"
+			"url": "assets/ScenceHome/main_mianban.png",
+			"type": "image",
+			"name": "main_mianban_png"
 		},
 		{
-			"name":"lord_v_pass_3_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_pass_3.mp3"
+			"url": "assets/ScenceHome/mingchengbantoujianbian.png",
+			"type": "image",
+			"name": "mingchengbantoujianbian_png"
 		},
 		{
-			"name":"lord_v_plane_1_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_plane_1.mp3"
+			"url": "assets/ScenceHome/msg_bg.png",
+			"type": "image",
+			"name": "msg_bg_png"
 		},
 		{
-			"name":"lord_v_plane_2_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_plane_2.mp3"
+			"url": "assets/ScenceHome/z_shezhi_h.png",
+			"type": "image",
+			"name": "z_shezhi_h_png"
 		},
 		{
-			"name":"lord_v_remain_last_1_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_remain_last_1.mp3"
+			"url": "assets/ScenceHome/msg_title.png",
+			"type": "image",
+			"name": "msg_title_png"
 		},
 		{
-			"name":"lord_v_remain_last_2_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_remain_last_2.mp3"
+			"url": "assets/ScenceHome/paomadengbeijing.png",
+			"type": "image",
+			"name": "paomadengbeijing_png"
 		},
 		{
-			"name":"lord_v_remain_voice_1_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_remain_voice_1.mp3"
+			"url": "assets/ScenceHome/public_frame_a.png",
+			"type": "image",
+			"name": "public_frame_a_png"
 		},
 		{
-			"name":"lord_v_remain_voice_2_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_remain_voice_2.mp3"
+			"url": "assets/ScenceHome/publick_Back.png",
+			"type": "image",
+			"name": "publick_Back_png"
 		},
 		{
-			"name":"lord_v_remain1_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_remain1.mp3"
+			"url": "assets/ScenceHome/public_frame_head.png",
+			"type": "image",
+			"name": "public_frame_head_png"
 		},
 		{
-			"name":"lord_v_remain2_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_remain2.mp3"
+			"url": "assets/ScenceHome/PopupScene.png",
+			"type": "image",
+			"name": "PopupScene_png"
 		},
 		{
-			"name":"lord_v_rocket_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_rocket.mp3"
+			"url": "assets/ScenceHome/UIfengexian.png",
+			"type": "image",
+			"name": "UIfengexian_png"
 		},
 		{
-			"name":"lord_v_straight_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_v_straight.mp3"
+			"url": "assets/ScenceHome/user.png",
+			"type": "image",
+			"name": "user_png"
 		},
 		{
-			"name":"lord_s_spring_fail_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_s_spring_fail.mp3"
+			"url": "assets/ScenceHome/warning.png",
+			"type": "image",
+			"name": "warning_png"
 		},
 		{
-			"name":"lord_s_spring_win_mp3",
-			"type":"sound",
-			"url":"assets/sound/lordunion/lord_s_spring_win.mp3"
+			"url": "assets/ScenceHome/xiaolaba.png",
+			"type": "image",
+			"name": "xiaolaba_png"
 		}
 	]
 }
