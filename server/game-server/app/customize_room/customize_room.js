@@ -1,18 +1,16 @@
 
 
-var CustomizeRoom = function()
+var CustomizeRoom = function(opts)
 {
-    this.gametype = "";
-    this.gameRule = "";
-    this.name = "";
-    this.password = "";
+    this.id = opts.id;
+    this.gameType = opts.gameType;
+    this.gameRule = opts.gameRule;
+    this.name = opts.name;
+    this.password = opts.password||"";
+    this.cRount = 0;
+    this.tRount = opts.tRount;
+    this.serverId = opts.serverId;
+    this.serverRoomId = opts.serverRoomId;
 }
 
 module.exports = CustomizeRoom;
-
-var pro = CustomizeRoom.prototype;
-
-pro.joinRoom = function()
-{
-
-}

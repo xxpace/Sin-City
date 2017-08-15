@@ -95,7 +95,7 @@ class MajhongMain extends egret.DisplayObjectContainer {
         this.baseView = new MajhongBattleView();
         this.addChild(this.baseView);
 
-        //this.stage.addEventListener(egret.TouchEvent.TOUCH_TAP,this.handle,this);
+        this.stage.addEventListener(egret.TouchEvent.TOUCH_TAP,this.handle,this);
     }
 
     public handle(e:egret.TouchEvent)

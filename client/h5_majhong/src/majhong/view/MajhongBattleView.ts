@@ -30,8 +30,10 @@ class MajhongBattleView extends eui.Component
     }
 
     public createCompleteEvent(event: eui.UIEvent): void {
-        this.initTestView();
-        MajhongBattleView.testBattle = this;
+        //this.initTestView();
+        //MajhongBattleView.testBattle = this;
+
+        this.initGameView();
     }
 
     public initTestView()

@@ -18,8 +18,9 @@ var MajhongBattleView = (function (_super) {
         return _this;
     }
     MajhongBattleView.prototype.createCompleteEvent = function (event) {
-        this.initTestView();
-        MajhongBattleView.testBattle = this;
+        //this.initTestView();
+        //MajhongBattleView.testBattle = this;
+        this.initGameView();
     };
     MajhongBattleView.prototype.initTestView = function () {
         this.data = new PlayerMajhongInfo();

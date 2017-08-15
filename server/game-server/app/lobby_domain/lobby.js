@@ -1,21 +1,15 @@
 
 var pomelo = require('pomelo');
+var LobbyRoomService = require('../services/lobbyRoomService');
 
 var Lobby = function()
 {
     this.playerDict = {};
-    this.roomDict = {};
+    this.roomService = new LobbyRoomService();
 }
 
 module.exports = Lobby;
-
-
 var pro = Lobby.prototype;
-
-pro.init = function()
-{
-
-}
 
 pro.refreshGameServerInfo = function()
 {

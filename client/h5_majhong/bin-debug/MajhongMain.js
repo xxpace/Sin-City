@@ -83,7 +83,7 @@ var MajhongMain = (function (_super) {
     MajhongMain.prototype.createGameScene = function () {
         this.baseView = new MajhongBattleView();
         this.addChild(this.baseView);
-        //this.stage.addEventListener(egret.TouchEvent.TOUCH_TAP,this.handle,this);
+        this.stage.addEventListener(egret.TouchEvent.TOUCH_TAP, this.handle, this);
     };
     MajhongMain.prototype.handle = function (e) {
         var majhong = this.baseView.data.testMajhong();
