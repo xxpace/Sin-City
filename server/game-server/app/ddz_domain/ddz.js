@@ -78,3 +78,15 @@ Instance.prototype.getRoom = function(roomid)
 {
 	return this.roomDict[roomid];
 }
+
+//进入包房
+Instance.prototype.addPlayerByRoomId = function(uid,roomid)
+{
+	var self = this;
+	userDao.getPlayer(uid,function(player){
+		self.playerDict[uid] = player;
+		self.playerCount++;
+		let room = self.getRoom(roomid);
+		cb(room,player);
+	});
+}

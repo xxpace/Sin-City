@@ -11,20 +11,29 @@ module.exports = LobbyRoomService;
 
 let pro = LobbyRoomService.prototype;
 
-pro.createRoom = function(opts)
+pro.createRoom = function(opts,cb)
 {
     let id = ++this.rooomIdIndex;
     opts.id = id;
     opts.serverId = this.getFreeServer();
-    let room = new CustomizeRoom(opts);
-    this.roomDict[id] = room;
+
+    let msg = {'namespace':'user','service':'ddzRemote','method':'createRoom','args':[]};
+    pomelo.app.rpcInvoke(opts.serverId,msg,function(roomid){
+        let that = this;
+        opts.serverRoomId = roomid;
+        let room = new CustomizeRoom(opts);
+        that.roomDict[id] = room;
+        cb(room);
+    });
+}
+
+pro.getRoomById = function(roomid)
+{
+    return this.roomDict[roomid];
 }
 
 pro.getFreeServer = function(type)
 {
     let servers = pomelo.app.getServersByType(type);
-    if(servers&&servers.length>0)
-    {
-        return servers[0].id;
-    }
+    return servers[0].id;
 }

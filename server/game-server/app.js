@@ -3,6 +3,7 @@ var Lobby = require('./app/lobby_domain/lobby.js');
 var Instance = require('./app/ddz_domain/ddz.js');
 var sync = require('pomelo-sync-plugin');
 var testLobby = require('./app/component/testLobby');
+var routeUtil = require('./app/util/routeUtil');
 
 /**
  * Init app for client.
@@ -11,6 +12,10 @@ var app = pomelo.createApp();
 app.set('name', 'server');
 
 // app configuration
+app.configure('production|development', function() {
+  app.route('ddz', routeUtil.ddz);
+});
+
 app.configure('production|development', 'connector', function(){
   app.set('connectorConfig',
     {
@@ -30,7 +35,6 @@ app.configure('production|development', 'ddz', function(){
 app.configure('production|development','lobby',function(){
   app.set('lobby',new Lobby());
 });
-
 
 app.configure('production|development', 'ddz|auth', function(){
   var dbclient = require('./app/dao/mysql/mysql').init(app);

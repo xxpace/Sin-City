@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/majhong/view/BasePlayMajhongView.ts" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/majhong/view/BasePlayMajhongView_1.ts" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/majhong/view/BasePlayMajhongView_2.ts" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/majhong/view/BasePlayMajhongView_3.ts" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/majhong/view/MajhongBattleView.ts" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/majhong/view/MajhongCard.ts" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/majhong/view/MajhongPoolView.ts" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/majhong/view/YesMajhongView_0.ts" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/majhong/view/YesMajhongView_1.ts" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>
