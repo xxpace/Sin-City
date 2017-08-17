@@ -376,7 +376,7 @@ class GamePlayMediator
         {
             for(let j=0;j<rLen;j++)
             {
-                if(this.equipCard(selfCards[i],removeArr[j]))
+                if(this.equalCard(selfCards[i],removeArr[j]))
                 {
                     selfCards.splice(i,1);
                     i-=1;
@@ -386,7 +386,7 @@ class GamePlayMediator
         }
     }
 
-    public equipCard(a,b)
+    public equalCard(a,b)
     {
         return Boolean(a.value === b.value&&a.type==b.type&&a.logicValue===b.logicValue);
     }

@@ -7,10 +7,22 @@ var CustomizeRoom = function(opts)
     this.gameRule = opts.gameRule;
     this.name = opts.name||"";
     this.password = opts.password||"";
-    this.cRount = 0;
-    this.tRount = opts.tRount;
+    this.cRound = 0;
+    this.tRound = opts.tRound;
     this.serverId = opts.serverId;
     this.serverRoomId = opts.serverRoomId;
 }
 
 module.exports = CustomizeRoom;
+
+var pro = CustomizeRoom.prototype;
+
+pro.addRound = function()
+{
+    this.cRound++;
+}
+
+pro.isEnd = function()
+{
+    return Boolean(this.cRound>=this.tRound);
+}

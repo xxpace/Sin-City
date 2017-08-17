@@ -22,13 +22,15 @@ pro.createRoom = function(opts,cb)
         let that = this;
         opts.serverRoomId = roomid;
         let room = new CustomizeRoom(opts);
-        that.roomDict[id] = room;
+        let key = ""+opts.gameType+"_"+room.id;
+        that.roomDict[key] = room;
         cb(room);
     });
 }
 
-pro.getRoomById = function(roomid)
+pro.getRoom = function(type,roomid)
 {
+    let key = ""+type+"_"+roomid;
     return this.roomDict[roomid];
 }
 
