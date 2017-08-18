@@ -4,6 +4,7 @@ var messageService = require('./messageService');
 var Turn = require('./Turn');
 var CardsProxy = require('./card.js').CardsProxy;
 var logger = require('pomelo-logger').getLogger('pomelo');
+var pomelo = require('pomelo');
 
 var STATUS_CREATE = "status_create"
 var STATUS_BEGIN = "status_begin";
@@ -64,7 +65,6 @@ Room.prototype.findPlayer = function(uid)
 
 Room.prototype.testSendPoker = function()
 {
-	console.info("---->",this.players.length,this.isFull());
 	if(this.isFull())
 	{
 		this.sendPoker();
@@ -256,14 +256,27 @@ Room.prototype.notifyResult = function(winPos)
 	this.cleanNotifyTime();
 	let winArr = [];
 	let isLord = this.players[winPos].isLord;
+	let scoreInfo = {};
 	this.players.forEach(function(player){
-		if(player.isLord==isLord){
+		let isWin = Boolean(player.isLord==isLord);
+		if(isWin){
 			winArr.push(player.position);
 		}
+		scoreInfo[player.uid] = isWin?1:-1;
 	});
 	messageService.pushMessageByRoom(this.id,DdzClientRoute.notifyGameEnd,{"winList":winArr});
 	this.reSetPlayer();
 	this.status = STATUS_END;
+
+	var lobby = pomelo.app.getServersByType('ddz')[0];
+	let msg = {'namespace':'user','service':'lobbyRemote','method':'gameOver','args':["ddz",this.id,{"scoreInfo":scoreInfo}]};
+    pomelo.app.rpcInvoke(lobby.id,msg,function(jixu){
+    	let self = this;
+    	if(jixu)
+    	{
+    		self.testSendPoker();
+    	}
+    });
 }
 
 Room.prototype.reSetPlayer = function()

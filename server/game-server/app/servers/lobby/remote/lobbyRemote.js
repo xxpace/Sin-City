@@ -2,14 +2,13 @@
 
 module.exports = function(app)
 {
-    return new LobbyRemote(app);
+    return new LobbyRemote(app,app.get('lobby'));
 }
 
-var LobbyRemote = function(app)
+var LobbyRemote = function(app,lobby)
 {
     this.app = app;
-    this.lobby = app.get('lobby');
-    this.roomService = this.lobby.roomService;
+    this.lobby = lobby;
 }
 
 var pro = LobbyRemote.prototype;
@@ -30,14 +29,16 @@ var pro = LobbyRemote.prototype;
 **/
 pro.gameOver = function(gameType,roomid,resultInfo,cb)
 {
-    let room =this.roomservice.getRoom(gameType,roomid);
+    let room =this.lobby.roomService.getRoom(gameType,roomid);
     if(room)
     {
         room.addRound();
+        room.parseResultInfo(resultInfo);
+        let jixu = !room.isEnd();
         if(room.isEnd())//对局结束
         {
-
         }
+        cb(jixu);
     }
 }
 

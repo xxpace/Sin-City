@@ -11,6 +11,8 @@ var CustomizeRoom = function(opts)
     this.tRound = opts.tRound;
     this.serverId = opts.serverId;
     this.serverRoomId = opts.serverRoomId;
+
+    this.scoreInfo = {};
 }
 
 module.exports = CustomizeRoom;
@@ -25,4 +27,19 @@ pro.addRound = function()
 pro.isEnd = function()
 {
     return Boolean(this.cRound>=this.tRound);
+}
+
+pro.parseResultInfo = function(resultInfo)
+{
+    let tempInfo = resultInfo.scoreInfo;
+    for(let uid in tempInfo)
+    {
+        if(this.scoreInfo[uid])
+        {
+            this.scoreInfo[uid]+=tempInfo[uid];
+        }else
+        {
+            this.scoreInfo[uid] = tempInfo[uid];
+        }
+    }
 }

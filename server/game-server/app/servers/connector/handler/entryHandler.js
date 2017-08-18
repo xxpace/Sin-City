@@ -21,15 +21,16 @@ Handler.prototype.entry = function(msg, session, next) {
 	self.idCount++;
 	session.bind(uid);
 	session.on('closed', onUserLeave.bind(null, self.app));
-	self.app.rpc.ddz.ddzRemote.add(session,uid,self.app.get('serverId'),true,function(roomid){
-		session.set('rid', roomid);
-		session.push('rid', function(err) {
-			if(err) {
-				console.error('set rid for session service failed! error is : %j', err.stack);
-			}
-		});
-		next(null);
-	});
+	// self.app.rpc.ddz.ddzRemote.add(session,uid,self.app.get('serverId'),true,function(roomid){
+	// 	session.set('rid', roomid);
+	// 	session.push('rid', function(err) {
+	// 		if(err) {
+	// 			console.error('set rid for session service failed! error is : %j', err.stack);
+	// 		}
+	// 	});
+	// 	next(null);
+	// });
+	next(null,"enterSuccessfull");
 };
 
 var onUserLeave = function(app, session) {

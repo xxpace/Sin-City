@@ -42,9 +42,9 @@ app.configure('production|development', 'ddz|auth', function(){
   app.use(sync, {sync: {path:__dirname + '/app/dao/mapping', dbclient: dbclient}});
 });
 
-app.configure('production|development','lobby',function(){
-  app.load(testLobby);
-});
+// app.configure('production|development','lobby',function(){
+//   app.load(testLobby);
+// });
 
 // start app
 app.start();

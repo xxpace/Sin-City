@@ -1,3 +1,5 @@
+var pomelo = require('pomelo');
+
 module.exports = function(app)
 {
     return new LobbyHandler(app,app.get('lobby'));
@@ -23,15 +25,15 @@ lobby.createRoom = function(msg,session,next)
 lobby.joinRoom = function(msg,session,next)
 {
     let roomId = msg.roomId;
-    let roomService = this.lobby.roomservice;
-    let room = roomService = roomService.getRoomById(roomId);
+    let gameType = msg.gameType;
+    let room = this.lobby.roomService.getRoom(gameType,roomId);
     if(room)
     {
         session.set('gameServerId',room.serverId);
         session.set('gameServerRoomId',room.serverRoomId);
         session.pushAll(function(){
             let msg = {'namespace':'user','service':'ddzRemote','method':'enterRoom','args':[session.uid,room.id,session.frontendId]};
-            pomelo.app.rpcInvoke(room.serverId,msg,function(roomid){
+            pomelo.app.rpcInvoke(room.serverId,msg,(roomid)=>{
 
                 next(null,"加入房间");
             });

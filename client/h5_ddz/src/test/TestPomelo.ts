@@ -26,9 +26,21 @@ class TestPomelo
         }, function(response:any):void {
             if (response.code === 200) {
                 console.log("connection success");
+
                 pomelo.request("connector.entryHandler.entry",{"username":"xuhe"},function(data):void{
-                    console.log("recv---entry--->",data);
+                    console.log("entry--->",data);
+
+                    pomelo.request("lobby.lobbyHandler.createRoom",{},function(data){
+                        console.log("createRoom--->",data);
+
+                        pomelo.request("lobby.lobbyHandler.joinRoom",{"gameType":"ddz","roomId":1},function(data){
+                            console.log("createRoom--->",data);
+                        });
+
+                    });
+
                 });
+
             }
         });
 

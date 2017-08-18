@@ -13,17 +13,16 @@ let pro = LobbyRoomService.prototype;
 
 pro.createRoom = function(opts,cb)
 {
-    let id = ++this.rooomIdIndex;
+    let id = ++this.roomIdIndex;
     opts.id = id;
-    opts.serverId = this.getFreeServer();
+    opts.serverId = this.getFreeServer(opts.gameType);
 
     let msg = {'namespace':'user','service':'ddzRemote','method':'createRoom','args':[]};
-    pomelo.app.rpcInvoke(opts.serverId,msg,function(roomid){
-        let that = this;
+    pomelo.app.rpcInvoke(opts.serverId,msg,(roomid)=>{
         opts.serverRoomId = roomid;
         let room = new CustomizeRoom(opts);
         let key = ""+opts.gameType+"_"+room.id;
-        that.roomDict[key] = room;
+        this.roomDict[key] = room;
         cb(room);
     });
 }
@@ -31,7 +30,7 @@ pro.createRoom = function(opts,cb)
 pro.getRoom = function(type,roomid)
 {
     let key = ""+type+"_"+roomid;
-    return this.roomDict[roomid];
+    return this.roomDict[key];
 }
 
 pro.getFreeServer = function(type)

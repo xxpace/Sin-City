@@ -7,11 +7,12 @@
     "token": "udddjjdjjd"
 },
 {
-    "type": "lobby",
-    "token": "dddddfdfdfjujkfldkfkd"
-},
-{
     "type": "auth",
     "token": "1dddddfdfdfjujkfldkfkd"
+}
+,
+{
+    "type": "lobby",
+    "token": "dddddfdfdfjujkfldkfkdlllll553ddd"
 }
 ]
