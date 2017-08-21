@@ -80,7 +80,7 @@ Instance.prototype.getRoom = function(roomid)
 }
 
 //进入包房
-Instance.prototype.addPlayerByRoomId = function(uid,roomid)
+Instance.prototype.addPlayerByRoomId = function(uid,roomid,cb)
 {
 	var self = this;
 	userDao.getPlayer(uid,function(player){

@@ -45,12 +45,12 @@ class TestPomelo
         });
 
 
-        pomelo.on('onAdd', function(data:any):void {
-            console.log("onAdd-->",data);
+        pomelo.on('onEnterRoom', function(data:any):void {
+            console.log("onEnterRoom-->",data);
         });
 
-        pomelo.on('onCards', function(data:any):void {
-            console.log("onCards-->",data);
+        pomelo.on('onJoinRoom', function(data:any):void {
+            console.log("onJoinRoom-->",data);
         });
     }
 }

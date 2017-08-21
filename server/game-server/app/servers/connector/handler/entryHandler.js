@@ -37,5 +37,6 @@ var onUserLeave = function(app, session) {
 	if(!session || !session.uid) {
 		return;
 	}
-	app.rpc.ddz.ddzRemote.kick(session, session.uid, app.get('serverId'), session.get('rid'), null);
+	console.info("user leave--->",session.uid);
+	// app.rpc.ddz.ddzRemote.kick(session, session.uid, app.get('serverId'), session.get('rid'), null);
 };

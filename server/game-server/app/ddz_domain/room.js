@@ -224,7 +224,7 @@ Room.prototype.handleMustPlay = function(pos)
 	messageService.pushMessageByRoom(player.roomid,DdzClientRoute.onPlayCards,{pos:player.position,cards:playCards});
     if(player.cards.length===0)
     {
-        room.notifyResult(player.position);
+        this.notifyResult(player.position);
     }else
     {
     	this.notifyPlay();

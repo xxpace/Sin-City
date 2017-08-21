@@ -73,12 +73,13 @@ pro.createRoom = function(cb)
 	cb(room.id);
 }
 
-pro.enterRoom = function(uid,roomid,sid,flag,cb)
+pro.enterRoom = function(uid,roomid,sid,cb)
 {
 	var self = this;
-	this.ddz.addPlayerByRoomId(uid,roomid,function(room,player){
+	console.info("enter roomid--->",roomid);
+	this.ddz.addPlayerByRoomId(uid,roomid,(room,player)=>{
 		let roomid = room.id;
-		var channel = self.channelService.getChannel(roomid, flag);
+		var channel = self.channelService.getChannel(roomid, true);
 		if( !! channel) {
 			channel.add(uid, sid);
 		}

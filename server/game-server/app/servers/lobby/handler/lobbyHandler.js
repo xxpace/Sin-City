@@ -32,7 +32,7 @@ lobby.joinRoom = function(msg,session,next)
         session.set('gameServerId',room.serverId);
         session.set('gameServerRoomId',room.serverRoomId);
         session.pushAll(function(){
-            let msg = {'namespace':'user','service':'ddzRemote','method':'enterRoom','args':[session.uid,room.id,session.frontendId]};
+            let msg = {'namespace':'user','service':'ddzRemote','method':'enterRoom','args':[session.uid,room.serverRoomId,session.frontendId]};//
             pomelo.app.rpcInvoke(room.serverId,msg,(roomid)=>{
 
                 next(null,"加入房间");
