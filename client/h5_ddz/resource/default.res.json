@@ -7,6 +7,10 @@
 		{
 			"keys": "yuyin_png,z_bangzhu_png,z_bangzhu_h_png,Z_queding1_png,z_plus_h_png,z_shezhi_png,z_xiaoxi_png,z_xiaoxi_h_png,z_zhuangshi_png,zhuanzhuanmajiangdabiaotidi_png,bottom_png,box_png,btactivity_png,btcreateroom_png,btddh_png,btfankui_png,btfenxiang_png,btjoingame_png,btxlch_png,btxzdd_png,btzhanji_png,Button_AddGold_png,Button_HomeExit_png,Button_Set_png,chuangjianfangjian_png,CreateRoomBg_png,dingbuuibantoumingdi_png,dttuichu_png,fangka_png,fangkaxiaobeijing_png,ffanghuifangj_png,fightpalyback_png,gamerulebk_png,goumaixiaojiahao_png,hallBg_png,head_img_male_png,hongseanniu_png,hunanmajiang_png,id_png,Img_SetBg_png,Img_TipsBg_png,main_kapai_png,main_meinv_png,main_mianban_png,mingchengbantoujianbian_png,msg_bg_png,z_shezhi_h_png,msg_title_png,paomadengbeijing_png,public_frame_a_png,publick_Back_png,public_frame_head_png,PopupScene_png,UIfengexian_png,user_png,warning_png,xiaolaba_png",
 			"name": "lobby"
+		},
+		{
+			"keys": "Num25_png,box_small_png,btm_line_png,enter_game_png,input_room_no_png,Num1_png,Num2_png,Num3_png,Num4_png,Num5_png,Num6_png,Num7_png,Num8_png,Num9_png,Num10_png,Num11_png,Num12_png",
+			"name": "joinRoom"
 		}
 	],
 	"resources": [
@@ -1719,6 +1723,91 @@
 			"url": "assets/ScenceHome/xiaolaba.png",
 			"type": "image",
 			"name": "xiaolaba_png"
+		},
+		{
+			"url": "assets/ScenceHome/joinRoom/Num25.png",
+			"type": "image",
+			"name": "Num25_png"
+		},
+		{
+			"url": "assets/ScenceHome/joinRoom/box.png",
+			"type": "image",
+			"name": "box_small_png"
+		},
+		{
+			"url": "assets/ScenceHome/joinRoom/btm_line.png",
+			"type": "image",
+			"name": "btm_line_png"
+		},
+		{
+			"url": "assets/ScenceHome/joinRoom/enter_game.png",
+			"type": "image",
+			"name": "enter_game_png"
+		},
+		{
+			"url": "assets/ScenceHome/joinRoom/input_room_no.png",
+			"type": "image",
+			"name": "input_room_no_png"
+		},
+		{
+			"url": "assets/ScenceHome/joinRoom/Num1.png",
+			"type": "image",
+			"name": "Num1_png"
+		},
+		{
+			"url": "assets/ScenceHome/joinRoom/Num2.png",
+			"type": "image",
+			"name": "Num2_png"
+		},
+		{
+			"url": "assets/ScenceHome/joinRoom/Num3.png",
+			"type": "image",
+			"name": "Num3_png"
+		},
+		{
+			"url": "assets/ScenceHome/joinRoom/Num4.png",
+			"type": "image",
+			"name": "Num4_png"
+		},
+		{
+			"url": "assets/ScenceHome/joinRoom/Num5.png",
+			"type": "image",
+			"name": "Num5_png"
+		},
+		{
+			"url": "assets/ScenceHome/joinRoom/Num6.png",
+			"type": "image",
+			"name": "Num6_png"
+		},
+		{
+			"url": "assets/ScenceHome/joinRoom/Num7.png",
+			"type": "image",
+			"name": "Num7_png"
+		},
+		{
+			"url": "assets/ScenceHome/joinRoom/Num8.png",
+			"type": "image",
+			"name": "Num8_png"
+		},
+		{
+			"url": "assets/ScenceHome/joinRoom/Num9.png",
+			"type": "image",
+			"name": "Num9_png"
+		},
+		{
+			"url": "assets/ScenceHome/joinRoom/Num10.png",
+			"type": "image",
+			"name": "Num10_png"
+		},
+		{
+			"url": "assets/ScenceHome/joinRoom/Num11.png",
+			"type": "image",
+			"name": "Num11_png"
+		},
+		{
+			"url": "assets/ScenceHome/joinRoom/Num12.png",
+			"type": "image",
+			"name": "Num12_png"
 		}
 	]
 }
