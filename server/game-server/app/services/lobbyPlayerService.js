@@ -1,19 +1,33 @@
-
+var userDao = require('../dao/userDao.js');
 
 var LobbyPlayerService = function()
 {
-    /**
-    {
-        uid,
-        gameState:0;表示玩家游戏状态 如果在游戏中则为游戏类型 ddz
-        gameServerId:,
-        gameServerRoomId,
-        lobbyRoomId,
-    }
-    **/
     this.playerDict = {};
 }
 
 module.exports = LobbyPlayerService;
 
 var pro = LobbyPlayerService.prototype;
+
+pro.addNewPlayer = function(uid)
+{
+    userDao.getLobbyPlayer(uid,functin(player){
+        this.playerDict[uid] = player;
+    });
+}
+
+pro.changeGameState = function(uid,opts)
+{
+    if(this.playerDict[uid])
+    {
+        this.playerDict[uid].setGameState(opts)
+    }
+}
+
+pro.setLineState = function(uid,bool)
+{
+    if(this.playerDict[uid])
+    {
+        this.playerDict[uid].isOnLine = bool;
+    }
+}

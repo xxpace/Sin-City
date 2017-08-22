@@ -13,20 +13,13 @@ var LobbyRemote = function(app,lobby)
 
 var pro = LobbyRemote.prototype;
 
-/**
-    struct resultInfo{
-        scoreInfo:{
-            uid:score,
-            ...,
-        },
-        cardRecord:{
-            uid:{
-                bombs:4,
-                aircraft:1,
-            }
-        }
-    }
-**/
+pro.enterLobby = function(uid,cb)
+{
+    let playerService = this.lobby.playerService;
+    playerService.addNewPlayer(uid);
+    cb();
+}
+
 pro.gameOver = function(gameType,roomid,resultInfo,cb)
 {
     let room =this.lobby.roomService.getRoom(gameType,roomid);
@@ -42,4 +35,8 @@ pro.gameOver = function(gameType,roomid,resultInfo,cb)
     }
 }
 
-
+pro.offLine = function(uid)
+{
+    let playerService = this.lobby.playerService;
+    playerService.setLineState(uid,false);
+}

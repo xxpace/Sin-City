@@ -1,11 +1,14 @@
 
 var pomelo = require('pomelo');
 var LobbyRoomService = require('../services/lobbyRoomService');
+var LobbyPlayerService = require('../services/lobbyPlayerService');
+
 
 var Lobby = function()
 {
     this.playerDict = {};
     this.roomService = new LobbyRoomService();
+    this.playerService = new LobbyPlayerService();
 }
 
 module.exports = Lobby;

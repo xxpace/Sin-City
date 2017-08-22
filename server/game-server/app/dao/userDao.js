@@ -1,11 +1,17 @@
 var Player = require('../ddz_domain/player');
 var pomelo = require('pomelo');
+var LobbyPlayer = require('../lobby_domain/player');
 
 var userDao = module.exports;
 
 userDao.getPlayer = function(uid,cb)
 {
 	cb(new Player({"uid":uid}));//eL6N.Ckho<dw
+}
+
+userDao.getLobbyPlayer = function(uid,cb)
+{
+    cb(new LobbyPlayer({'uid':uid}));
 }
 
 userDao.getUserByName = function(username,cb)

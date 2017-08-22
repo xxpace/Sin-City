@@ -1,7 +1,7 @@
 /**
  * Created by win7 on 2017/8/17.
  */
-class GameLayer extends egret.Sprite
+class GameLayer
 {
     public baseLayer:eui.UILayer;
     public panelLayer:eui.UILayer;

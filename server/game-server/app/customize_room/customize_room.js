@@ -29,6 +29,20 @@ pro.isEnd = function()
     return Boolean(this.cRound>=this.tRound);
 }
 
+/**
+    struct resultInfo{
+        scoreInfo:{
+            uid:score,
+            ...,
+        },
+        cardRecord:{
+            uid:{
+                bombs:4,
+                aircraft:1,
+            }
+        }
+    }
+**/
 pro.parseResultInfo = function(resultInfo)
 {
     let tempInfo = resultInfo.scoreInfo;
