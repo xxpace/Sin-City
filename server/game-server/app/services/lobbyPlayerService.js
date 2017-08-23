@@ -11,9 +11,19 @@ var pro = LobbyPlayerService.prototype;
 
 pro.addNewPlayer = function(uid)
 {
-    userDao.getLobbyPlayer(uid,functin(player){
+    if(this.playerDict[uid])
+    {
+        this.setLineState(uid,true);
+        return;
+    }
+    userDao.getLobbyPlayer(uid,function(player){
         this.playerDict[uid] = player;
     });
+}
+
+pro.getPlayer = function(uid)
+{
+    return this.playerDict[uid];
 }
 
 pro.changeGameState = function(uid,opts)

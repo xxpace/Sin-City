@@ -1,0 +1,7 @@
+{
+    "send_ask_time":5000,
+    "ask_time":10000,
+    "play_time":20000,
+    "offLine_ask_time":5000,
+    "offLine_play_time":10000
+}

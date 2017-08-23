@@ -6,7 +6,6 @@ var LobbyPlayerService = require('../services/lobbyPlayerService');
 
 var Lobby = function()
 {
-    this.playerDict = {};
     this.roomService = new LobbyRoomService();
     this.playerService = new LobbyPlayerService();
 }
@@ -26,10 +25,5 @@ pro.refreshGameServerInfo = function()
         pomelo.app.rpcInvoke(ddz.id,msg,function(res){
             console.log(res);
         });
-
-        // console.info('ddd---id--->',ddz);
-        // ddz.ddzRemote.getServerInfo(function(res){
-        //     console.info(res);
-        // });
     }
 }

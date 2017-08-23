@@ -90,3 +90,12 @@ Instance.prototype.addPlayerByRoomId = function(uid,roomid,cb)
 		cb(room,player);
 	});
 }
+
+Instance.prototype.offLine = function(uid)
+{
+	let player = this.getPlayer(uid);
+	if(player)
+	{
+		player.isOnLine = false;
+	}
+}

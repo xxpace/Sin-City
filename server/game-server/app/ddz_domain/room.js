@@ -5,6 +5,7 @@ var Turn = require('./Turn');
 var CardsProxy = require('./card.js').CardsProxy;
 var logger = require('pomelo-logger').getLogger('pomelo');
 var pomelo = require('pomelo');
+var roomTime = require('../../config/ddz/ddz_time.json');
 
 var STATUS_CREATE = "status_create"
 var STATUS_BEGIN = "status_begin";
@@ -69,7 +70,7 @@ Room.prototype.testSendPoker = function()
 	{
 		this.sendPoker();
 		this.status = STATUS_BEGIN;
-		this.timeIndex = setInterval(this.askLord.bind(this),5000);
+		this.timeIndex = setTimeout(this.askLord.bind(this),roomTime.send_ask_time);
 	}
 }
 
@@ -121,8 +122,9 @@ Room.prototype.askLord = function()
 	if(pos!==-1)
 	{
 		let player = this.players[pos];
-		this.timeIndex = setInterval(this.askLord.bind(this),10000);
-		messageService.pushMessageByRoom(this.id,DdzClientRoute.onAskLord,{pos:pos,maxScore:this.askMaxScore,time:10000});
+		let costTime = player.isOnLine?roomTime.ask_time:roomTime.offLine_ask_time;
+		this.timeIndex = setTimeout(this.askLord.bind(this),costTime);
+		messageService.pushMessageByRoom(this.id,DdzClientRoute.onAskLord,{pos:pos,maxScore:this.askMaxScore,time:costTime});
 	}else
 	{
 		this.yesLord();
@@ -209,8 +211,9 @@ Room.prototype.notifyPlay = function()
 		{
 			this.autoPlay = true;
 		}
-		messageService.pushMessageByRoom(this.id,DdzClientRoute.notifyPlay,{"pos":pos,"time":20*1000});
-		this.notifyPlayTimeIndex = setTimeout(this.notifyPlay.bind(this),20*1000);
+		var costTime = player.isOnLine?roomTime.play_time:roomtime.offLine_play_time;
+		messageService.pushMessageByRoom(this.id,DdzClientRoute.notifyPlay,{"pos":pos,"time":costTime});
+		this.notifyPlayTimeIndex = setTimeout(this.notifyPlay.bind(this),costTime);
 	}
 }
 

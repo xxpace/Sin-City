@@ -8,6 +8,7 @@ var Player = function(opts)
     this.isLord = false;
     this.isPlayCards = [];
     this.isReady = false;
+    this.isOnLine = true;
 }
 
 module.exports = Player;

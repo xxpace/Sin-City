@@ -39,4 +39,12 @@ pro.offLine = function(uid)
 {
     let playerService = this.lobby.playerService;
     playerService.setLineState(uid,false);
+
+    let playerService = this.lobby.playerService;
+    let player = playerService.getPlayer(uid);
+    if(player&&player.gameState)
+    {
+        let msg = {'namespace':'user','service':'ddzRemote','method':'offLine','args':[uid]};
+        this.app.rpcInvoke(player.gameServerId,msg);
+    }
 }

@@ -101,3 +101,8 @@ pro.enterRoom = function(uid,roomid,sid,cb)
 		cb(roomid);
 	});
 }
+
+pro.offLine = function(uid)
+{
+    this.ddz.offLine(uid);
+}
