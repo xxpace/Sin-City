@@ -30,7 +30,9 @@ Handler.prototype.entry = function(msg, session, next) {
 	// 	});
 	// 	next(null);
 	// });
-	next(null,"enterSuccessfull");
+	self.app.rpc.lobby.lobbyRemote.enterLobby(uid,function(playerInfo){
+		next(null,playerInfo);
+	})
 };
 
 var onUserLeave = function(app, session) {
@@ -38,6 +40,5 @@ var onUserLeave = function(app, session) {
 		return;
 	}
 	console.info("user leave--->",session.uid);
-	// app.rpc.ddz.ddzRemote.kick(session, session.uid, app.get('serverId'), session.get('rid'), null);
 	app.rpc.lobby.lobbyRemote.offLine(sesion.uid);
 };

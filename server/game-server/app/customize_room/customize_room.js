@@ -11,6 +11,9 @@ var CustomizeRoom = function(opts)
     this.tRound = opts.tRound;
     this.serverId = opts.serverId;
     this.serverRoomId = opts.serverRoomId;
+    this.ownerId = opts.ownerId;
+
+    this.memberList = [];
 
     this.scoreInfo = {};
 }
@@ -56,4 +59,14 @@ pro.parseResultInfo = function(resultInfo)
             this.scoreInfo[uid] = tempInfo[uid];
         }
     }
+}
+
+pro.addMember = function(uid)
+{
+    let isIn = Boolean(this.memberList.indexOf(uid)==-1);
+    if(isIn)
+    {
+        this.memberList.push(uid);
+    }
+    return isIn;
 }

@@ -282,6 +282,24 @@ Room.prototype.notifyResult = function(winPos)
     });
 }
 
+Room.prototype.cleanRoom = function()
+{
+	var channelService = pomelo.app.get('channelService');
+	if(channelService)
+	{
+		channelService.destroyChannel(this.id);
+	}
+	this.players.length = 0;
+	this.posIndex = 0;
+	this.timeIndex = -1;
+	this.playCards.length = 0;
+	this.notifyPlayTimeIndex = -1;
+	this.askMaxScore = 0;
+	this.lastPlayCards.length = 0;
+	this.lastPlayPos = -1;
+	this.autoPlay = false;
+}
+
 Room.prototype.reSetPlayer = function()
 {
 	let cards = [];

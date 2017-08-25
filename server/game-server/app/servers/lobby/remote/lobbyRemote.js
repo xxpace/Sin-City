@@ -16,8 +16,9 @@ var pro = LobbyRemote.prototype;
 pro.enterLobby = function(uid,cb)
 {
     let playerService = this.lobby.playerService;
-    playerService.addNewPlayer(uid);
-    cb();
+    playerService.addNewPlayer(uid,function(){
+        cb(playerService.getPlayer(uid));
+    });
 }
 
 pro.gameOver = function(gameType,roomid,resultInfo,cb)
@@ -30,6 +31,8 @@ pro.gameOver = function(gameType,roomid,resultInfo,cb)
         let jixu = !room.isEnd();
         if(room.isEnd())//对局结束
         {
+            this.lobby.playerService.changeGameStateByList(room.memberList,{});
+            this.lobby.roomService.disbandRoom(gameType,roomid);
         }
         cb(jixu);
     }
@@ -40,7 +43,6 @@ pro.offLine = function(uid)
     let playerService = this.lobby.playerService;
     playerService.setLineState(uid,false);
 
-    let playerService = this.lobby.playerService;
     let player = playerService.getPlayer(uid);
     if(player&&player.gameState)
     {

@@ -9,15 +9,17 @@ module.exports = LobbyPlayerService;
 
 var pro = LobbyPlayerService.prototype;
 
-pro.addNewPlayer = function(uid)
+pro.addNewPlayer = function(uid,cb)
 {
     if(this.playerDict[uid])
     {
         this.setLineState(uid,true);
+        cb();
         return;
     }
     userDao.getLobbyPlayer(uid,function(player){
         this.playerDict[uid] = player;
+        cb();
     });
 }
 
@@ -31,6 +33,14 @@ pro.changeGameState = function(uid,opts)
     if(this.playerDict[uid])
     {
         this.playerDict[uid].setGameState(opts)
+    }
+}
+
+pro.changeGameStateByList = function(uids,opts)
+{
+    for(let i=0;i<uids.length;i++)
+    {
+        this.changeGameState(uids[i],opts);
     }
 }
 

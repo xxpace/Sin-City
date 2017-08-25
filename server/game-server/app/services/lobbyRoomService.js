@@ -4,7 +4,7 @@ var pomelo = require('pomelo');
 var LobbyRoomService = function()
 {
     this.roomDict = {};
-    this.roomIdIndex = 0;
+    this.roomNumberList = [];
 }
 
 module.exports = LobbyRoomService;
@@ -13,8 +13,7 @@ let pro = LobbyRoomService.prototype;
 
 pro.createRoom = function(opts,cb)
 {
-    let id = ++this.roomIdIndex;
-    opts.id = id;
+    opts.id = this.createRoomNumber();
     opts.serverId = this.getFreeServer(opts.gameType);
 
     let msg = {'namespace':'user','service':'ddzRemote','method':'createRoom','args':[]};
@@ -27,6 +26,17 @@ pro.createRoom = function(opts,cb)
     });
 }
 
+pro.createRoomNumber = function()
+{
+    let num = parseInt(100000+Math.random()*999999);
+    while(this.roomNumberList.indexOf(num)!=-1)
+    {
+        num = parseInt(100000+Math.random()*999999);
+    }
+    this.roomNumberList.push(num);
+    return num;
+}
+
 pro.getRoom = function(type,roomid)
 {
     let key = ""+type+"_"+roomid;
@@ -37,4 +47,10 @@ pro.getFreeServer = function(type)
 {
     let servers = pomelo.app.getServersByType(type);
     return servers[0].id;
+}
+
+pro.disbandRoom = function(type,roomid)
+{
+    let key = ""+type+"_"+roomid;
+    delete this.roomDict[key];
 }
