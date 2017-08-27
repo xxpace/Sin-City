@@ -30,7 +30,7 @@ Handler.prototype.entry = function(msg, session, next) {
 	// 	});
 	// 	next(null);
 	// });
-	self.app.rpc.lobby.lobbyRemote.enterLobby(uid,function(playerInfo){
+	self.app.rpc.lobby.lobbyRemote.entryLobby(session,uid,function(playerInfo){
 		next(null,playerInfo);
 	})
 };

@@ -13,10 +13,10 @@ var LobbyRemote = function(app,lobby)
 
 var pro = LobbyRemote.prototype;
 
-pro.enterLobby = function(uid,cb)
+pro.entryLobby = function(uid,cb)
 {
-    let playerService = this.lobby.playerService;
-    playerService.addNewPlayer(uid,function(){
+    var playerService = this.lobby.playerService;
+    playerService.addNewPlayer(uid,()=>{
         cb(playerService.getPlayer(uid));
     });
 }

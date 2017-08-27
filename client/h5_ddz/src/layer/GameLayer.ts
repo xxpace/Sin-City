@@ -18,9 +18,11 @@ class GameLayer
         }
         this.isInit = true;
         this.baseLayer = new eui.UILayer();
+        this.baseLayer.touchEnabled = false;
         container.addChild(this.baseLayer);
 
         this.panelLayer = new eui.UILayer();
+        this.panelLayer.touchEnabled = false;
         container.addChild(this.panelLayer);
 
         this.tipLayer = new egret.Sprite();

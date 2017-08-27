@@ -48,6 +48,7 @@ class GroupLoader extends egret.EventDispatcher
             RES.removeEventListener(RES.ResourceEvent.ITEM_LOAD_ERROR, this.onItemLoadError, this);
             this.isListener = false;
             this.isIdle = true;
+            this.dispatchEvent(new egret.Event(egret.Event.COMPLETE));
         }else
         {
             RES.loadGroup(this.groups.pop());

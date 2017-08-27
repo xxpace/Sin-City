@@ -25,7 +25,7 @@ class GamePomelo
             host: GamePomelo.host,
             port: GamePomelo.port
         }, function(response:any):void {
-            StageLog.log(JSON.stringify(response));
+            // StageLog.log(JSON.stringify(response));
             if (response.code === 200) {
                 console.log("game connection success");
                 callback.apply(thisObj);

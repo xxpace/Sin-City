@@ -10,7 +10,7 @@
 	<e:Button id="btnCreate" label="" x="322" y="124">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="btcreateroom_png"/>
+			<e:Image width="100%" height="100%" source="btcreateroom_png" alpha.down="0.5"/>
 			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
 			</e:Skin>
 		</e:skinName>
@@ -18,7 +18,7 @@
 	<e:Button id="btnJoin" label="" x="714" y="122">
 		<e:skinName>
 			<e:Skin states="up,down,disabled">
-			<e:Image width="100%" height="100%" source="btjoingame_png"/>
+			<e:Image width="100%" height="100%" source="btjoingame_png" alpha.down="0.5"/>
 			<e:Label id="labelDisplay" horizontalCenter="0" verticalCenter="0"/>
 			</e:Skin>
 		</e:skinName>

@@ -28,10 +28,10 @@ pro.createRoom = function(opts,cb)
 
 pro.createRoomNumber = function()
 {
-    let num = parseInt(100000+Math.random()*999999);
+    let num = parseInt(1000+Math.random()*9999);
     while(this.roomNumberList.indexOf(num)!=-1)
     {
-        num = parseInt(100000+Math.random()*999999);
+        num = parseInt(1000+Math.random()*9999);
     }
     this.roomNumberList.push(num);
     return num;

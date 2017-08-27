@@ -11,6 +11,10 @@
 		{
 			"keys": "Num25_png,box_small_png,btm_line_png,enter_game_png,input_room_no_png,Num1_png,Num2_png,Num3_png,Num4_png,Num5_png,Num6_png,Num7_png,Num8_png,Num9_png,Num10_png,Num11_png,Num12_png",
 			"name": "joinRoom"
+		},
+		{
+			"keys": "select_round_png,btn_checkbox_png,btn_create_png,btn_checkbox1_png,buttion_select4_png,buttion_select8_png,buttion_select12_png",
+			"name": "createRoom"
 		}
 	],
 	"resources": [
@@ -1808,6 +1812,41 @@
 			"url": "assets/ScenceHome/joinRoom/Num12.png",
 			"type": "image",
 			"name": "Num12_png"
+		},
+		{
+			"url": "assets/ScenceHome/CreateRoom/select_round.png",
+			"type": "image",
+			"name": "select_round_png"
+		},
+		{
+			"url": "assets/ScenceHome/CreateRoom/btn_checkbox.png",
+			"type": "image",
+			"name": "btn_checkbox_png"
+		},
+		{
+			"url": "assets/ScenceHome/CreateRoom/btn_create.png",
+			"type": "image",
+			"name": "btn_create_png"
+		},
+		{
+			"url": "assets/ScenceHome/CreateRoom/btn_checkbox1.png",
+			"type": "image",
+			"name": "btn_checkbox1_png"
+		},
+		{
+			"url": "assets/ScenceHome/CreateRoom/buttion_select4.png",
+			"type": "image",
+			"name": "buttion_select4_png"
+		},
+		{
+			"url": "assets/ScenceHome/CreateRoom/buttion_select8.png",
+			"type": "image",
+			"name": "buttion_select8_png"
+		},
+		{
+			"url": "assets/ScenceHome/CreateRoom/buttion_select12.png",
+			"type": "image",
+			"name": "buttion_select12_png"
 		}
 	]
 }

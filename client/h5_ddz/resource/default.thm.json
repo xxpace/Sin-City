@@ -3,7 +3,9 @@
   "autoGenerateExmlsList": true,
   "exmls": [
     "resource/assets/ui/clock.exml",
+    "resource/assets/ui/create_room_view.exml",
     "resource/assets/ui/gamePlayView.exml",
+    "resource/assets/ui/join_room_view.exml",
     "resource/assets/ui/lobby_view.exml"
   ]
 }

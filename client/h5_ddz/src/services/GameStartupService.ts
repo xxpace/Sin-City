@@ -7,12 +7,12 @@ class GameStartupService extends GameService
     public start()
     {
         this.gameLoader = new GroupLoader();
-        this.gameLoader.load("login");
+        this.gameLoader.load("lobby");
         this.gameLoader.addEventListener(egret.Event.COMPLETE,this.loadLoginComplete,this);
     }
 
     public loadLoginComplete(e:egret.Event)
     {
-        
+        ServiceManager.startService(LobbyService,LobbyService.NAME);
     }
 }

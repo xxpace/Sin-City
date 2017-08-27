@@ -1,4 +1,4 @@
-var userDao = require('../dao/userDao.js');
+var userDao = require('../dao/userDao');
 
 var LobbyPlayerService = function()
 {
@@ -17,8 +17,9 @@ pro.addNewPlayer = function(uid,cb)
         cb();
         return;
     }
+    var self = this;
     userDao.getLobbyPlayer(uid,function(player){
-        this.playerDict[uid] = player;
+        self.playerDict[uid] = player;
         cb();
     });
 }

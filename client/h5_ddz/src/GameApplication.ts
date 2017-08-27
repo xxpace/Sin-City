@@ -7,6 +7,7 @@ class GameApplication
         this.gameStage = stage;
         this.initGameLayer();
         this.initService();
+        this.initPomelo();
     }
 
     public initGameLayer()
@@ -17,6 +18,13 @@ class GameApplication
     public initService()
     {
         ServiceManager.startService(GameStartupService,GameStartupService.NAME);
+    }
+
+    public initPomelo()
+    {
+        GamePomelo.init(()=>{
+            
+        },this);
     }
 
     private static _instance:GameApplication;

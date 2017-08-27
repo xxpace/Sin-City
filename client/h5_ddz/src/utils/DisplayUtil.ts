@@ -10,4 +10,12 @@ class DisplayUtil
             dis.removeChildAt(0);
         }
     }
+
+    public static removeSelf(self)
+    {
+        if(self.parent)
+        {
+            self.parent.removeChild(self);
+        }
+    }
 }

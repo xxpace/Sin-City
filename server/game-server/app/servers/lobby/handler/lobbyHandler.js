@@ -39,7 +39,7 @@ lobby.joinRoom = function(msg,session,next)
         }
         session.set('gameServerId',room.serverId);
         // session.set('gameServerRoomId',room.serverRoomId);
-        session.pushAll(function(){
+        session.pushAll(()=>{
             let msg = {'namespace':'user',
                         'service':'ddzRemote',
                         'method':'enterRoom',

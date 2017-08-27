@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e:Skin class="create_room_view" width="1280" height="720" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing">
+	<e:Image source="CreateRoomBg_png" x="0" y="0" locked="true"/>
+	<e:Button id="btnCreate" label="" y="578" horizontalCenter="0">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="btn_create_png" alpha.down="0.5"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+	<e:Image source="buttion_select8_png" x="425" y="267"/>
+	<e:Image source="buttion_select4_png" x="299" y="267"/>
+	<e:Image source="buttion_select12_png" x="554" y="267"/>
+	<e:Image source="select_round_png" x="95" y="263"/>
+	<e:Group x="261.5" y="264">
+		<e:RadioButton id="jv_4" label="" x="0" y="0">
+			<e:skinName>
+			<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="btn_checkbox_png" source.down="btn_checkbox1_png"/>
+			</e:Skin>
+			</e:skinName>
+		</e:RadioButton>
+		<e:RadioButton id="jv_8" label="" x="127" y="0">
+			<e:skinName>
+			<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="btn_checkbox_png" source.down="btn_checkbox1_png"/>
+			</e:Skin>
+			</e:skinName>
+		</e:RadioButton>
+		<e:RadioButton id="jv_12" label="" x="254" y="0">
+			<e:skinName>
+			<e:Skin states="up,down,disabled">
+				<e:Image width="100%" height="100%" source="btn_checkbox_png" source.down="btn_checkbox1_png"/>
+			</e:Skin>
+			</e:skinName>
+		</e:RadioButton>
+	</e:Group>
+	<e:Button id="btnExit" label="" x="20.5" y="0">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="dttuichu_png" alpha.down="0.5"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
+</e:Skin>
