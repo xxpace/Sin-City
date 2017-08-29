@@ -78,21 +78,50 @@ pro.cancelPlay = function(msg,session,next)
 }
 
 
-pro.ready = function(msg,session,next)
+// pro.ready = function(msg,session,next)
+// {
+//     let uid = session.uid;
+//     let player = this.ddz.getPlayer(uid);
+//     let room = this.ddz.getRoom(player.roomid);
+//     if(room)
+//     {
+//         player.isReady = true;
+//         if(room.isAllReady())
+//         {
+//             room.reSetPlayerReadyState(false);
+//             room.testSendPoker();
+//         }
+//     }
+//     next(null);
+// }
+
+pro.gameOk = function(msg,session,next)
 {
     let uid = session.uid;
     let player = this.ddz.getPlayer(uid);
     let room = this.ddz.getRoom(player.roomid);
-    if(room)
+    var channel = this.app.channelService.getChannel(roomid, true);
+    if(room&&channel)
     {
-        player.isReady = true;
-        if(room.isAllReady())
+        var players = room.players;
+        let len = players.length;
+        for(let i=0;i<len;i++)
         {
-            room.reSetPlayerReadyState(false);
-            room.testSendPoker();
+            let tsid = channel.getMember(players[i].uid).sid;
+            if(players[i]==player)
+            {
+                this.app.channelService.pushMessageByUids('onEnterRoom', players, [{uid:uid,sid:tsid}]);
+            }else
+            {
+                this.app.channelService.pushMessageByUids('onJoinRoom', player, [{uid:players[i].uid,sid:tsid}]);
+            }
         }
+        room.testSendPoker();
+        next(null,"ok");
+    }else
+    {
+        next(null,"room or channel is null");
     }
-    next(null);
 }
 
 pro.leaveRoom =  function(msg,session,next)

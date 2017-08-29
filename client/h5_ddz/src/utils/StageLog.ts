@@ -5,8 +5,9 @@ class StageLog
 {
     public static logTxt:egret.TextField;
 
-    public static log(info:string)
+    public static log(message?: any, ...optionalParams: any[])
     {
+        console.log.apply(null,arguments);
         //if(StageLog.logTxt==null)
         //{
         //    StageLog.logTxt = new egret.TextField();

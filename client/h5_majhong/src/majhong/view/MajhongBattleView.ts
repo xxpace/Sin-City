@@ -20,6 +20,8 @@ class MajhongBattleView extends eui.Component
 
     public data:PlayerMajhongInfo;
 
+    public majhongOperate:MajhongOperate;
+
     public static testBattle;
 
     public constructor()
@@ -156,5 +158,7 @@ class MajhongBattleView extends eui.Component
         this.play_3.x = 20;
         this.play_3.y = 520;
         this.play_3.init();
+
+        this.majhongOperate = new MajhongOperate(this.play_0);
     }
 }

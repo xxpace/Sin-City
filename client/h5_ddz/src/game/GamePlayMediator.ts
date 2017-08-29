@@ -1,8 +1,10 @@
 /**
  * Created by win7 on 2017/6/5.
  */
-class GamePlayMediator
+class GamePlayMediator extends GameService
 {
+    public static NAME:string = "GamePlayMediator";
+
     private _pomelo:Pomelo;
 
     private _playView:GamePlayView;
@@ -37,12 +39,13 @@ class GamePlayMediator
 
     public connection()
     {
-        GamePomelo.init(function(){
-            let self = this;
-            self._pomelo = GamePomelo.pomelo;
-            self.addEvent();
-            self.joinGame();
-        },this);
+        GamePomelo.pomelo.request("ddz.ddzHandler.gameOk",{},(data)=>{
+            StageLog.log("gameOk--->",data);
+            if(data=="ok")
+            {
+                this.addEvent();
+            }
+        });
     }
 
     public addEvent()

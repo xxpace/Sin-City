@@ -9,6 +9,9 @@ class ServiceManager
         {
             ServiceManager.serviceDict[name] = new ServiceClass();
             ServiceManager.serviceDict[name].start();
+        }else
+        {
+            throw new Error("service start fail.....");
         }
     }
 

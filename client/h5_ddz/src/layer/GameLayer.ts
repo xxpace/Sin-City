@@ -4,7 +4,7 @@
 class GameLayer
 {
     public baseLayer:eui.UILayer;
-    public panelLayer:eui.UILayer;
+    public panelLayer:MaskLayer;
     public tipLayer:egret.Sprite;
     public loadLayer:egret.Sprite;
 
@@ -21,7 +21,7 @@ class GameLayer
         this.baseLayer.touchEnabled = false;
         container.addChild(this.baseLayer);
 
-        this.panelLayer = new eui.UILayer();
+        this.panelLayer = new MaskLayer();
         this.panelLayer.touchEnabled = false;
         container.addChild(this.panelLayer);
 
