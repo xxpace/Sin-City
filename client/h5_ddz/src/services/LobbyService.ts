@@ -30,6 +30,7 @@ class LobbyService extends GameService
     {
         GamePomelo.pomelo.request("lobby.lobbyHandler.createRoom",{},(data)=>{
             this.roomData = data;
+            this.lobbyView.removeCreateRoomView();
             console.log("createRoom---->",data);
         });
     }

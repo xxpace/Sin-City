@@ -20,6 +20,7 @@ class FlashTip extends egret.Sprite
 
     public constructor(content)
     {
+        super();
         if(typeof content=="string")
         {
             let txt:egret.TextField = new egret.TextField();

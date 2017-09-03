@@ -13,7 +13,7 @@ class DisplayUtil
 
     public static removeSelf(self)
     {
-        if(self.parent)
+        if(self&&self.parent)
         {
             self.parent.removeChild(self);
         }

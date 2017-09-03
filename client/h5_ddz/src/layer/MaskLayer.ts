@@ -20,18 +20,20 @@ class MaskLayer extends eui.UILayer
             mask.graphics.beginFill(0x000000,0.5);
             mask.graphics.drawRect(0,0,this.width,this.height);
             mask.graphics.endFill();
+            mask.touchEnabled = true;
         }
         return mask;
     }
 
-    public addChild(child:egret.DisplayObject)
+    public addChild(child:egret.DisplayObject):egret.DisplayObject
     {
         let mask = this.createMask();
         super.addChild(mask);
         super.addChild(child);
+        return child;
     }
 
-    public removeChild(child:egret.DisplayObject)
+    public removeChild(child:egret.DisplayObject):egret.DisplayObject
     {
         let index = super.getChildIndex(child);
         if(index!=-1)
@@ -40,5 +42,6 @@ class MaskLayer extends eui.UILayer
             super.removeChild(child);
             this.maskList.push(super.removeChildAt(maskIndex));
         }
+        return child;
     }
 }

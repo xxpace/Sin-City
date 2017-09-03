@@ -4,6 +4,8 @@ class LobbyView extends eui.Component
     public btnJoin:eui.Button;
     public btnMessage:eui.Button;
 
+    public createRoomView:CreateRoomView;
+
     public constructor()
     {
         super();
@@ -29,7 +31,12 @@ class LobbyView extends eui.Component
     
     public createRoom()
     {
-        let createRoom:CreateRoomView = new CreateRoomView();
-        GameLayer.Instance.panelLayer.addChild(createRoom);
+        this.createRoomView = this.createRoomView||new CreateRoomView();
+        GameLayer.Instance.panelLayer.addChild(this.createRoomView);
+    }
+
+    public removeCreateRoomView()
+    {
+        DisplayUtil.removeSelf(this.createRoomView);
     }
 }
