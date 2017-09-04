@@ -66,8 +66,18 @@ Room.prototype.findPlayer = function(uid)
 
 Room.prototype.testSendPoker = function()
 {
-	if(this.isFull())
+	let isAllReady = true;
+	for(let i =0;i<this.players.length;i++)
 	{
+		if(this.players[i].isReady==false)
+		{
+			isAllReady = false;
+			break;
+		}
+	}
+	if(this.isFull()&&isAllReady)
+	{
+		console.info('send poker---->');
 		this.sendPoker();
 		this.status = STATUS_BEGIN;
 		this.timeIndex = setTimeout(this.askLord.bind(this),roomTime.send_ask_time);
@@ -124,6 +134,7 @@ Room.prototype.askLord = function()
 		let player = this.players[pos];
 		let costTime = player.isOnLine?roomTime.ask_time:roomTime.offLine_ask_time;
 		this.timeIndex = setTimeout(this.askLord.bind(this),costTime);
+		console.info("askLord--->",this.timeIndex);
 		messageService.pushMessageByRoom(this.id,DdzClientRoute.onAskLord,{pos:pos,maxScore:this.askMaxScore,time:costTime});
 	}else
 	{
@@ -135,7 +146,7 @@ Room.prototype.cleanTimeIndex = function()
 {
 	if(this.timeIndex!==-1)
 	{
-  		clearInterval(this.timeIndex);
+  		clearTimeout(this.timeIndex);
 		this.timeIndex = -1;
 	}
 }
@@ -151,6 +162,7 @@ Room.prototype.addAskScore = function(score)
 Room.prototype.endAskLord = function()
 {
 	this.cleanTimeIndex();
+	console.info("endaskLord--->",this.timeIndex);
 	this.yesLord();
 }
 

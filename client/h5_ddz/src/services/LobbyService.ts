@@ -20,7 +20,8 @@ class LobbyService extends GameService
 
     public joinHandle()
     {
-        GamePomelo.pomelo.request("lobby.lobbyHandler.joinRoom",{"roomId":this.roomData.id,"gameType":"ddz"},function(data){
+        StageLog.log("temp---->",JoinRoomView.tempRoomId);
+        GamePomelo.pomelo.request("lobby.lobbyHandler.joinRoom",{"roomId":JoinRoomView.tempRoomId,"gameType":"ddz"},function(data){
             console.log("joinRoom---->",data);
             ServiceManager.startService(StartupGameService,StartupGameService.NAME);
         });

@@ -30,6 +30,7 @@ lobby.joinRoom = function(msg,session,next)
     let roomId = msg.roomId;
     let gameType = msg.gameType;
     let room = this.lobby.roomService.getRoom(gameType,roomId);
+    console.info("joinRoom is call");
     if(room)
     {
         if(room.addMember(session.uid)==false)
@@ -45,7 +46,7 @@ lobby.joinRoom = function(msg,session,next)
                         'method':'enterRoom',
                         'args':[session.uid,room.serverRoomId,session.frontendId]};
             pomelo.app.rpcInvoke(room.serverId,msg,(roomid)=>{
-                next(null,"加入房间");
+                next(null,"加入房间-->"+roomId);
                 let opts = {"lobbyRoomId":room.id,
                             "gameState":gameType,
                             "gameServerId":room.serverId,

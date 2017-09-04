@@ -22,6 +22,8 @@ class JoinRoomView extends eui.Component
 
     public maxNum = 4;
 
+    public static tempRoomId;
+
     public constructor()
     {
         super();
@@ -68,6 +70,7 @@ class JoinRoomView extends eui.Component
             if(this.numList.length==this.maxNum)
             {
                 DisplayUtil.removeSelf(this);
+                JoinRoomView.tempRoomId = this.numList.join('');
                 GameDispatcher.Instance.dispatch(LobbyEvent.JOIN_ROOM);
             }
         }

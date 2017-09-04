@@ -27,7 +27,7 @@ var game_file_list = [
 	"bin-debug/LoadingUI.js",
 	"bin-debug/lobby/event/LobbyEvent.js",
 	"bin-debug/lobby/view/CreateRoomView.js",
-	"bin-debug/utils/StageLog.js",
+	"bin-debug/componet/FlashTip.js",
 	"bin-debug/lobby/view/LobbyView.js",
 	"bin-debug/Main.js",
 	"bin-debug/poker/Card.js",
@@ -43,7 +43,7 @@ var game_file_list = [
 	"bin-debug/utils/DisplayUtil.js",
 	"bin-debug/utils/FrameUtil.js",
 	"bin-debug/utils/GroupLoader.js",
-	"bin-debug/componet/FlashTip.js",
+	"bin-debug/utils/StageLog.js",
 	//----auto game_file_list end----
 ];
 

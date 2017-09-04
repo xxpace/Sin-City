@@ -39,12 +39,10 @@ class GamePlayMediator extends GameService
 
     public connection()
     {
+        this._pomelo = GamePomelo.pomelo;
+        this.addEvent();
         GamePomelo.pomelo.request("ddz.ddzHandler.gameOk",{},(data)=>{
             StageLog.log("gameOk--->",data);
-            if(data=="ok")
-            {
-                this.addEvent();
-            }
         });
     }
 
@@ -174,6 +172,7 @@ class GamePlayMediator extends GameService
         data = data.msg;
         let seatPos = this.findSeatPos(data.pos);
         this._playView.setClock(seatPos,data.time);
+        console.log("fenfenfen");
         if(this._selfData.position==data.pos)
         {
             this._playView.setAskScoreGroup(true,data.maxScore);

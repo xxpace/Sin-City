@@ -99,8 +99,9 @@ pro.gameOk = function(msg,session,next)
 {
     let uid = session.uid;
     let player = this.ddz.getPlayer(uid);
+    player.isReady = true;
     let room = this.ddz.getRoom(player.roomid);
-    var channel = this.app.channelService.getChannel(roomid, true);
+    var channel = this.app.channelService.getChannel(player.roomid, true);
     if(room&&channel)
     {
         var players = room.players;
