@@ -134,7 +134,6 @@ Room.prototype.askLord = function()
 		let player = this.players[pos];
 		let costTime = player.isOnLine?roomTime.ask_time:roomTime.offLine_ask_time;
 		this.timeIndex = setTimeout(this.askLord.bind(this),costTime);
-		console.info("askLord--->",this.timeIndex);
 		messageService.pushMessageByRoom(this.id,DdzClientRoute.onAskLord,{pos:pos,maxScore:this.askMaxScore,time:costTime});
 	}else
 	{
@@ -162,7 +161,6 @@ Room.prototype.addAskScore = function(score)
 Room.prototype.endAskLord = function()
 {
 	this.cleanTimeIndex();
-	console.info("endaskLord--->",this.timeIndex);
 	this.yesLord();
 }
 
@@ -280,18 +278,27 @@ Room.prototype.notifyResult = function(winPos)
 		scoreInfo[player.uid] = isWin?1:-1;
 	});
 	messageService.pushMessageByRoom(this.id,DdzClientRoute.notifyGameEnd,{"winList":winArr});
-	this.reSetPlayer();
-	this.status = STATUS_END;
 
-	var lobby = pomelo.app.getServersByType('ddz')[0];
+	this.status = STATUS_END;
+	this.reSetRoom();
+	var lobby = pomelo.app.getServersByType('lobby')[0];
+	console.info("gameover--1");
 	let msg = {'namespace':'user','service':'lobbyRemote','method':'gameOver','args':["ddz",this.id,{"scoreInfo":scoreInfo}]};
-    pomelo.app.rpcInvoke(lobby.id,msg,function(jixu){
-    	let self = this;
+    pomelo.app.rpcInvoke(lobby.id,msg,(jixu)=>{
     	if(jixu)
     	{
-    		self.testSendPoker();
+    		this.testSendPoker();
     	}
     });
+}
+
+Room.prototype.reSetRoom = function()
+{
+	this.reSetPlayer();
+	this.askMaxScore = 0;
+	this.lastPlayPos = -1;
+	this.autoPlay = false;
+	this.lastPlayCards.length = 0;
 }
 
 Room.prototype.cleanRoom = function()

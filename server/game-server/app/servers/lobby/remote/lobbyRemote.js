@@ -23,7 +23,8 @@ pro.entryLobby = function(uid,cb)
 
 pro.gameOver = function(gameType,roomid,resultInfo,cb)
 {
-    let room =this.lobby.roomService.getRoom(gameType,roomid);
+    let room =this.lobby.roomService.getRoomByServerRoomId(gameType,roomid);
+    console.info("gameover--2",room,gameType,roomid);
     if(room)
     {
         room.addRound();
@@ -35,6 +36,9 @@ pro.gameOver = function(gameType,roomid,resultInfo,cb)
             this.lobby.roomService.disbandRoom(gameType,roomid);
         }
         cb(jixu);
+    }else
+    {
+        cb(false);
     }
 }
 

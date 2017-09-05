@@ -43,6 +43,18 @@ pro.getRoom = function(type,roomid)
     return this.roomDict[key];
 }
 
+pro.getRoomByServerRoomId = function(type,serverRoomId)
+{
+    for(let key in this.roomDict)
+    {
+        let room = this.roomDict[key];
+        if(room.gameType==type&&room.serverRoomId==serverRoomId)
+        {
+            return room;
+        }
+    }
+}
+
 pro.getFreeServer = function(type)
 {
     let servers = pomelo.app.getServersByType(type);
