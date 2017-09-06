@@ -1,5 +1,3 @@
-
-
 module.exports = function(app)
 {
     return new LobbyRemote(app,app.get('lobby'));
@@ -21,6 +19,7 @@ pro.entryLobby = function(uid,cb)
     });
 }
 
+//游戏服务器调用
 pro.gameOver = function(gameType,roomid,resultInfo,cb)
 {
     let room =this.lobby.roomService.getRoomByServerRoomId(gameType,roomid);
@@ -33,7 +32,7 @@ pro.gameOver = function(gameType,roomid,resultInfo,cb)
         if(room.isEnd())//对局结束
         {
             this.lobby.playerService.changeGameStateByList(room.memberList,{});
-            this.lobby.roomService.disbandRoom(gameType,roomid);
+            this.lobby.roomService.disbandRoom(gameType,room.id);
         }
         cb(jixu);
     }else
@@ -42,6 +41,7 @@ pro.gameOver = function(gameType,roomid,resultInfo,cb)
     }
 }
 
+//connector 服务器调用
 pro.offLine = function(uid)
 {
     let playerService = this.lobby.playerService;

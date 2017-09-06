@@ -4,7 +4,7 @@ var pomelo = require('pomelo');
 var LobbyRoomService = function()
 {
     this.roomDict = {};
-    this.roomNumberList = [];
+    this.roomNumberDict = {};
 }
 
 module.exports = LobbyRoomService;
@@ -28,13 +28,18 @@ pro.createRoom = function(opts,cb)
 
 pro.createRoomNumber = function()
 {
-    let num = parseInt(1000+Math.random()*9000);
-    while(this.roomNumberList.indexOf(num)!=-1)
+    let num = this.randomRoomNumber();
+    while(this.roomNumberDict.hasOwnProperty(num))
     {
-        num = parseInt(1000+Math.random()*9000);
+        num = this.randomRoomNumber();
     }
-    this.roomNumberList.push(num);
+    this.roomNumberDict[num] = 0;
     return num;
+}
+
+pro.randomRoomNumber = function()
+{
+    return parseInt(1000+Math.random()*9000);
 }
 
 pro.getRoom = function(type,roomid)
@@ -63,6 +68,7 @@ pro.getFreeServer = function(type)
 
 pro.disbandRoom = function(type,roomid)
 {
+    delete this.roomNumberDict[roomid];
     let key = ""+type+"_"+roomid;
     delete this.roomDict[key];
 }
