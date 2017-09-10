@@ -13,7 +13,7 @@ class LobbyService extends GameService
         this.on(LobbyEvent.JOIN_ROOM,this.joinHandle,this);
         this.on(LobbyEvent.CREATE_ROOM,this.createHandle,this);
 
-        GamePomelo.pomelo.request("connector.entryHandler.entry",{},function(data){
+        GamePomelo.pomelo.request("connector.entryHandler.entry",{'uid':LoginData.uid},function(data){
             console.log("entry---->",data);
         });
     }

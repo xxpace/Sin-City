@@ -14,6 +14,7 @@ app.set('name', 'server');
 // app configuration
 app.configure('production|development', function() {
   app.route('ddz', routeUtil.ddz);
+  app.loadConfig('mysql', app.getBase() + '/../shared/mysql/mysql.json');
 });
 
 app.configure('production|development', 'connector', function(){

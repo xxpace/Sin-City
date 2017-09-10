@@ -10,7 +10,7 @@ class FlashTip extends egret.Sprite
         tip.x = (Main.gameWidth-tip.width)/2;
         tip.y = 600;
         GameLayer.Instance.tipLayer.addChild(tip);
-        egret.Tween.get(tip).wait(100).to({'y':200},500).call(function(t){
+        egret.Tween.get(tip).wait(500).to({'y':200},1000).call(function(t){
             DisplayUtil.removeSelf(t);
         },this,[tip]);
     }

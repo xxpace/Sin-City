@@ -1,17 +1,17 @@
 {
 	"development": {
-	  "host" : "127.0.0.1",
+	  "host" : "139.162.124.202",
 		"port" : "3306",
-		"database" : "Pomelo",
-		"user" : "xy",
-		"password" : "dev"
+		"database" : "game",
+		"user" : "root",
+		"password" : "147258"
 	},
 
 	"production": {
-	  "host" : "127.0.0.1",
+	  "host" : "139.162.124.202",
 		"port" : "3306",
-		"database" : "Pomelo",
-		"user" : "xy",
-		"password" : "dev"
+		"database" : "game",
+		"user" : "root",
+		"password" : "147258"
 	}
 }

@@ -6,6 +6,7 @@
     "resource/assets/ui/create_room_view.exml",
     "resource/assets/ui/gamePlayView.exml",
     "resource/assets/ui/join_room_view.exml",
-    "resource/assets/ui/lobby_view.exml"
+    "resource/assets/ui/lobby_view.exml",
+    "resource/assets/ui/login_view.exml"
   ]
 }

@@ -20,17 +20,18 @@
 var mysql = require('mysql');
 
 var client = mysql.createConnection({
-                				    host:"127.0.0.1",
+                				    host:"139.162.124.202",
                 					user:"root",
                						password:"147258",
                 					database:"game"
             						});
 client.connect();
 
-var sql = 'select username from user where id = ?';
+var sql = 'select * from user';
 var args = [1];
 client.query(sql,args,function(err,res){
 	if(err)throw err;
 	console.log(res[0]);
 });
-// client.end();
+
+client.end();

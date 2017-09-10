@@ -1847,6 +1847,11 @@
 			"url": "assets/ScenceHome/CreateRoom/buttion_select12.png",
 			"type": "image",
 			"name": "buttion_select12_png"
+		},
+		{
+			"url": "assets/ScenceLogin/Button_WeiXinLogon.png",
+			"type": "image",
+			"name": "Button_WeiXinLogon_png"
 		}
 	]
 }

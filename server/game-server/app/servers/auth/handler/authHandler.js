@@ -1,7 +1,7 @@
 
-var userDao = require('../../dao/userDao');
-var Token  = require('../../../../shared/token');
-var secret  = require('../../../../shared/session').secret;
+var userDao = require('../../../dao/userDao');
+var Token  = require('../../../../../shared/token');
+var secret  = require('../../../../../shared/session').secret;
 
 module.exports = function(app)
 {
@@ -20,19 +20,26 @@ pro.login = function(msg,session,next)
     let username = msg.username;
     let password = msg.password;
 
+    console.info("run login",username,password);
+
     if(!username||!password)
     {
         next(null,{code:"login error"});
     }
-    userDao.getUserByName(username,function(user){
-        if(password!=user.password)
+    userDao.getAccountByUsername(username,function(user){
+        if(user)
         {
-            next(null,{code:"password error"});
+            if(password!=user.password)
+            {
+                next(null,"用户名或者密码错误");
+            }
+            let uid = user.uid;
+            let token = Token.create(uid,Date.now(),secret);
+            next(null,{toker:token,uid:uid});
+        }else
+        {
+            next(null,"用户不存在");
         }
-
-        let uid = user.uid;
-        let token = Token.create(uid,Date.now(),secret);
-        next(null,{toker:token,uid:uid});
     });
 }
 
@@ -46,10 +53,23 @@ pro.register = function(msg,session,next)
         next(null,{code:"register error"});
     }
 
-    userDao.createUser(username,password,function(code){
-        if(code=="OK")
+    userDao.getAccountByUsername(username,function(have){
+        if(have)
         {
-            next(null,{code:"register ok"});
+            next(null,'username is haved');
+        }else
+        {
+            userDao.createUser(username,password,function(uid){
+                if(uid)
+                {
+                    userDao.createAccount(username,password,uid,function(){
+                        next(null,"ok");
+                    });
+                }else
+                {
+                    next(null,"error");
+                }
+            });
         }
     });
 }

@@ -4,18 +4,22 @@ module.exports = function(app) {
 
 var Handler = function(app) {
   this.app = app;
-  this.idCount = 0;
 };
 
 Handler.prototype.entry = function(msg, session, next) {
 	var self = this;
-	var uid = "user*"+self.idCount;
-	self.idCount++;
-	session.bind(uid);
-	session.on('closed', onUserLeave.bind(null, self.app));
-	self.app.rpc.lobby.lobbyRemote.entryLobby(session,uid,function(playerInfo){
-		next(null,playerInfo);
-	});
+	if(msg.uid)
+	{
+		var uid = msg.uid;
+		session.bind(uid);
+		session.on('closed', onUserLeave.bind(null, self.app,session));
+		self.app.rpc.lobby.lobbyRemote.entryLobby(session,uid,function(playerInfo){
+			next(null,playerInfo);
+		});
+	}else
+	{
+		next(null,'args error');
+	}
 };
 
 var onUserLeave = function(app, session) {

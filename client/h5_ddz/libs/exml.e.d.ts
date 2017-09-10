@@ -8,3 +8,5 @@ declare class join_room_view extends eui.Skin{
 }
 declare class lobby_view extends eui.Skin{
 }
+declare class login_view extends eui.Skin{
+}
