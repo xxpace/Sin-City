@@ -17,21 +17,34 @@
 
 
 //test mysql
-var mysql = require('mysql');
+// var mysql = require('mysql');
 
-var client = mysql.createConnection({
-                				    host:"139.162.124.202",
-                					user:"root",
-               						password:"147258",
-                					database:"game"
-            						});
-client.connect();
+// var client = mysql.createConnection({
+//                 				    host:"139.162.124.202",
+//                 					user:"root",
+//                						password:"147258",
+//                 					database:"game"
+//             						});
+// client.connect();
 
-var sql = 'select * from user';
-var args = [1];
-client.query(sql,args,function(err,res){
-	if(err)throw err;
-	console.log(res[0]);
-});
+// var sql = 'select * from user';
+// var args = [1];
+// client.query(sql,args,function(err,res){
+// 	if(err)throw err;
+// 	console.log(res[0]);
+// });
 
-client.end();
+// client.end();
+
+// var crypto = require('crypto');
+
+// var sha1 = crypto.createHash('sha1');
+
+// sha1.update('foo');
+
+// var str = sha1.digest('hex');
+// console.log(str,str.length);
+
+var reg = /^[a-z]*\d*$/i
+
+console.log(reg.test('A'));

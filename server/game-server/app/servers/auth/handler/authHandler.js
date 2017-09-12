@@ -2,6 +2,7 @@
 var userDao = require('../../../dao/userDao');
 var Token  = require('../../../../../shared/token');
 var secret  = require('../../../../../shared/session').secret;
+var crypto = require('crypto');
 
 module.exports = function(app)
 {
@@ -15,21 +16,50 @@ var Handle =  function(app)
 
 var pro = Handle.prototype;
 
+pro.hashPassword = function(password)
+{
+    let sha1 = crypto.createHash('sha1');
+    sha1.update(password);
+    return sha1.digest('hex');
+}
+
+pro.checkInput = function(username,password)
+{
+    if(!username||!password)
+    {
+        next(null,{code:""});
+        return "login error";
+    }
+
+    if(username.length>8||password.length>8)
+    {
+        return "用户名和密码分别不能超过8个字符";
+    }
+
+    var reg = /^[a-z]*\d*$/i;
+    if(reg.test(username)==false||reg.test(password)==false)
+    {
+        return "用户名和密码只能为字母 数字组合"
+    }
+    return "ok";
+}
+
 pro.login = function(msg,session,next)
 {
     let username = msg.username;
     let password = msg.password;
 
-    console.info("run login",username,password);
-
-    if(!username||!password)
+    let checkResult = this.checkInput(username,password);
+    if(checkResult!="ok")
     {
-        next(null,{code:"login error"});
+        next(null,checkResult);
+        return;
     }
+
     userDao.getAccountByUsername(username,function(user){
         if(user)
         {
-            if(password!=user.password)
+            if(this.hashPassword(password)!=user.password)
             {
                 next(null,"用户名或者密码错误");
             }
@@ -48,9 +78,11 @@ pro.register = function(msg,session,next)
     let username = msg.username;
     let password = msg.password;
 
-    if(!username||!password)
+    let checkResult = this.checkInput(username,password);
+    if(checkResult!="ok")
     {
-        next(null,{code:"register error"});
+        next(null,checkResult);
+        return;
     }
 
     userDao.getAccountByUsername(username,function(have){
@@ -62,7 +94,7 @@ pro.register = function(msg,session,next)
             userDao.createUser(username,password,function(uid){
                 if(uid)
                 {
-                    userDao.createAccount(username,password,uid,function(){
+                    userDao.createAccount(username,this.hashPassword(password),uid,function(){
                         next(null,"ok");
                     });
                 }else
