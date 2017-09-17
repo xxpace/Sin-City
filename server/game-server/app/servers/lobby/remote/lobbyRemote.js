@@ -46,6 +46,8 @@ pro.offLine = function(uid)
 {
     let playerService = this.lobby.playerService;
     playerService.setLineState(uid,false);
+    
+    console.info(playerService.playerDict);
 
     let player = playerService.getPlayer(uid);
     if(player&&player.gameState)

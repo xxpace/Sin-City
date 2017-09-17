@@ -56,7 +56,7 @@ pro.login = function(msg,session,next)
         return;
     }
 
-    userDao.getAccountByUsername(username,function(user){
+    userDao.getAccountByUsername(username,(user)=>{
         if(user)
         {
             if(this.hashPassword(password)!=user.password)
@@ -85,13 +85,13 @@ pro.register = function(msg,session,next)
         return;
     }
 
-    userDao.getAccountByUsername(username,function(have){
+    userDao.getAccountByUsername(username,(have)=>{
         if(have)
         {
             next(null,'username is haved');
         }else
         {
-            userDao.createUser(username,password,function(uid){
+            userDao.createUser(username,password,(uid)=>{
                 if(uid)
                 {
                     userDao.createAccount(username,this.hashPassword(password),uid,function(){

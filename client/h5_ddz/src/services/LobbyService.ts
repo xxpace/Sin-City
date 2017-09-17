@@ -22,8 +22,13 @@ class LobbyService extends GameService
     {
         StageLog.log("temp---->",JoinRoomView.tempRoomId);
         GamePomelo.pomelo.request("lobby.lobbyHandler.joinRoom",{"roomId":JoinRoomView.tempRoomId,"gameType":"ddz"},function(data){
-            console.log("joinRoom---->",data);
-            ServiceManager.startService(StartupGameService,StartupGameService.NAME);
+            if(data=="ok")
+            {
+                ServiceManager.startService(StartupGameService,StartupGameService.NAME);
+            }else
+            {
+                FlashTip.show(data);
+            }
         });
     }
 

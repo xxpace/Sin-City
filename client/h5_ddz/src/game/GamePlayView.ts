@@ -7,6 +7,8 @@ class GamePlayView extends eui.Component
 
     public askGroup:eui.Group;
 
+    public btnExit:eui.Button;
+
     public btnScore_0:eui.Button;
     public btnScore_1:eui.Button;
     public btnScore_2:eui.Button;

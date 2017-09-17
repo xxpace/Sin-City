@@ -27,5 +27,5 @@ var onUserLeave = function(app, session) {
 		return;
 	}
 	console.info("user leave--->",session.uid);
-	app.rpc.lobby.lobbyRemote.offLine(sesion.uid);
+	app.rpc.lobby.lobbyRemote.offLine(session.uid);
 };

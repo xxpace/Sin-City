@@ -91,4 +91,11 @@
 			</e:Skin>
 		</e:skinName>
 	</e:Button>
+	<e:Button id="btnExit" label="" x="0" y="0" anchorOffsetX="0"  anchorOffsetY="0"  scaleX="0.6" scaleY="0.6">
+		<e:skinName>
+			<e:Skin states="up,down,disabled">
+			<e:Image width="100%" height="100%" source="dttuichu_png" alpha.down="0.5"/>
+			</e:Skin>
+		</e:skinName>
+	</e:Button>
 </e:Skin>
