@@ -30,7 +30,14 @@ lobby.joinRoom = function(msg,session,next)
     let roomId = msg.roomId;
     let gameType = msg.gameType;
     let room = this.lobby.roomService.getRoom(gameType,roomId);
-    console.info("joinRoom is call");
+
+    let playerInfo = this.lobby.playerService.getPlayer(session.uid);
+    if(playerInfo.gameState)
+    {
+        next(null,"中途进入");
+        return;
+    }
+
     if(room)
     {
         if(room.addMember(session.uid)==false)
@@ -56,6 +63,27 @@ lobby.joinRoom = function(msg,session,next)
         });
     }else{
         next(null,"房间不存在");
+    }
+}
+
+lobby.reConnectionGame = function(msg,session,playerInfo)
+{
+    let playerInfo = this.lobby.playerService.getPlayer(session.uid);
+    if(playerInfo.gameState)
+    {
+        let room = this.lobby.roomService.getRoom(playerInfo.gameType,playerInfo.lobbyRoomId);
+
+        session.set('gameServerId',room.serverId);
+        let service = ""+playerInfo.gameType+"Remote";
+        session.pushAll(()=>{
+            let msg = {'namespace':'user',
+                        'service':service,
+                        'method':'reConnection',
+                        'args':[session.uid,room.serverRoomId,session.frontendId]};
+            pomelo.app.rpcInvoke(room.serverId,msg,(roomid)=>{
+                next(null,"ok");
+            });
+        });
     }
 }
 

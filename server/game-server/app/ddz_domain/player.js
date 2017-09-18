@@ -13,6 +13,11 @@ var Player = function(opts)
 
 module.exports = Player;
 
+Player.prototype.haveRoom = function()
+{
+    return Boolean(this.roomid!=-1);
+}
+
 Player.prototype.setAskScore = function(value)
 {
     this.askScore = value;

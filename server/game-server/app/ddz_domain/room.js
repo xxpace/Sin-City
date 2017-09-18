@@ -23,9 +23,12 @@ var Room = function(opts)
 	this.notifyPlayTimeIndex = -1;
 	this.cardsProxy = new CardsProxy();
 	this.cardsProxy.initCards();
-	this.askMaxScore = 0;
-	this.lastPlayCards = [];
-	this.lastPlayPos = -1;
+	this.askMaxScore = 0;//叫的最高分
+	this.lastPlayCards = [];//上一个出的牌
+	this.lastPlayPos = -1;//上一个出牌玩家的位置
+	this.currentPlayPos = -1;//当前正在出牌的玩家
+	this.notifyPlayTime = 0;//通知出牌时 的 时间戳
+	this.lordPos = -1;//地主位置
 	this.autoPlay = false;
 	this.status = STATUS_CREATE;
 }
@@ -178,6 +181,7 @@ Room.prototype.yesLord = function()
 			pos =  i;
 		}
 	}
+	this.lordPos = pos;
 	this.setLord(pos);
 	messageService.pushMessageByRoom(this.id,DdzClientRoute.notifyYesLord,{"pos":pos,"score":score});
 	this.handleLastPoker(pos);
@@ -221,6 +225,8 @@ Room.prototype.notifyPlay = function()
 		{
 			this.autoPlay = true;
 		}
+		this.currentPlayPos = pos;
+		this.notifyPlayTime = Date.now();
 		var costTime = player.isOnLine?roomTime.play_time:roomtime.offLine_play_time;
 		messageService.pushMessageByRoom(this.id,DdzClientRoute.notifyPlay,{"pos":pos,"time":costTime});
 		this.notifyPlayTimeIndex = setTimeout(this.notifyPlay.bind(this),costTime);
@@ -345,7 +351,7 @@ Room.prototype.canPlay = function(cards)
 		let oneStyle = this.cardsProxy.styleJudge.getCardStyle(cards);
 		let twoStyle = this.cardsProxy.styleJudge.getCardStyle(this.lastPlayCards);
 		let result = this.cardsProxy.compareCards(cards,oneStyle,this.lastPlayCards,twoStyle);
-		console.warn('compare result---->'+oneStyle+"----"+JSON.stringify(cards)+twoStyle+"----"+JSON.stringify(this.lastPlayCards)+"--------"+result);
+		// console.warn('compare result---->'+oneStyle+"----"+JSON.stringify(cards)+twoStyle+"----"+JSON.stringify(this.lastPlayCards)+"--------"+result);
 		return result;
 	}
 	return false;
@@ -372,4 +378,9 @@ Room.prototype.isAllReady = function()
 Room.prototype.reSetPlayerReadyState = function(bool)
 {
 	this.players.forEach((player)=>player.isReady=bool);
+}
+
+Room.prototype.getGameInfo_JSON = function()
+{
+
 }

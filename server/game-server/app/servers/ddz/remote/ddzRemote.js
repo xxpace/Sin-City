@@ -76,7 +76,12 @@ pro.createRoom = function(cb)
 pro.enterRoom = function(uid,roomid,sid,cb)
 {
 	var self = this;
-	console.info("enter roomid--->",roomid);
+	// let player = this.ddz.getPlayer(uid);
+	// if(player)
+	// {
+	// 	cb(-1);
+	// 	return;
+	// }
 	this.ddz.addPlayerByRoomId(uid,roomid,(room,player)=>{
 		let roomid = room.id;
 		var channel = self.channelService.getChannel(roomid, true);
@@ -84,25 +89,22 @@ pro.enterRoom = function(uid,roomid,sid,cb)
 			channel.add(uid, sid);
 		}
 		room.add(player);
-		// var players = room.players;
-		// let len = players.length;
-		// for(let i=0;i<len;i++)
-		// {
-		// 	let tsid = channel.getMember(players[i].uid).sid;
-		// 	if(players[i]==player)
-		// 	{
-		// 		self.channelService.pushMessageByUids('onEnterRoom', players, [{uid:uid,sid:tsid}]);
-		// 	}else
-		// 	{
-		// 		self.channelService.pushMessageByUids('onJoinRoom', player, [{uid:players[i].uid,sid:tsid}]);
-		// 	}
-		// }
-		// room.testSendPoker();
 		cb(roomid);
 	});
 }
 
+//重连逻辑
+pro.reConnection = function(uid,roomid,sid,cb)
+{
+	this.ddz.setLineState(uid,true);
+	var channel = self.channelService.getChannel(roomid, true);
+	if( !! channel) {
+		channel.leave(uid, sid);
+		channel.add(uid, sid);
+	}
+}
+
 pro.offLine = function(uid)
 {
-    this.ddz.offLine(uid);
+    this.ddz.setLineState(uid,false);
 }

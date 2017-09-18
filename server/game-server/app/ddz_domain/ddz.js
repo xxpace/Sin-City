@@ -91,11 +91,11 @@ Instance.prototype.addPlayerByRoomId = function(uid,roomid,cb)
 	});
 }
 
-Instance.prototype.offLine = function(uid)
+Instance.prototype.setLineState = function(uid,state)
 {
 	let player = this.getPlayer(uid);
 	if(player)
 	{
-		player.isOnLine = false;
+		player.isOnLine = state;
 	}
 }
